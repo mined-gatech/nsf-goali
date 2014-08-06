@@ -1,0 +1,12 @@
+# Site settings
+title: GT-MINED NSF-GOALI Mini-site
+email: tony.fast@gmail.com
+description: |
+  A mini research site to report the ongoing efforts at the Georgia Institute
+  of Technology supported by the NSF-GOALI program.
+baseurl: "/nsf-goali"
+url: "tonyfast.com/nsf-goali"
+
+# Build settings
+markdown: kramdown
+permalink: pretty
