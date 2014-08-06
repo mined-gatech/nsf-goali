@@ -1,12 +1,24 @@
 ---
 layout: post
-im: # a normal image
-  https://farm4.staticflickr.com/3919/14466781737_a37c893a07_n.jpg
-im1: # a flickr image
+im:
+  type: img
+  src:  "https://farm4.staticflickr.com/3919/14466781737_a37c893a07_n.jpg"
+content1:
+  type: slideshare
+  id: 33944674
+link1:
+  type: a
+  src: http://www.google.com
+  text: A bunch of shit
+  alt: overtop the jawn
 
 ---
 
+{% include ContentManager.html content=page.link1 %}
+
 # A Post written in Markdown
+
+
 
 Markdown is a text-to-HTML conversion language.
 
@@ -32,9 +44,9 @@ You can use ``iframe`` to access external Api's
 ``
 <iframe width="600" height="432" frameborder="0" seamless="seamless" scrolling="no" src="https://plot.ly/~TonyFast/4/.embed?width=1296&height=432"></iframe>
 ``
-
+<!--
 <iframe width="600" height="432" frameborder="0" seamless="seamless" scrolling="no" src="https://plot.ly/~TonyFast/4/.embed?width=1296&height=432"></iframe>
-
+-->
 
 #### Slideshare
 
