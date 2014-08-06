@@ -26,7 +26,11 @@ This stack is built to disseminate research information with minimal coding.
 
 * A little bit about API's
 
-## External Resources
+## Accessing External Resources
+
+We have made it a little bit easier for users to access their other externals resources
+for sharing data, content, and resources.  Below are some nice integrations that we have
+made for users to easily share research content.
 
 * Flickr
 
