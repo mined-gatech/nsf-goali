@@ -25,17 +25,14 @@ https://farm6.staticflickr.com/5578/14523859440_3e28e8b469_m.jpg
           farm                server    |           |     size
                                     photo-id      secret
 ```
-> type: flickr
-
-> farm: 6
-
-> server: 5578
-
-> photo-id: 14523859440
-
-> secret: 3e28e8b469
-
-> size: m
+```yaml
+type: flickr
+   farm: 6
+   server: 5578
+   photo-id: 14523859440
+   secret: 3e28e8b469
+   size: m
+```
 
 ## Slideshare
 
