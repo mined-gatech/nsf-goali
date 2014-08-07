@@ -7,10 +7,6 @@ to their colleagues.
 
 ## Things to Know
 
-### Markdown
-
-
-
 ### Github Resources
 
 This stack is built to disseminate research information with minimal coding.
