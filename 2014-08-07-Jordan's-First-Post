@@ -1,0 +1,29 @@
+---
+layout: post
+im:
+  type: img
+  src:  "https://farm4.staticflickr.com/3919/14466781737_a37c893a07_n.jpg"
+content1:
+  type: slideshare
+  id: 33944674
+link1:
+  type: a
+  src: http://www.google.com
+  text: A bunch of stuff
+  alt: overtop the jawn
+flickr1:
+  type: flickr
+  farm: 4
+  server: 3915
+  photo-id: 14583502417
+  secret: 4004df33e0
+  
+---
+
+# A post written about nothing
+
+Nothing here, nothing there, maybe something below...
+
+## A picture!
+
+{% include ContentManager.html content=page.flickr1 %}
