@@ -11,7 +11,7 @@ https://www.flickr.com/photos/123578762@N06/14523859440/
 
 photo-id: 14523859440
 
-So when you go to link above, after '/' add sizes/l and will get you to
+So when you go to link above, after '/' add ``sizes/l`` and will get you to
 all sizes page like the example below:
 
 https://www.flickr.com/photos/123578762@N06/14523859440/sizes/l
