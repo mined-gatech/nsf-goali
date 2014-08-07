@@ -38,3 +38,11 @@ https://farm6.staticflickr.com/5578/14523859440_3e28e8b469_m.jpg
 > size: m
 
 ## Slideshare
+
+Every slideshare has "Embed" on top of it, for example:
+
+http://www.slideshare.net/tonyfast1
+
+On the top right of slides, click on "Embed" and it will give a code that you can post in your website.
+
+> In the code given, the important part of it is "<iframe src="http://www.slideshare.net/tonyfast1/slideshelf" width="615px" height="470px" </iframe>"
