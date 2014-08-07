@@ -24,10 +24,6 @@ https://farm6.staticflickr.com/5578/14523859440_3e28e8b469_m.jpg
             |                   |       |           |      |
           farm                server    |           |     size
                                     photo-id      secret
-
-<iframe src="//www.slideshare.net/slideshow/embed_code/33944674" width="427" height="356"> </iframe>
-                                                          |
-                                                          id
 ```
 > type: flickr
 
@@ -51,5 +47,7 @@ On the top right of slides, click on "Embed" and it will give a code that you ca
 
 > In the code given, the important part of it is " 
 ```html
-< iframe src="http://www.slideshare.net/tonyfast1/slideshelf" width="615px" height="470px"> </iframe >
+<iframe src="//www.slideshare.net/slideshow/embed_code/33944674" width="427" height="356"> </iframe>
+                                                          |
+                                                          id
 ```
