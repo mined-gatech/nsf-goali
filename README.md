@@ -47,5 +47,5 @@ On the top right of slides, click on "Embed" and it will give a code that you ca
 
 > In the code given, the important part of it is " 
 ```html
-< iframe src="http://www.slideshare.net/tonyfast1/slideshelf" width="615px" height="470px" < /iframe >
+< iframe src="http://www.slideshare.net/tonyfast1/slideshelf" width="615px" height="470px"> </iframe >
 ```
