@@ -7,6 +7,10 @@ to their colleagues.
 
 ## Things to Know
 
+### Markdown
+
+[daring fireball](http://daringfireball.net/projects/markdown/)
+[Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 ### Github Resources
 
