@@ -10,3 +10,9 @@ url: "tonyfast.com/nsf-goali"
 # Build settings
 markdown: kramdown
 permalink: pretty
+kramdown:
+  parse_block_html: true
+
+# Project/User information
+gh: tonyfast/nsf-goali
+disqus: tonyfast

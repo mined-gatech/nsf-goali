@@ -1,19 +1,22 @@
 
 {% if include.content.type %}
-huh
-    {% case include.content.type %}
-    
+  {% case include.content.type %}
 
 
-        {% when 'a' %}
-            {% include a.html ref=include.content %}
-        {% when 'img' %}
-            {% include img.html image=include.content %}
-        {% when 'flickr' %}
-            {% include img.html image=include.content %}
-        {% when 'slideshare' %}
-            {% include slideshare.html data=include.content %}
-    {% endcase %}
+
+    {% when 'a' %}
+    {% include a.html ref=include.content %}
+
+    {% when 'img' %}
+    {% include img.html image=include.content %}
+
+    {% when 'flickr' %}
+    {% include flickr.html image=include.content %}
+
+    {% when 'slideshare' %}
+    {% include slideshare.html data=include.content %}
+
+  {% endcase %}
 
 {% else %}
 {% endif %}
