@@ -13,8 +13,7 @@ link1:
   alt: overtop the jawn
 
 ---
-
-{% include ContentManager.html content=page.link1 %}
+{{page.im}}
 
 # A Post written in Markdown
 
