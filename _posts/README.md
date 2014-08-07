@@ -9,8 +9,9 @@ to their colleagues.
 
 ### Markdown
 
-[daring fireball](http://daringfireball.net/projects/markdown/)
-[Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+* [daring fireball](http://daringfireball.net/projects/markdown/)
+
+* [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 ### Github Resources
 
