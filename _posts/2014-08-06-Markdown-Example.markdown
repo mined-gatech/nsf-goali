@@ -1,5 +1,4 @@
 ---
-layout: post
 im:
   type: img
   src:  "https://farm4.staticflickr.com/3919/14466781737_a37c893a07_n.jpg"
