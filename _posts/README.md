@@ -9,15 +9,17 @@ to their colleagues.
 
 ### Markdown
 
-* [Daring Fireball](http://daringfireball.net/projects/markdown/)
 
-* [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 ### Github Resources
 
 This stack is built to disseminate research information with minimal coding.
 
 * Markdown Syntax
+
+ * [Daring Fireball](http://daringfireball.net/projects/markdown/)
+
+ * [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 * Jekyll
 
