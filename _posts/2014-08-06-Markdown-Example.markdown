@@ -3,7 +3,7 @@ layout: post
 im:
   type: img
   src:  "https://farm4.staticflickr.com/3919/14466781737_a37c893a07_n.jpg"
-content1:
+pres:
   type: slideshare
   id: 33944674
 link1:
@@ -13,7 +13,7 @@ link1:
   alt: overtop the jawn
 
 ---
-{{page.im}}
+{% include ContentManager.html content=page.pres %}
 
 # A Post written in Markdown
 
