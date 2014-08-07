@@ -45,4 +45,7 @@ http://www.slideshare.net/tonyfast1
 
 On the top right of slides, click on "Embed" and it will give a code that you can post in your website.
 
-> In the code given, the important part of it is " < iframe src="http://www.slideshare.net/tonyfast1/slideshelf" width="615px" height="470px" < /iframe > "
+> In the code given, the important part of it is " 
+```html
+< iframe src="http://www.slideshare.net/tonyfast1/slideshelf" width="615px" height="470px" < /iframe >
+```
