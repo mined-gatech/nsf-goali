@@ -1,12 +1,12 @@
 
 {% if include.image['farm'] %}
-<a href="https://www.flickr.com/photos/123578762@N06/14442235737/sizes/l" alt="Get all sizes on Flickr">
+<a href="https://www.flickr.com/photos/{{include.image['id']}}@{{include.image['N']}}/{{include.image['photo-id']}}/sizes/l" alt="Get all sizes on Flickr">
   <img src="https://farm{{include.image['farm']}}.staticflickr.com/{{include.image['server']}}/{{include.image['photo-id']}}_{{include.image['secret']}}_m.jpg">
 </a>
 
 {% else %}
 
-<a href="https://www.flickr.com/photos/123578762@N06/14442235737/sizes/l">
+<a href="https://www.flickr.com/photos/{{include.image['id']}}@{{include.image['N']}}/{{include.image['photo-id']}}/sizes/l">
   Find the 4 digits and secret and photo id
 </a>
 {% endif %}
