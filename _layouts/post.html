@@ -9,6 +9,10 @@ layout: default
   </header>
 
   <article class="post-content">
+
+{% if page.latex %}
+{% include latex.html %}
+{% endif %}
   {{ content | markdownify}}
   </article>
 
