@@ -15,7 +15,8 @@ This page using equations in the YAML Front Matter as an alternative to inline t
 In the YAML front matter a post template is used, MathJax is loaded to interpret Latex, and
 an equation is included as a Liquid variable.
 
-```yml
+{% highlight yaml   %}
+---
 layout: post
 latex: true
 eq1: |
@@ -23,15 +24,19 @@ eq1: |
   \sum_{\alpha=1}^{\mathrm{N}}\dot{\gamma}^{(\alpha)}
   \left(\mathbf{s}_0^{(\alpha)} \otimes \mathbf{n}_0^{(\alpha)}\right) =
   \dot{\mathbf{F}}^{\mathrm{p}} \cdot \left({\mathbf{F}^{\mathrm{p}}}\right)^{-1} $$
-
-```
+---
+{% endhighlight %}
 
 The equation is shown on the page using the following synatx in the post body.
 
-```html
+{% highlight html %}
 The following equation explains how Jello emits X-rays:
-{{page.eq1}}
-```
+
+{{"{{page.eq1"}}}}
+{% endhighlight %}
+
+### Rendered HTML
 
 The following equation explains how Jello emits X-rays:
+
 {{page.eq1}}
