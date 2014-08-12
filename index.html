@@ -7,14 +7,29 @@ layout: default
   <h1>Posts</h1>
 
   <ul class="posts">
-    {% for post in site.posts %}
+    {% for post in paginator.posts %}
       <li>
         <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
         <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
       </li>
     {% endfor %}
   </ul>
-
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
+
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{site.baseurl}}/page{{ paginator.previous_page }}" class="previous"><span class="mega-octicon octicon-chevron-left"></span></a>
+  {% else %}
+    <span class="previous"><span class="mega-octicon octicon-chevron-left"></span></span>
+  {% endif %}
+  <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+  {% if paginator.next_page %}
+    <a href="{{site.baseurl}}/page{{ paginator.next_page }}" class="next"><span class="mega-octicon octicon-chevron-right"></span></a>
+  {% else %}
+    <span class="next"><span class="mega-octicon octicon-chevron-right"></span></span>
+  {% endif %}
+</div>
+{% endif %}

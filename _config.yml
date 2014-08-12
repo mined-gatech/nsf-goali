@@ -13,6 +13,8 @@ permalink: pretty
 kramdown:
   parse_block_html: true
 
+paginate: 5
+
 # Project/User information
 gh: tonyfast/nsf-goali
 disqus: tonyfast
