@@ -1,26 +1,50 @@
 ---
 layout: post
+link1:
+  type: a
+  src: mined.gatech.edu
+  text: MINED
+  alt: Research Group Website
+link2:
+  type: a
+  src: https://www.linkedin.com/profile/view?id=44514775&trk=nav_responsive_tab_profile
+  text: LinkedIn
+  alt: Jordan's LinkedIn Profile
 flickr1:
   type: flickr
   farm: 6
-  server: 5580
-  photo-id: 14583503177
-  secret: 77efd9ca5d
-  size: b
-  id: 125994770
-  N: N04
+  server: 5578
+  photo-id: 14523859440
+  secret: 3e28e8b469
+  id: 123578762
+  N: N06
+
 ---
 
-# A post written about nothing
+# Jordan's First Post
 
-Nothing here, nothing there, maybe something below...
+## Bio
 
-## A picture!
+I am a PhD student in Mechanical Engineering at Georgia Tech in the Materials Informatcs for Engineering Design {% include ContentManager.html content=page.link1 %} Research Group. I completed my Master's at Drexel Univesrity and Bachelor's from Temple Univesrity both in Mechanical Engineering. The focus of my thesis work is developing protocols to accurately characterize length scale effects in titanium alloys including the effects of interfaces using spherical instrumented indentation.
+
+More info on {% include ContentManager.html content=page.link2 %}  
+
+## Project Responsibilities
+
+### Spherical Nanoindentation
+Recent Spherical Nanoindentation protocols have proven valuable for characterizing the local mechanical response of different materials systems in the form of indentation stress-strain curves [1-5]. For Ti alloys this is the grain scale response which depends on the phase (hcp, bcc) and crystal orientation. Indentation has the advantage of being cheap and high-through put compared to other grain scale mechanical testing methods. Grain scale mechanical property measurements are needed to accurately capture the grainscale plastic anisotropy in Ti alloys to improve the accuracy of crystal plasticity simulations.
+
+### Spherical Micro/Macro/Meso Indentation
+Local indentation measurements do not account for the effect of grain and phase boundaries or microtextures. Indentatin measurements at the meso scale probe multiple phases and grains at one time to establish length scale effects going from single grains all the way to bulk properties. The characterization of these length scale effects are needed to properly implement crystal plasticy models calibrated to grain scale measurements.
+
+### InSEM Nanoindentation
+Interface modeling is an area of ongoing research which is limited by the lack of avaialbe experimental datasets avaialbe for information and calibration. With a unique setup of a wedge indenter inside an SEM, single interfaces can be probed while simultaneously characterizing the deformation in the indentation zone. These experiments provide a rich amount of information for improving interface modeling, particularly the alpha-beta interface in Ti alloys.
+
+### Structure Characterization for RVEs
+Large electron backscatter diffraction (EBSD) data sets will be collected on orthogonal sections for generating representative volume elements (RVEs) for crystal plasticity finite element simulations.
 
 {% include ContentManager.html content=page.flickr1 %}
 
-## The URLs for reference
+## Relevant Research Articles
 
-https://www.flickr.com/photos/125994770@N04/14583503177/sizes/l
 
-https://farm6.staticflickr.com/5580/14583503177_77efd9ca5d_b.jpg
