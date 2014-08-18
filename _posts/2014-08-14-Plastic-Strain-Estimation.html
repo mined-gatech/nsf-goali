@@ -1,0 +1,188 @@
+---
+layout: post
+title: "Plastic Strain Estimation for Linear Elastic Simulations"
+latex: true
+
+im1:
+  type: img
+  src:  "https://farm4.staticflickr.com/3885/14742363477_fc6c2b0b89_o.png"
+im2:
+  type: img
+  src:  "https://farm6.staticflickr.com/5567/14928571412_53e8a04769_o.png"
+im3:
+  type: img
+  src:  "https://farm6.staticflickr.com/5573/14925851581_da050bf7ee_b.jpg"  
+im4:
+  type: img
+  src:  "https://farm4.staticflickr.com/3917/14928571482_181645aa15_o.png"   
+im5:
+  type: img
+  src:  "https://farm4.staticflickr.com/3845/14742266699_2a27fe036b_b.jpg"  
+  
+ 
+content1:
+  type: slideshare
+  id: 33944674
+link1:
+  type: a
+  src: http://www.google.com
+  text: A bunch of stuff
+  alt: overtop the jawn
+flickr1:
+  type: flickr
+  farm: 4
+  server: 3885
+  photo-id: 14742363477
+  secret: fc6c2b0b89
+  id: 126731708
+  N: N03
+
+---
+
+####Matthew Priddy, ME graduate student @ GT
+
+####Noah Paulson, ME graduate student @ GT
+
+## Introduction
+
+In the high-cycle fatigue (HCF) regime, plastic deformation plays a small role in the overall response of the material.  However, fatigue indicator parameters (FIPs) are estimated from plastic quantities such as plastic shear strain.  This requires the use of a material model capable of capturing plastic deformation.  In the past, our group has used CPFEM models to capture local deformation (both elastic and plastic), which are computationally inefficient and not easily translatable to the computational abilities of other research groups or industry partners.  Therefore, we plan to explore the process of calculating FIPs from only elastic deformation information.
+
+For the purpose of this explanation, the HCF regime is defined as cyclic loading that does not exceed a maximum macroscopic strain of 75% of the strain to yield.
+
+## Plastic Strain Calculation in CPFEM
+
+In crystal plasticity finite element method simulations (CPFEM), the FEM software passes information (typically the total deformation gradient, $ \mathbf{F} $) to the crystal plasticity model which determines the total stress and plastic strain, along with other model parameters.  In this particular model, the total deformation gradient is written as a multiplicative elastic-plastic decomposition, $ \mathbf{F} = \mathbf{F}^\mathrm{e}\mathbf{F}^\mathrm{p} $.
+
+The first step is to initialize the plastic (superscript p) deformation gradient $ \mathbf{F}^\mathrm{p} $.  This is done by either assuming no plastic deformation has occurred (i.e. $ \mathbf{F}^\mathrm{p} = \mathbf{I} $) or using the plastic deformation gradient from the previous loading increment.  Next, the elastic deformation gradient (superscript e) can be found through the multiplicative decomposition, 
+
+\begin{equation}
+\mathbf{F}^\mathrm{e} = \mathbf{F} \cdot \left(\mathbf{F}^\mathrm{p}\right)^{-1}     \;.
+\end{equation}
+
+From there, the elastic Green strain tensor can be determined, 
+
+\begin{equation}
+\mathbf{E}^\mathrm{e} = \frac{1}{2} \left[ \left(\mathbf{F}^\mathrm{e}\right)^\text{T} \cdot \
+\mathbf{F}^\mathrm{e} - \mathbf{I} \right]     \;.
+\end{equation}
+
+And the second Piola-Kirchhoff stress tensor (symmetric) is
+
+\begin{equation}
+\boldsymbol\sigma^\text{PK2} = \mathbb{C}_0 : \mathbf{E}^\mathrm{e} \;,
+\end{equation}
+
+where $\mathbb{C}_0$ is the fourth-order elastic stiffness tensor in the intermediate configuration.  The Cauchy stress can be found by mapping the second Piola-Kirchhoff stress to the current configuration, as shown by
+
+\begin{equation}
+\boldsymbol\sigma = \frac{1}{\det\left(\mathbf{F}^\mathrm{e}\right)} \left[ \mathbf{F}^\mathrm{e} \cdot 
+\boldsymbol\sigma^\text{PK2} \cdot \left(\mathbf{F}^\mathrm{e}\right)^{\text{T}} \right] \;.
+\end{equation}
+
+The resolved shear stress, $\boldsymbol\tau$, resides in the intermediate configuration and is therefore calculated from the second Piola-Kirchhoff.  The resolved shear stress on each slip system is 
+
+\begin{equation}
+\tau^{(\alpha)} = 
+\boldsymbol\sigma^\text{PK2} : \left(\mathbf{s}_0^{(\alpha)} \otimes \mathbf{n}_0^{(\alpha)}\right)     \;.
+\end{equation}
+
+With a first estimate of the resolved shear stress (RSS), the slip rate on each slip system can be evaluated with the flow rule.  For this work, a power-law flow rule is employed in the following form, 
+
+\begin{equation}
+\dot{\gamma}^\alpha = \dot{\gamma}_0 \left< \frac{\left| \tau^\alpha - \chi^\alpha \right| - \kappa^\alpha}{ D^\alpha} \right>^{M} sign\left( \tau^\alpha - \chi^\alpha \right) \;,
+\end{equation}
+
+where $\dot{\gamma}^\alpha$ is the shearing rate on the $ \alpha $ slip system, $ \dot{\gamma}_0 $ is the reference rate of shearing, $ \chi^\alpha $ is the back stress, $ \kappa^\alpha $ is the threshold stress, $ D^\alpha $ is the drag stress, and $M$ is the rate sensitivity parameter.  With this formulation, a particular slip system is defined as active if the value inside the McCauley brackets, $\langle \rangle$, is greater than zero.  As a side note, the rate independent limit occurs as $ M\rightarrow\infty $.
+
+The shearing rate, $\dot{\gamma}^{\alpha}$, is related to the plastic velocity gradient through the relation
+
+\begin{equation}
+\mathbf{L}^\mathrm{p} = \sum_{\alpha=1}^{\mathrm{N}}{\dot \gamma}^{(\alpha)}\left(\mathbf{s}_0^{(\alpha)} \otimes \mathbf{n}_0^{(\alpha)}\right) \;,
+\end{equation}
+
+where $ \hat{\mathbf{L}}^\mathrm{p} $ is the plastic velocity gradient in the intermediate configuration, $ \mathbf{s}_0^{(\alpha)} $ is the slip direction unit vector, and $ \mathbf{n}_0^{(\alpha)} $ is the slip plane normal unit vector.  The plastic velocity gradient can also be defined as $ \mathbf{L}^\mathrm{p} = \mathbf{F}^\mathrm{p} \cdot \left( \dot{\mathbf{F}}^{p} \right)^{-1} $.  
+
+The rate of change of the plastic deformation gradient can be estimated from the numerical integration via
+
+\begin{equation}
+\mathbf{F}_{t+\Delta t}^\mathrm{p} = \exp{\left( \mathbf{L}^\mathrm{p} \Delta t \right)} \cdot \;.
+\end{equation}
+
+\begin{equation}
+{\mathbf{F}_{t+\Delta t}^\mathrm{p} = \exp{\left( \mathbf{L}^\mathrm{p} \Delta t \right)} \cdot \mathbf{F}_{  t}^\mathrm{p}} \;.
+\end{equation}
+   
+
+An updated estimate for the plastic velocity gradient has now been found and can be compared with the trial version.  If the difference between the trial and updated is greater than some defined tolerance, further iterations are performed until said tolerance is achieved.
+
+## Estimation of Plastic Strain from Elastic Quantities
+
+In the previous section, the second Piola-Kirchhoff stress is used to determine the resolved shear stress, but it could be approximated by the Cauchy stress if the plastic deformation is minimal, therefore
+
+\begin{equation}
+\tau^{(\alpha)} = \boldsymbol\sigma : \left(\mathbf{s}_0^{(\alpha)} \otimes \mathbf{n}_0^{(\alpha)}\right) \;.
+\end{equation}
+
+Then, the plastic shear strain rate ($ \dot{\gamma}^\alpha $) is calculated from the equation below.  Finally, the plastic strain can be determined from 
+
+\begin{equation}
+{\boldsymbol\epsilon^\mathrm{p} = \sum_{\alpha=1}^{\mathrm{N}}{\gamma}^{(\alpha)}\left(\mathbf{s}_0^{(\alpha)} \otimes \mathbf{n}_0^{(\alpha)}\right)_{sym}} \;,
+\end{equation}
+
+where $ \gamma^{(\alpha)} = \dot \gamma^{(\alpha)} \Delta t $.  
+
+From linear-elastic FEM simulations, the total stress and total strain fields for each element (voxel) are known quantities for the entirety of the deformation.  Therefore, the only unknown in this set of equations is $ \dot \gamma^{(\alpha)} $, which can be estimated through a numerical integration scheme.  
+
+The numerical integration scheme selected for this particular problem is the Simpson's $ \frac{1}{3} $ rule,
+
+\begin{equation}
+\int_{a}^{b} f(x)dx \approx \frac{h}{6} \left( f(x_0) + 4f(x_1) + f(x_2) \right) - \frac{1}{90}h^5 f^(4) (\xi) \;,
+\end{equation}
+
+where $ f(x) = \dot \gamma^{(\alpha)}(\tau^{(\alpha)}) $, $ h=\Delta t $, and $ \left[a,b\right] = \left[0,t\right] $.  In this form, $ \gamma^{(\alpha)} $ would be estimated over $ \Delta t $ with only three data points.  Therefore, the integration interval can be divided into subincrements to reduce the error of the integration scheme.  The Simpson's $ \frac{1}{3} $ rule was selected over the Simpson's $ \frac{3}{8} $ rule because they both attain third-order accuracy but the Simpson's $ \frac{1}{3} $ uses one less point.
+
+In order of completeness, the back stress and threshold stress also evolve with changes in $ \dot \gamma^{(\alpha)} $.  Therefore, their evolution also needs to be captured in this numerical integration scheme.
+
+## Preliminary Results
+
+The first assumption to check is the comparison of the total stress from linear elastic simulations and CPFEM simulations, assuming the microstructure is identical between both.  These simulations were performed for $\alpha$-Ti with single element grains with random orientations.  Fully-reversed (R=-1) Cyclic loading was performed for 3 cycles with a strain amplitude of 0.5%.  A comparison of the von-Mises total stress is shown below with very good agreement between the simulations.
+
+{% include ContentManager.html content=page.flickr1 %}
+
+{% include ContentManager.html content=page.im1 %}
+
+Additionally, the von Mises total strain is also nearly identical between the two simulations, as shown below.
+
+{% include ContentManager.html content=page.im2 %}
+
+It is also important to note that the spatial variation of the stress (and strain) values also seem to be nearly identical between the simulations.
+
+{% include ContentManager.html content=page.im3 %}
+
+Therefore, the components of the total stress values were extracted at each peak and valley of the cyclic loading curve and those values, along with CPFEM model parameters, were used to estimate gamma with the numerical integration scheme outlined above.  A subincrement value of 10 was used between each peak and valley in order to minimize error.  Subincrement values of larger than 10 were also investigated with very minimal changes in the results.  The results below indicate the variation in the spatially resolved effective plastic strain values follow the same trend for specific voxels.
+
+{% include ContentManager.html content=page.im5 %}
+
+However, there is a difference in the CPFEM effective plastic strain and the estimated values from numerical integration of the LE results.
+
+{% include ContentManager.html content=page.im4 %}
+
+## Discussion
+
+From these results, it is important to note that the plastic strain values are multiple orders of magnitude smaller than the total strain, so it is completely believable that they would have very little impact on the local total stress (and strain).  However, their utility lies in the calculation of FIP values.
+
+Additionally, we hypothesize that the difference in plastic strain values between CPFEM and the numerical integration is mainly due to slight variations in the RSS for each slip system.  We are currently investigating this matter and hope to resolve it soon (no pun intended). 
+
+## Appendix: General Overview of fatigue indicator parameter (FIP) calculation
+
+The order of operations for calculating FIPs is as follows:
+1. Calculate the difference in the plastic strain (2nd rank tensor) over a single cycle, $$ \Delta \epsilon^{p} = \epsilon^{p}_{max} - \epsilon^{p}_{min} $$.
+2. Determine the eignevalues and eigenvectors for $$ \Delta \epsilon^{p} $$, $$ \Delta \epsilon^{p} \nu^{\epsilon^{p}} = \lambda^{\epsilon^{p}} \nu^{\epsilon^{p}} $$.
+3. Calculate the maximum plastic shear strain, $$ \Delta \gamma^{p}_{max} = \frac{1}{2} \left| \lambda^{\epsilon^{p}}_{1} - \lambda^{\epsilon^{p}}_{3} \right| $$.
+4. Find the critical plane for the maximum plastic shear strain, $$ \nu^{\epsilon^{p}}_{max} = \frac{\nu^{\epsilon^{p}}_{1} - \nu^{\epsilon^{p}}_{3}}{\| \nu^{\epsilon^{p}}_{1} - \nu^{\epsilon^{p}}_{3} \|} $$.
+5. Calculate the maximum normal stress on the critical plane, $$ \sigma^{n}_{max} = ( \nu^{\epsilon^{p}}_{max} )^{T} \sigma_{max} ( \nu^{\epsilon^{p}}_{max} ) $$.
+6. Fatemi-Socie FIP, $$ FIPS_{FS} = \Delta \gamma^{p}_{max} ( 1 + K \frac{\sigma^{n}_{max}}{\sigma_{y}} ) $$.
+
+### References
+- Bob Mcginty's PhD thesis, 2001.  Georgia Tech
+- Numerical Methods for Engineers
