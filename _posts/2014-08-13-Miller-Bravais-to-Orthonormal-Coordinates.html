@@ -1,0 +1,45 @@
+---
+layout: post
+title: "Transformation from Miller-Bravais to Orthonormal Coordinate System"
+latex: true
+
+im:
+  type: img
+  src:  "https://farm4.staticflickr.com/3919/14466781737_a37c893a07_n.jpg"
+content1:
+  type: slideshare
+  id: 33944674
+link1:
+  type: a
+  src: http://www.google.com
+  text: A bunch of stuff
+  alt: overtop the jawn
+flickr1:
+  type: flickr
+  farm: 6
+  server: 5578
+  photo-id: 14523859440
+  secret: 3e28e8b469
+  id: 123578762
+  N: N06
+
+---
+
+### Miller-Bravias Coordinate System
+
+In HCP material systems, it is convenient to employ the 4-index Miller-Bravais (M-B) coordinate system to describe slip directions and slip plane normals.  The basal plane contains three directions $$ (a_1, a_2, a_3) $$ that form angles of 120$$^\circ$$ with each other and one direction $$ (c) $$ that is perpendicular to the basal plane.  With this particular system, the symmetry of the directions is apparent through the shuffling of the 3 non-zero indices.  For example, the basal slip directions in the 4-index M-B coordinate system are $$ [\bar{1}2\bar{1}0] $$, $$ [\bar{2}110] $$, and $$ [\bar{1}\bar{1}20] $$.  
+
+However, determining direction cosines directly from the 4-index M-B coordinate system can be somewhat confusing because it is not orthonormal.  Therefore, we will step through the procedure for moving from a 4-index M-B coordinate system to an orthonormal system.
+
+The first step is to convert the 4-index system to a 3-index system.  This is done by eliminating the $$ a_3 $$ direction.  Let's assume the 4-index indices are $$ [ u v t w] $$ and the 3-index indices are $$ [U V W] $$.  The conversion follows:
+
+$$ U = u - t; V = v - t; W = w $$
+
+Now that we have a 3-direction coordinate sysem, A simple transformation is performed to convert the 3-index M-B $$ [U V W] $$ to the orthonormal system $$ [x, y, z] $$.  The conversion follows:
+
+$$ \begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} 1 & -\frac{1}{2} & 0 \\ 0 & \frac{\sqrt{3}}{2} & 0 \\ 0 & 0 & \frac{c}{a} \end{bmatrix} \begin{bmatrix} U \\ V \\ W \end{bmatrix} $$
+
+Note that this transformation aligns two directions, $$ a_1 \| x $$ and $$ c \| z $$.
+
+### References
+- M. Niewczas (2010). "Lattice correspondence during twinning in hexagonal close-packed crystal," Acta Mat 58, 5848-5857.
