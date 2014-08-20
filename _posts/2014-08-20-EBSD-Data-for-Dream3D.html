@@ -1,0 +1,86 @@
+---
+layout: post
+content1:
+  type: slideshare
+  id: 38179845
+flickr1:
+  type: flickr
+  farm: 6
+  server: 5580
+  photo-id: 14583503177
+  secret: 7882fd93ae
+  id: 125994770
+  N: N04
+flickr2:
+  type: flickr
+  farm: 6
+  server: 3907
+  photo-id: 14766802841
+  secret: 5f635388cd
+  id: 125994770
+  N: N04
+flickr3:
+  type: flickr
+  farm: 6
+  server: 5567
+  photo-id: 14980343032
+  secret: f4057e56d2
+  id: 125994770
+  N: N04
+flickr4:
+  type: flickr
+  farm: 6
+  server: 3882
+  photo-id: 14957695296
+  secret: 40f5f29e5b
+  id: 125994770
+  N: N04
+flickr5:
+  type: flickr
+  farm: 6
+  server: 3836
+  photo-id: 4794014860
+  secret: d8b7823353
+  id: 125994770
+  N: N04
+---
+  
+#Purpose
+The purpose of this post is to outline the flow of information from an Electron Backscatter Diffraction (EBSD) scan to [Dream3D](http://dream3d.bluequartz.net/) for generating 3D microstructures for Finite Element Method (FEM) Simulations.
+
+## Steps
+1. Collect EBSD map. Size matters - the scan should include enough grains so that statistics are representative of the sample.
+2. Cleanup (Optional).
+3. Compute grain size distribution, misorientation distribution, and the orientation distribution function in the form of pole figures.
+4. Create a 3D microstructure in Dream3D based on the microstructure statistics.
+
+## Example
+1. This data was collected on a field emission scanning electron microscope [(Tescan Mira XMH FE-SEM)](http://tescan-usa.com/products/mira-feg-sem) equiped with a backscatter diffraction detector [(EDAX Hikari)](http://www.edax.com/Products/EBSD/Hikari-EBSD-Cameras.aspx) with OIM Data Collection Software. Important information includes Beam Voltage, Beam Intensity, Working Distance,Step Size, etc. This information is typically in the summary of the scan. 
+
+The EBSD scan can be visualized as an inverse pole figure (IPF) map where the color represents the crystal plane normal that is parallel with the surface normal or with an Bunge Euler angel plot where the color represents the location in the Euler angle space.
+{% include ContentManager.html content=page.flickr1 %}
+IPF Map
+{% include ContentManager.html content=page.flickr2 %}
+Bunge Euler Angle Map
+
+The raw data can be saved in the form of an .ang file which can be read as a text file.
+
+i.e.
+
+
+2. Cleanup was done on data points which did not belong to a grain with a size of 10 microns or more. These data points were iteratively assigned to existing grains using the Grain Dilation procedue in OIM Analysis. For this example, we were only concerned with the alpha phase.
+
+3. Statistics
+ - Grain Size Distribution
+ {% include ContentManager.html content=page.flickr3 %}
+ The historgram can be exported to a text file
+ 
+ - Misorientatin Distribution
+ {% include ContentManager.html content=page.flickr4 %}
+ 
+
+4. This presentatin outlines the step-by-step procedure in Dream3D software package.
+
+{% include ContentManager.html content=page.content1 %}
+
+work in progress...
