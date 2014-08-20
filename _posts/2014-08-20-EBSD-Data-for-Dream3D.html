@@ -65,22 +65,34 @@ Bunge Euler Angle Map
 
 The raw data can be saved in the form of an .ang file which can be read as a text file.
 
-i.e.
-
+i.e. phi1, Phi, phi2, x, y, IQ, CI, Phase ID, Grain Int/Ext, Fit
+  1.06658   2.16310   6.12292      0.00000      0.00000 1431.0  0.600  1      1  1.016 
+  1.07650   2.17225   6.13229      3.00000      0.00000 1447.3  0.571  1      1  0.785 
+  3.81503   2.97739   4.95261      6.00000      0.00000 1056.1  0.743  1      1  1.196 
+  0.67586   0.16604   2.38466      9.00000      0.00000 1125.1  0.886  1      1  0.899 
+  0.70213   0.15588   2.34988     12.00000      0.00000 1225.6  0.686  1      1  1.254 
+  3.81669   2.98744   0.77511     15.00000      0.00000 1254.0  0.800  1      1  0.824 
+  0.67760   0.15682   3.41488     18.00000      0.00000 1282.5  0.743  1      1  0.841 
+  0.68126   0.15336   2.36898     21.00000      0.00000 1239.1  0.800  1      1  0.746 
+  3.80428   2.99174   2.84566     24.00000      0.00000 1213.3  0.714  1      1  0.845 
+  3.89526   2.98470   5.03647     27.00000      0.00000 1286.9  0.800  1      1  0.686 
 
 2. Cleanup was done on data points which did not belong to a grain with a size of 10 microns or more. These data points were iteratively assigned to existing grains using the Grain Dilation procedue in OIM Analysis. For this example, we were only concerned with the alpha phase.
 
 3. Statistics
  - Grain Size Distribution
  {% include ContentManager.html content=page.flickr3 %}
- The historgram can be exported to a text file
+ The historgram can be exported to a text file.
  
- - Misorientatin Distribution
+ - Misorientatin Distribution (misorientation angle between boundaries)
  {% include ContentManager.html content=page.flickr4 %}
+ The historgram can be exported to a text file.
+ 
+ - Orientation Distribution Function (ODF)
+ {% include ContentManager.html content=page.flickr5 %}
+ Pole figures are one way to visulize the ODF. Pole figure intensities can be exported to text file. The ODF is created using a harmonic series expansion. The fit values can also be exported to a text file.
  
 
 4. This presentatin outlines the step-by-step procedure in Dream3D software package.
 
 {% include ContentManager.html content=page.content1 %}
-
-work in progress...
