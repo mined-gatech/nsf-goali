@@ -1,5 +1,6 @@
 ---
 layout: post
+title: "2014-08-20-EBSD-Data-for-Dream3D"
 content1:
   type: slideshare
   id: 38179845
@@ -39,13 +40,13 @@ flickr5:
   type: flickr
   farm: 6
   server: 3836
-  photo-id: 4794014860
+  photo-id: 14794014860
   secret: d8b7823353
   id: 125994770
   N: N04
 ---
   
-#Purpose
+# Purpose
 The purpose of this post is to outline the flow of information from an Electron Backscatter Diffraction (EBSD) scan to [Dream3D](http://dream3d.bluequartz.net/) for generating 3D microstructures for Finite Element Method (FEM) Simulations.
 
 ## Steps
@@ -65,6 +66,7 @@ Bunge Euler Angle Map
 
 The raw data can be saved in the form of an .ang file which can be read as a text file.
 
+{% highlight %}
 i.e. phi1, Phi, phi2, x, y, IQ, CI, Phase ID, Grain Int/Ext, Fit
   1.06658   2.16310   6.12292      0.00000      0.00000 1431.0  0.600  1      1  1.016 
   1.07650   2.17225   6.13229      3.00000      0.00000 1447.3  0.571  1      1  0.785 
@@ -76,6 +78,7 @@ i.e. phi1, Phi, phi2, x, y, IQ, CI, Phase ID, Grain Int/Ext, Fit
   0.68126   0.15336   2.36898     21.00000      0.00000 1239.1  0.800  1      1  0.746 
   3.80428   2.99174   2.84566     24.00000      0.00000 1213.3  0.714  1      1  0.845 
   3.89526   2.98470   5.03647     27.00000      0.00000 1286.9  0.800  1      1  0.686 
+{% endhighlight %}
 
 2. Cleanup was done on data points which did not belong to a grain with a size of 10 microns or more. These data points were iteratively assigned to existing grains using the Grain Dilation procedue in OIM Analysis. For this example, we were only concerned with the alpha phase.
 
