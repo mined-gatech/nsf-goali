@@ -13,6 +13,9 @@ im2:
 im3:
   type: img
   src:  "https://farm6.staticflickr.com/5573/14925851581_da050bf7ee_b.jpg"  
+MAXERRcompare_Evm_cyc3_logY:
+  type: img
+  src:  "https://farm6.staticflickr.com/5559/14860315610_8415c591c0_c.jpg"
 im4:
   type: img
   src:  "https://farm4.staticflickr.com/3917/14928571482_181645aa15_o.png"   
@@ -148,6 +151,12 @@ Additionally, the von Mises total strain is also nearly identical between the tw
 It is also important to note that the spatial variation of the stress (and strain) values also seem to be nearly identical between the simulations.
 
 {% include ContentManager.html content=page.im3 %}
+
+The assumtion of identical strains between LE and CPFEM simulations was further examined through the variation of the applied strain amplitude and the comparison of the total strain fields. Simulations were run with strain aplitudes varying between 0.25% and 2.00% with increments of 0.25% strain, while all other parameters were kept same as in the previous comparison study.
+
+Included below is a plot comparing the maximum von - Mises strain error in the comparison of CPFEM and LE results for each strain aplitude.
+
+{% include ContentManager.html content=page.MAXERRcompare_Evm_cyc3_logY %}
 
 Therefore, the components of the total stress values were extracted at each peak and valley of the cyclic loading curve and those values, along with CPFEM model parameters, were used to estimate gamma with the numerical integration scheme outlined above.  A subincrement value of 10 was used between each peak and valley in order to minimize error.  Subincrement values of larger than 10 were also investigated with very minimal changes in the results.  The results below indicate the variation in the spatially resolved effective plastic strain values follow the same trend for specific voxels.
 
