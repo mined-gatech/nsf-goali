@@ -1,1 +1,4 @@
 _site
+_*
+!_posts
+!_data
