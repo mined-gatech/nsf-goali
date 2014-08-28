@@ -191,17 +191,24 @@ Additionally, we hypothesize that the difference in plastic strain values betwee
 
 The order of operations for calculating FIPs is as follows:
 
+
 1. Calculate the difference in the plastic strain (2nd rank tensor) over a single cycle, $$ \Delta \epsilon^{p} = \epsilon^{p}_{max} - \epsilon^{p}_{min} $$.
+
 
 2. Determine the eignevalues and eigenvectors for $$ \Delta \epsilon^{p} $$, $$ \Delta \epsilon^{p} \nu^{\epsilon^{p}} = \lambda^{\epsilon^{p}} \nu^{\epsilon^{p}} $$.
 
+
 3. Calculate the maximum plastic shear strain, $$ \Delta \gamma^{p}_{max} = \frac{1}{2} \left| \lambda^{\epsilon^{p}}_{1} - \lambda^{\epsilon^{p}}_{3} \right| $$.
+
 
 4. Find the critical plane for the maximum plastic shear strain, $$ \nu^{\epsilon^{p}}_{max} = \frac{\nu^{\epsilon^{p}}_{1} - \nu^{\epsilon^{p}}_{3}}{\| \nu^{\epsilon^{p}}_{1} - \nu^{\epsilon^{p}}_{3} \|} $$.
 
+
 5. Calculate the maximum normal stress on the critical plane, $$ \sigma^{n}_{max} = ( \nu^{\epsilon^{p}}_{max} )^{T} \sigma_{max} ( \nu^{\epsilon^{p}}_{max} ) $$.
 
+
 6. Fatemi-Socie FIP, $$ FIPS_{FS} = \Delta \gamma^{p}_{max} ( 1 + K \frac{\sigma^{n}_{max}}{\sigma_{y}} ) $$.
+
 
 ### References
 - Bob Mcginty's PhD thesis, 2001.  Georgia Tech
