@@ -6,25 +6,26 @@ latex: true
 
 hist_sigmaVM_0p5SA:
   type: img
-  src:  "https://farm4.staticflickr.com/3885/14742363477_cf544eac08_z.jpg"
+  src:  "https://farm4.staticflickr.com/3885/14742363477_fc6c2b0b89_o.png"
 hist_epsilonVM_0p5SA:
   type: img
-  src:  "https://farm6.staticflickr.com/5567/14928571412_4b1e041d97_z.jpg"
-im3:
+  src:  "https://farm6.staticflickr.com/5567/14928571412_53e8a04769_o.png"
+field_Sigma33_0p5SA:
   type: img
   src:  "https://farm6.staticflickr.com/5573/14925851581_da050bf7ee_b.jpg"  
 MAXERRcompare_Evm_cyc3_logY:
   type: img
   src:  "https://farm6.staticflickr.com/5559/14860315610_5e1b8c8257_o.png"
-Field_Evm_cyc3_100_colony:
+field_Evm_cyc3_100_colony:
   type: img
   src:  "https://farm4.staticflickr.com/3865/14860255169_356998a51e_o.png"
-im4:
-  type: img
-  src:  "https://farm4.staticflickr.com/3917/14928571482_181645aa15_o.png"   
-im5:
+field_epsilon11p_0p5SA:
   type: img
   src:  "https://farm4.staticflickr.com/3845/14742266699_2a27fe036b_b.jpg"  
+hist_epsilon_eff_p_0p5SA:
+  type: img
+  src:  "https://farm4.staticflickr.com/3917/14928571482_181645aa15_o.png"   
+
  
 content1:
   type: slideshare
@@ -155,7 +156,7 @@ Additionally, the von Mises total strain is also nearly identical between the tw
 
 It is also important to note that the spatial variation of the stress (and strain) values also seem to be nearly identical between the simulations.
 
-{% include ContentManager.html content=page.im3 %}
+{% include ContentManager.html content=page.field_Sigma33_0p5SA %}
 
 
 ### Comparison of CPFEM and LE Strain Fields for Varied Strain Amplitudes and Material Phases
@@ -168,17 +169,17 @@ The plot below compares the maximum von - Mises strain error between the CPFEM a
 
 From this plot it is clear that the assumption of identical strains falls apart somewhere between 0.50% and 0.75% strain amplitude. The following von - Mises strain fields at 1.00% strain amplitude for colony grains show a significant difference between the CPFEM and LE simulations. 
 
-{% include ContentManager.html content=page.Field_Evm_cyc3_100_colony %}
+{% include ContentManager.html content=page.field_Evm_cyc3_100_colony %}
 
 ### Initial Attempt at the Estimation of Plastic Strains from LE Simulations
 
 Given the results of the previous studies the components of the total stress values were extracted at each peak and valley of the cyclic loading curve and those values, along with CPFEM model parameters, were used to estimate gamma with the numerical integration scheme outlined above.  A subincrement value of 10 was used between each peak and valley in order to minimize error.  Subincrement values of larger than 10 were also investigated with very minimal changes in the results.  The results below indicate the variation in the spatially resolved effective plastic strain values follow the same trend for specific voxels.
 
-{% include ContentManager.html content=page.im5 %}
+{% include ContentManager.html content=page.field_epsilon11p_0p5SA %}
 
 However, there is a difference in the CPFEM effective plastic strain and the estimated values from numerical integration of the LE results.
 
-{% include ContentManager.html content=page.im4 %}
+{% include ContentManager.html content=page.hist_epsilon_eff_p_0p5SA %}
 
 ## Discussion
 
