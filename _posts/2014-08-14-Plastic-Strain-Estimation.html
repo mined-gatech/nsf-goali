@@ -26,6 +26,18 @@ hist_epsilon_eff_p_0p5SA:
   type: img
   src:  "https://farm4.staticflickr.com/3917/14928571482_181645aa15_o.png"   
 
+Micro1_Visualization:
+  type: img
+  src:  "https://farm4.staticflickr.com/3879/14880241449_9d3d1b29ee_o.png"  
+Micro1_PoleFigure0001:
+  type: img
+  src:  "https://farm4.staticflickr.com/3838/14880334999_ba804e11aa_o.png" 
+Micro1_MisOrientDistribution:
+  type: img
+  src:  "https://farm4.staticflickr.com/3896/15066673862_c5eef9aacc_o.png"  
+Micro1_GrainSizeDistribution:
+  type: img
+  src:  "https://farm6.staticflickr.com/5570/14880476217_068426db7a_o.png"
  
 content1:
   type: slideshare
@@ -180,6 +192,20 @@ Given the results of the previous studies the components of the total stress val
 However, there is a difference in the CPFEM effective plastic strain and the estimated values from numerical integration of the LE results.
 
 {% include ContentManager.html content=page.hist_epsilon_eff_p_0p5SA %}
+
+### Comparison of FIP Distributions for 'Realistic' Microstructures
+
+The previous results have focused on the comparison of the stress, total strain, or plastic strain values between the CPFEM and LE+PY simulation results.  However, the purpose for performing this type of analysis is to extend the plastic strain calculations to determine FIP values for multiple microstructure instantiations.  That is exactly what we have done in this portion.
+
+For the purpose of this study, we used Dream3D and fictitious microstructure statistics to generate 100 digital microstructures.  One example of the digital microstructures is shown below, along with some statistics (pole figure, grain size distribution, and misorientation distribution) associated with this particular digital microstrucutre.
+
+{% include ContentManager.html content=page.Micro1_Visualization %}
+
+{% include ContentManager.html content=page.Micro1_GrainSizeDistribution %}
+
+{% include ContentManager.html content=page.Micro1_MisOrientDistribution %}
+
+{% include ContentManager.html content=page.Micro1_PoleFigure0001 %}
 
 ## Discussion
 
