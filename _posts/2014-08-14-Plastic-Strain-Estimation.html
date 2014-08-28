@@ -38,6 +38,20 @@ Micro1_MisOrientDistribution:
 Micro1_GrainSizeDistribution:
   type: img
   src:  "https://farm6.staticflickr.com/5570/14880476217_068426db7a_o.png"
+Micro1_hist_epsilonVM:
+  type: img
+  src:  "https://farm4.staticflickr.com/3843/15065732742_4460a56d73_o.png"
+Micro1_hist_eepsilon_eff_p:
+  type: img
+  src:  "https://farm4.staticflickr.com/3905/15043083536_036aedb36c_o.png" 
+
+Micro_FIPcompare:
+  type: img
+  src:  "https://farm6.staticflickr.com/5591/14880552579_ff46338032_o.png"
+Micro_FIPcompare_ProbLines:
+  type: img
+  src:  "https://farm4.staticflickr.com/3884/14880603080_4f42cf2aed_b.jpg"
+
  
 content1:
   type: slideshare
@@ -195,9 +209,9 @@ However, there is a difference in the CPFEM effective plastic strain and the est
 
 ### Comparison of FIP Distributions for 'Realistic' Microstructures
 
-The previous results have focused on the comparison of the stress, total strain, or plastic strain values between the CPFEM and LE+PY simulation results.  However, the purpose for performing this type of analysis is to extend the plastic strain calculations to determine FIP values for multiple microstructure instantiations.  That is exactly what we have done in this portion.
+The previous results have focused on the comparison of the stress, total strain, or plastic strain values between the CPFEM and LE+PY simulation results.  However, the purpose for performing this type of analysis is to extend the plastic strain calculations to determine FIP values for multiple microstructure instantiations.  That is exactly what we have done in this particular portion of the study.
 
-For the purpose of this study, we used Dream3D and fictitious microstructure statistics to generate 100 digital microstructures.  One example of the digital microstructures is shown below, along with some statistics (pole figure, grain size distribution, and misorientation distribution) associated with this particular digital microstrucutre.
+In this section, we used Dream3D and fictitious microstructure statistics to generate 100 digital microstructures.  The microstructure generation was automated through Dream3D's new command line executable (Pipeline Runner) on MAC OSX.  One example of the digital microstructures is shown below, along with some statistics (pole figure, grain size distribution, and misorientation distribution) associated with this particular digital microstrucutre.
 
 {% include ContentManager.html content=page.Micro1_Visualization %}
 
@@ -206,6 +220,20 @@ For the purpose of this study, we used Dream3D and fictitious microstructure sta
 {% include ContentManager.html content=page.Micro1_MisOrientDistribution %}
 
 {% include ContentManager.html content=page.Micro1_PoleFigure0001 %}
+
+Fully-reversed cyclic loading with a strain-amplitude of 0.5% was performed for 3 cycles on the 100 microstructure instantiations.  These simulations were performed with CPFEM and LE material models.  The LE simulation results were extended to determine plastic strains via the numerical integration scheme previously discussed.  A comparison of the von-Mises stress and strain for the microstructure shown above indicates the CPFEM and LE material responses are identical.  A histogram of the von-Mises strain values is shown below.
+
+{% include ContentManager.html content=page.Micro1_hist_epsilonVM %}
+
+However, the plastic strain distribution is shows a difference between the CPFEM and the numerical integration scheme.
+
+{% include ContentManager.html content=page.Micro1_hist_eepsilon_eff_p %}
+
+The extreme value Fatemi-Socie FIPs for each simulation were combined to generate a Gumbel distribution of the data.  From the semi-log plot, the CPFEM and LE plue numerical integration scheme results follow the same trend, but the results are quite distinct.  For the purposes of this study, the data has been normalized.  The actual magnitude of the values isn't important; we are focusing on the relationship between the 2 datasets.
+
+{% include ContentManager.html content=page.Micro_FIPcompare %}
+
+{% include ContentManager.html content=page.Micro_FIPcompare_ProbLines %}
 
 ## Discussion
 
