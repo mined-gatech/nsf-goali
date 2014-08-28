@@ -16,6 +16,9 @@ im3:
 MAXERRcompare_Evm_cyc3_logY:
   type: img
   src:  "https://farm6.staticflickr.com/5559/14860315610_5e1b8c8257_o.png"
+Field_Evm_cyc3_100_colony:
+  type: img
+  src:  "https://farm4.staticflickr.com/3865/14860255169_356998a51e_o.png"
 im4:
   type: img
   src:  "https://farm4.staticflickr.com/3917/14928571482_181645aa15_o.png"   
@@ -157,17 +160,19 @@ It is also important to note that the spatial variation of the stress (and strai
 
 ### Comparison of CPFEM and LE Strain Fields for Varied Strain Amplitudes and Material Phases
 
-The assumtion of identical strains between LE and CPFEM simulations was further examined through the variation of the applied strain amplitude and the comparison of the total strain fields. Simulations were run with strain aplitudes varying between 0.25% and 2.00% with increments of 0.25% strain. Two sets of CPFEM simulations were performed with single element grains in random orientations. The first set was comprised of only $\alpha$-Ti grains while the second was completely comprised of colony grains, which mix the mechanical properties of both $\alpha$ and $\beta$ Titanium phases. While the elastic properties of each set were identical, the plastic parameters were different. All other parameters were the same as in the previous study.
+The assumption of identical strains between LE and CPFEM simulations was further examined through the variation of the applied strain amplitude and the comparison of the total strain fields. Simulations were run with strain amplitudes varying between 0.25% and 2.00% with increments of 0.25% strain. Two sets of CPFEM simulations were performed with single element grains in random orientations. The first set was comprised of only $\alpha$-Ti grains while the second was completely comprised of colony grains, which mix the mechanical properties of both $\alpha$ and $\beta$ Titanium phases. While the elastic properties of each set were identical, the plastic parameters were different. All other parameters were the same as in the previous study.
 
-The plot below comares the maximum von - Mises strain error between the CPFEM and LE results for each strain aplitude and material phase.
+The plot below compares the maximum von - Mises strain error between the CPFEM and LE results for each strain amplitude and material phase.
 
 {% include ContentManager.html content=page.MAXERRcompare_Evm_cyc3_logY %}
 
-From this plot it is clear that the assumption of identical strains falls apart somewhere between 0.50% and 0.75% strain amplitude. 
+From this plot it is clear that the assumption of identical strains falls apart somewhere between 0.50% and 0.75% strain amplitude. The following von - Mises strain fields at 1.00% strain amplitude for colony grains show a significant difference between the CPFEM and LE simulations. 
+
+{% include ContentManager.html content=page.Field_Evm_cyc3_100_colony %}
 
 ### Initial Attempt at the Estimation of Plastic Strains from LE Simulations
 
-Given the results of the previous two studies the components of the total stress values were extracted at each peak and valley of the cyclic loading curve and those values, along with CPFEM model parameters, were used to estimate gamma with the numerical integration scheme outlined above.  A subincrement value of 10 was used between each peak and valley in order to minimize error.  Subincrement values of larger than 10 were also investigated with very minimal changes in the results.  The results below indicate the variation in the spatially resolved effective plastic strain values follow the same trend for specific voxels.
+Given the results of the previous studies the components of the total stress values were extracted at each peak and valley of the cyclic loading curve and those values, along with CPFEM model parameters, were used to estimate gamma with the numerical integration scheme outlined above.  A subincrement value of 10 was used between each peak and valley in order to minimize error.  Subincrement values of larger than 10 were also investigated with very minimal changes in the results.  The results below indicate the variation in the spatially resolved effective plastic strain values follow the same trend for specific voxels.
 
 {% include ContentManager.html content=page.im5 %}
 
