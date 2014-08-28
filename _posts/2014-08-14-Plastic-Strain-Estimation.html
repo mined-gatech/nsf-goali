@@ -44,7 +44,7 @@ link1:
 
 ## Introduction
 
-In the high-cycle fatigue (HCF) regime, plastic deformation plays a small role in the overall response of the material.  However, fatigue indicator parameters (FIPs) are estimated from plastic quantities such as plastic shear strain.  This requires the use of a material model capable of capturing plastic deformation.  In the past, our group has used CPFEM models to capture local deformation (both elastic and plastic), which are computationally inefficient and not easily translatable to the computational abilities of other research groups or industry partners.  Therefore, we plan to explore the process of calculating FIPs from only elastic deformation information.
+In the high-cycle fatigue (HCF) regime, plastic deformation plays a small role in the overall response of the material.  However, fatigue indicator parameters (FIPs) are estimated from plastic quantities such as plastic shear strain.  This requires the use of a material model capable of capturing plastic deformation.  In the past, our group has used CPFEM models to capture local deformation (both elastic and plastic), which are computationally inefficient and not easily translatable to the computational abilities of other research groups or industry partners.  Therefore, we plan to explore the process of calculating FIPs soley from elastic deformation information.
 
 For the purpose of this explanation, the HCF regime is defined as cyclic loading that does not exceed a maximum macroscopic strain of 75% of the strain to yield.
 
@@ -65,7 +65,7 @@ From there, the elastic Green strain tensor can be determined,
 \mathbf{F}^\mathrm{e} - \mathbf{I} \right]     \;.
 \end{equation}
 
-And the second Piola-Kirchhoff stress tensor (symmetric) is
+As well as the second Piola-Kirchhoff stress tensor (symmetric)
 
 \begin{equation}
 \boldsymbol\sigma^\text{PK2} = \mathbb{C}_0 : \mathbf{E}^\mathrm{e} \;,
