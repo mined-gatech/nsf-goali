@@ -140,6 +140,8 @@ In order of completeness, the back stress and threshold stress also evolve with 
 
 ## Preliminary Results
 
+### Comparison of Linear Elastic (LE) and CPFEM Stress and Strain Fields for 0.5% Strain Amplitude
+
 The first assumption to check is the comparison of the total stress from linear elastic simulations and CPFEM simulations, assuming the microstructure is identical between both.  These simulations were performed for $\alpha$-Ti with single element grains with random orientations.  Fully-reversed (R=-1) Cyclic loading was performed for 3 cycles with a strain amplitude of 0.5%.  A comparison of the von-Mises total stress is shown below with very good agreement between the simulations.
 
 {% include ContentManager.html content=page.hist_sigmaVM_0p5SA %}
@@ -152,6 +154,9 @@ It is also important to note that the spatial variation of the stress (and strai
 
 {% include ContentManager.html content=page.im3 %}
 
+
+### Comparison of CPFEM and LE Strain Fields for Varied Strain Amplitudes and Material Phases
+
 The assumtion of identical strains between LE and CPFEM simulations was further examined through the variation of the applied strain amplitude and the comparison of the total strain fields. Simulations were run with strain aplitudes varying between 0.25% and 2.00% with increments of 0.25% strain. Two sets of CPFEM simulations were performed with single element grains in random orientations. The first set was comprised of only $\alpha$-Ti grains while the second was completely comprised of colony grains, which mix the mechanical properties of both $\alpha$ and $\beta$ Titanium phases. While the elastic properties of each set were identical, the plastic parameters were different. All other parameters were the same as in the previous study.
 
 Included below is a plot showing the maximum von - Mises strain error in the comparison of CPFEM and LE results for each strain aplitude.
@@ -160,9 +165,9 @@ Included below is a plot showing the maximum von - Mises strain error in the com
 
 From this plot it is clear that the assumption of identical strains falls apart somewhere between 0.50% and 0.75% strain amplitude. 
 
+### Initial Attempt at the Estimation of Plastic Strains from LE Simulations
 
-
-Therefore, the components of the total stress values were extracted at each peak and valley of the cyclic loading curve and those values, along with CPFEM model parameters, were used to estimate gamma with the numerical integration scheme outlined above.  A subincrement value of 10 was used between each peak and valley in order to minimize error.  Subincrement values of larger than 10 were also investigated with very minimal changes in the results.  The results below indicate the variation in the spatially resolved effective plastic strain values follow the same trend for specific voxels.
+Given the results of the previous two studies the components of the total stress values were extracted at each peak and valley of the cyclic loading curve and those values, along with CPFEM model parameters, were used to estimate gamma with the numerical integration scheme outlined above.  A subincrement value of 10 was used between each peak and valley in order to minimize error.  Subincrement values of larger than 10 were also investigated with very minimal changes in the results.  The results below indicate the variation in the spatially resolved effective plastic strain values follow the same trend for specific voxels.
 
 {% include ContentManager.html content=page.im5 %}
 
