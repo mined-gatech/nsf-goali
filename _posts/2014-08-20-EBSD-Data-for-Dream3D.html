@@ -39,7 +39,7 @@ flickr4:
 flickr5:
   type: flickr
   farm: 4
-  server: 3836
+  server: 3863
   photo-id: 15110407365
   secret: 4f9975baf2
   id: 125994770
@@ -55,58 +55,46 @@ flickr6:
 ---
   
 # Purpose
-The purpose of this post is to outline the flow of information from a 2-D Electron Backscatter Diffraction (EBSD) scan to [Dream3D](http://dream3d.bluequartz.net/) for generating 3D microstructures for Finite Element Method (FEM) Simulations. This is from the perspective of the EBSD user to output data in a usable format for Stats Generator in Dream3D.
+	The purpose of this post is to outline the flow of information from a 2-D Electron Backscatter Diffraction (EBSD) scan to [Dream3D](http://dream3d.bluequartz.net/) for generating 3D microstructures for Finite Element Method (FEM) Simulations. This is from the perspective of the EBSD user to output data in a usable format for Stats Generator in Dream3D.
 
 ## Steps
- 1. Collect EBSD map. Size matters - the scan should include enough grains so that statistics are representative of the sample.
- 2. Cleanup (Optional).
- 3. Compute grain size distribution, misorientation distribution, and the orientation distribution function (ODF).
- 4. Create a 3D microstructure in Dream3D based on the microstructure statistics.
+1. Collect EBSD map. Size matters - the scan should include enough grains so that statistics are representative of the sample.
+2. Cleanup (Optional).
+3. Compute grain size distribution, misorientation distribution, and the orientation distribution function (ODF).
+4. Create a 3D microstructure in Dream3D based on the microstructure statistics.
 
 ## Example
- 1. This data was collected on a field emission scanning electron microscope [(Tescan Mira XMH FE-SEM)](http://tescan-usa.com/products/mira-feg-sem) equiped with a backscatter diffraction detector [(EDAX Hikari)](http://www.edax.com/Products/EBSD/Hikari-EBSD-Cameras.aspx) with OIM Data Collection Software. Important information includes Beam Voltage, Beam Intensity, Working Distance,Step Size, etc. This information is typically in the summary of the scan. The material is Ti-6Al-4V which with a beta annealled heat treatment. Both alpha and beta crystal phases were selected
-
- The EBSD scan can be visualized as an inverse pole figure (IPF) map where the color represents the crystal plane normal that is parallel with the surface normal or with an Bunge Euler angle plot where the color represents the location in the Euler angle space. All analysis and plots were done using OIM Analysis Software.
+1. This data was collected on a field emission scanning electron microscope [(Tescan Mira XMH FE-SEM)](http://tescan-usa.com/products/mira-feg-sem) equiped with a backscatter diffraction detector [(EDAX Hikari)](http://www.edax.com/Products/EBSD/Hikari-EBSD-Cameras.aspx) with OIM Data Collection Software. Important information includes Beam Voltage, Beam Intensity, Working Distance,Step Size, etc. This information is typically in the summary of the scan. The material is Ti-6Al-4V which with a beta annealled heat treatment. Both alpha and beta crystal phases were selected.
+The EBSD scan can be visualized as an inverse pole figure (IPF) map where the color represents the crystal plane normal that is parallel with the surface normal or with an Bunge Euler angle plot where the color represents the location in the Euler angle space. All analysis and plots were done using OIM Analysis Software.
 {% include ContentManager.html content=page.flickr1 %}
- IPF Map
+IPF Map
 {% include ContentManager.html content=page.flickr2 %}
- Bunge Euler Angle Map
-
- The raw data (currently not usable in Stats Generator) can be saved in the form of an .ang file which can be read as a text file. This step is necessary if you plan to use or analyze the data outside of OIM Analysis Software.
-
+Bunge Euler Angle Map
+The raw data (currently not usable in Stats Generator) can be saved in the form of an .ang file which can be read as a text file. This step is necessary if you plan to use or analyze the data outside of OIM Analysis Software.
 {% gist jsweaver/7b794b3587e0e27653fd %}
 
- 2. Cleanup was done on data points which did not belong to a grain with a size of 10 microns or more. These data points were iteratively assigned to existing grains using the Grain Dilation procedue in OIM Analysis. For this example, we were only concerned with the alpha phase.
+2. Cleanup was done on data points which did not belong to a grain with a size of 10 microns or more. These data points were iteratively assigned to existing grains using the Grain Dilation procedue in OIM Analysis. For this example, we were only concerned with the alpha phase.
+	2.1 Grains in EBSD are groups of similarly oriented points. A grain tolerance angle is specified such that the nearest neighbors don't exceed this tolerance value. This means there is a very small misorienttion spread between closely neighboring points, but a single grain composed of many points could have a much larger misorientation spread. A minimum grain size is also specified. Points which don't meet the neighbor tolerance angle of a grain greater than or equal to the minimum grain size are not assigned to a grain.
+	2.2 Grain size is given as a diameter. The diameter is computed by inserting the area of the grain into the area equation for a circle and solving for the diameter.
 
-  2.1 Grains in EBSD are groups of similarly oriented points. A grain tolerance angle is specified such that the nearest neighbors don't exceed this tolerance value. This means there is a very small misorienttion spread between closely neighboring points, but a single grain composed of many points could have a much larger misorientation spread. A minimum grain size is also specified. Points which don't meet the neighbor tolerance angle of a grain greater than or equal to the minimum grain size are not assigned to a grain.
-
-  2.2 Grain size is given as a diameter. The diameter is computed by inserting the area of the grain into the area equation for a circle and solving for the diameter.
-
-
- 3. Statistics
-  -Grain Size Distribution
- {% include ContentManager.html content=page.flickr3 %}
-  The historgram can be exported to a text file.
- 
-  -Misorientatin Distribution (misorientation angle between boundaries)
- {% include ContentManager.html content=page.flickr4 %}
-  The historgram can be exported to a text file.
- 
-  -Orientation Distribution Function (ODF)
- {% include ContentManager.html content=page.flickr5 %}
- {% include ContentManager.html content=page.flickr6 %}
-  The ODF can be calculated using different methods; however, the most common method is the harmonic series expansion. The ODF is a compact way of representing the material's texture as a function. 
- 
+3. Statistics
+	- Grain Size Distribution
+{% include ContentManager.html content=page.flickr3 %}
+The historgram can be exported to a text file.
+ 	- Misorientatin Distribution (misorientation angle between boundaries)
+{% include ContentManager.html content=page.flickr4 %}
+The historgram can be exported to a text file.
+	- Orientation Distribution Function (ODF) and Key
+{% include ContentManager.html content=page.flickr5 %}
+{% include ContentManager.html content=page.flickr6 %}
+The ODF can be calculated using different methods; however, the most common method is the harmonic series expansion. The ODF is a compact way of representing the material's texture as a function. 
 {% gist jsweaver/bf5ca98bf4699b19fdb9 %}
+Currently, Dream3D is limited to euler angle sets, intensity (mutliple times random), and spread (???) for specifiying the ODF. Suggested protocol:
+- Limit the euler angles based on crystal symmetry (The ODF is periodic). For hexagonal crystal symmerty the range is:  0 to 2*pi, 0 to pi/2, 0 to pi/3 for phi1, Phi, phi2 respectively.
+- Limit the angles based on a minimum intensity. Maybe a value of 2 or greater. An intensity of 1 is equalivalent to a random texture.
+- Choose one spread value. Maybe 5 because of 5 degree spacing in calculating the ODF?
+- Enter in the euler angle sets that are left. The maximum number of entries is 5,000 lines.
+Another way for small scans (less than 5,000 points) is to enter every point (minus "bad" points) with equal intensity and spread.
 
- Currently, Dream3D is limited to euler angle sets, intensity (mutliple times random), and spread (???) for specifiying the ODF. Suggested protocol:
-  -Limit the euler angles based on crystal symmetry (The ODF is periodic). For hexagonal crystal symmerty the range is:  0 to 2*pi, 0 to pi/2, 0 to pi/3 for phi1, Phi, phi2 respectively.
-  -Limit the angles based on a minimum intensity. Maybe a value of 2 or greater. An intensity of 1 is equalivalent to a random texture.
-  -Choose one spread value. Maybe 5 because of 5 degree spacing in calculating the ODF?
-  -Enter in the euler angle sets that are left. The maximum number of entries is 5,000 lines.
-
- Another way for small scans (less than 5,000 points) is to enter every point (minus "bad" points) with equal intensity and spread.
-
- 4. Once you have the statistics, this presentatin outlines the step-by-step procedure in the Dream3D software package.
-
+4. Once you have the statistics, this presentatin outlines the step-by-step procedure in the Dream3D software package.
 {% include ContentManager.html content=page.content1 %}
