@@ -1,40 +1,60 @@
 ---
-layout: post
-title: "Noah's First Post"
+layout = post
+title = "Computationally Efficient Methods for the Calibration of Elastic MKS in High Contrast Composite Systems"
+author: npaulson
+date: 2014-08-31 16:00:00
+
+categories: proposal, proposals, presentation
 
 latex: true
 mks_eq: |
   $$ \mathbf{p}_\mathrm{s} = \sum_{\mathrm{h}=1}^{\mathrm{H}} \sum_{\mathrm{t}=0}^{\mathrm{S}}
   \alpha_{\mathrm{t}}^{\mathrm{h}}\mathrm{m}_{\mathrm{s}+\mathrm{t}}^{\mathrm{h}} $$
-
-
+  
 mksplt:
   type: img
-  src: "https://farm4.staticflickr.com/3852/14667773759_fdf6e52468_c.jpg"
-
+  src: "https://farm4.staticflickr.com/3888/14913547040_01daa895f6_o.png"
 ---
 
+## Introduction
 
-### Biography
-
-My name is Noah Paulson. I'm a graduate research assistant at the Georgia Institute of Technology and I'm studying for my PhD in Mechanical Engineering. I was raised in Lexington, Massachusetts and stayed nearby for college, graduating with a B.S. in Mechanical Engineering from Tufts University in 2013. I am currently a member of the MINED research group, and I am co-advised by Dr. Surya Kalidindi and Dr. David McDowell at Georgia Tech, and by Dr. Donald Shih from Boeing. I am interested in computational and data-science approaches in the analysis of structural materials.
-
-*More information about me can be found [here](https://www.linkedin.com/pub/noah-paulson/1b/66/998) on my Linkedin profile page* 
-
-
-### MKS and the Optimization of Titanium Microstructures
-
-The **_Materials Knowledge System (MKS)_** is a powerful tool which allows for the computationally efficient prediction of material response fields after a one time calibration with known response fields. Once this calibration has been performed, the **MKS can predict the response for any microstructure in the materials system of interest**. With respect to this project, we plan to use MKS in order to help predict fatigue indicator parameter (FIP) response fields and other quantities of interest in the alpha-beta titanium materials system. In the very high cycle fatigue (VHCF) regime plastic strains are very small, so it is hoped that elastic MKS analyses will be of use in the prediction of FIP fields. In the low cycle fatigue (LCF) regime however, plastic strains are larger, therefore the MKS will be extended to predict response fields from isotropic plasticity and eventually crystal plasticity simulations. The computational benefits of MKS will make it reasonable to optimize microstructure in the alpha-beta titanium alloy materials system for any desired combination of properties.
-
-
-*Included below is the comparison between a FEM analysis and MKS prediction for a two-phase composite material with isotropic phases. Also inluded is the fundamental first order equation for the MKS:*
+### What is the MKS?
++ The **Materials Knowledge System (MKS)** is a computationally efficient method for the prediction of tensor fields (eg. elastic strain, temperature)
++ A one-time calibration is performed with fields from representative microstructures in the materials system
++ Influence coefficients from the calibration are used to estimate the response fields of arbitrary microstructures
 
 {{page.mks_eq}}
+the basic MKS equation
+
+### Problem Statement
++ To develop computationally efficient methods for the calibration of elastic MKS in high contrast composite systems
++ This is a **structure - property** linkage
+
+## Datasets
+
+### Source of Structure Datasets
++ Datasets will be synthetically generated
+
+### Details of Structure Datasets
++ Two phase composite microstructures
++ Isotropic phases
++ Phases have contrast in elastic moduli of 10:1 (eg., E_a_ = 200GPa, E_b_ = 20GPa)
++ 3-D microstructures, 21 x 21 x 21 elements
 
 {% include ContentManager.html content=page.mksplt %}
+a slice of the validation microstructure, the MKS prediction and the finite element method (FEM) response field
 
-For further reading on the MKS please consult the following resources:
+## Proposed Workflow
++ Brainstorm effective data-science methods for more efficient calibration
+	+ Example path 1: refine regression methods for calibration procedure
+	+ Example path 2: devise iterative calibration scheme
+	+ Example path 3: optimize selection of calibration microstructures
++ Generate an appropriate set of microstructures for both calibration and validation purposes
++ Visualize the MKS influence coefficients (they represent a reduced dimensional structure - property linkage)
++ Compare the efficiency and accuracy of the new methods in comparison with traditional approaches using maximum error and mean absolute strain error measures
 
-- Landi, G., Niezgoda, S. R., & Kalidindi, S. R. (2010). Multi-scale modeling of elastic response of three-dimensional voxel-based microstructure datasets using novel DFT-based knowledge systems. Acta Materialia, 58(7), 2716-2725.
-- Fast, T., & Kalidindi, S. R. (2011). Formulation and calibration of higher-order elastic localization relationships using the MKS approach. Acta Materialia, 59(11), 4595-4605.
+## References
++ G. Landi, S.R. Niezgoda, S.R. Kalidindi, *Multi-scale modelling of elastic response of three-dimensional voxel-based microstructure datasets using novel DFT-based knowledge systems,* Acta Materialia 58 (2010) 2716-2725
+
+
 
