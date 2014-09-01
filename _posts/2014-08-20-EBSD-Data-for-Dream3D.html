@@ -78,15 +78,19 @@ The purpose of this post is to outline the flow of information from a 2-D Electr
 	* Grain size is given as a diameter. The diameter is computed by inserting the area of the grain into the area equation for a circle and solving for the diameter.
 
 3. 	Statistics
+
 	* Grain Size Distribution
 	{% include ContentManager.html content=page.flickr3 %}
 	The historgram can be exported to a text file.
+	
  	* Misorientatin Distribution (misorientation angle between boundaries)
 	{% include ContentManager.html content=page.flickr4 %}
 	The historgram can be exported to a text file.
+	
 	* Orientation Distribution Function (ODF) and Key
 	{% include ContentManager.html content=page.flickr5 %}
 	{% include ContentManager.html content=page.flickr6 %}
+	
 	The ODF can be calculated using different methods; however, the most common method is the harmonic series expansion. The ODF is a compact way of representing the material's texture as a function. 
 	{% gist jsweaver/bf5ca98bf4699b19fdb9 %}
 	Currently, Dream3D is limited to euler angle sets, intensity (mutliple times random), and spread (???) for specifiying the ODF. Suggested protocol:
@@ -94,6 +98,7 @@ The purpose of this post is to outline the flow of information from a 2-D Electr
 	* Limit the angles based on a minimum intensity. Maybe a value of 2 or greater. An intensity of 1 is equalivalent to a random texture.
 	* Choose one spread value. Maybe 5 because of 5 degree spacing in calculating the ODF?
 	* Enter in the euler angle sets that are left. The maximum number of entries is 5,000 lines.
+	
 	Another way for small scans (less than 5,000 points) is to enter every point (minus "bad" points) with equal intensity and spread.
 
 4.	Once you have the statistics, this presentatin outlines the step-by-step procedure in the Dream3D software package.
