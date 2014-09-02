@@ -69,6 +69,8 @@ The purpose of this post is to outline the flow of information from a 2-D Electr
 	
 	{% include ContentManager.html content=page.flickr1 %}
 	
+	
+	
 	IPF Map
 	
 	{% include ContentManager.html content=page.flickr2 %}
@@ -77,6 +79,7 @@ The purpose of this post is to outline the flow of information from a 2-D Electr
 	
 	The raw data (currently not usable in Stats Generator) can be saved in the form of an .ang file which can be read as a text file. This step is necessary if you plan to use or analyze the data outside of OIM Analysis Software.
 	
+	{% gist jsweaver/7b794b3587e0e27653fd %}
 
 2.	Cleanup was done on data points which did not belong to a grain with a size of 10 microns or more. These data points were iteratively assigned to existing grains using the Grain Dilation procedue in OIM Analysis. For this example, we were only concerned with the alpha phase.
 	* Grains in EBSD are groups of similarly oriented points. A grain tolerance angle is specified such that the nearest neighbors don't exceed this tolerance value. This means there is a very small misorienttion spread between closely neighboring points, but a single grain composed of many points could have a much larger misorientation spread. A minimum grain size is also specified. Points which don't meet the neighbor tolerance angle of a grain greater than or equal to the minimum grain size are not assigned to a grain.
