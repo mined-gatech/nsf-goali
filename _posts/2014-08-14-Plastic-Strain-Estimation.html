@@ -133,9 +133,9 @@ The rate of change of the plastic deformation gradient can be estimated from the
 \mathbf{F}_{t+\Delta t}^\mathrm{p} = \exp{\left( \mathbf{L}^\mathrm{p} \Delta t \right)} \cdot \;.
 \end{equation}
 
-"\begin{equation}
+`\begin{equation}
 {\mathbf{F}_{t+\Delta t}^\mathrm{p} = \exp{\left( \mathbf{L}^\mathrm{p} \Delta t \right)} \cdot \mathbf{F}_{  t}^\mathrm{p}} \;.
-\end{equation}"
+\end{equation}`
    
 
 An updated estimate for the plastic velocity gradient has now been found and can be compared with the trial version.  If the difference between the trial and updated is greater than some defined tolerance, further iterations are performed until said tolerance is achieved.
@@ -150,9 +150,9 @@ In the previous section, the second Piola-Kirchhoff stress is used to determine 
 
 Then, the plastic shear strain rate ($ \dot{\gamma}^\alpha $) is calculated from the equation below.  Finally, the plastic strain can be determined from 
 
-\begin{equation}
+`\begin{equation}
 {\boldsymbol\epsilon^\mathrm{p} = \sum_{\alpha=1}^{\mathrm{N}}{\gamma}^{(\alpha)}\left(\mathbf{s}_0^{(\alpha)} \otimes \mathbf{n}_0^{(\alpha)}\right)_{sym}} \;,
-\end{equation}
+\end{equation}`
 
 where $ \gamma^{(\alpha)} = \dot \gamma^{(\alpha)} \Delta t $.  
 
@@ -254,7 +254,7 @@ The order of operations for calculating FIPs is as follows:
 2. Determine the eignevalues and eigenvectors for $$ \Delta \epsilon^{p} $$, $$ \Delta \epsilon^{p} \nu^{\epsilon^{p}} = \lambda^{\epsilon^{p}} \nu^{\epsilon^{p}} $$.
 
 
-3. Calculate the maximum plastic shear strain, $$ \Delta \gamma^{p}_{max} = \frac{1}{2} \left| \lambda^{\epsilon^{p}}_{1} - \lambda^{\epsilon^{p}}_{3} \right| $$.
+3. Calculate the maximum plastic shear strain, `$$ \Delta \gamma^{p}_{max} = \frac{1}{2} \left| \lambda^{\epsilon^{p}}_{1} - \lambda^{\epsilon^{p}}_{3} \right| $$`.
 
 
 4. Find the critical plane for the maximum plastic shear strain, $$ \nu^{\epsilon^{p}}_{max} = \frac{\nu^{\epsilon^{p}}_{1} - \nu^{\epsilon^{p}}_{3}}{\| \nu^{\epsilon^{p}}_{1} - \nu^{\epsilon^{p}}_{3} \|} $$.
