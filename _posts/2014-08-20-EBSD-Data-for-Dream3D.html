@@ -52,6 +52,25 @@ flickr6:
   secret: e6e3502ff6
   id: 125994770
   N: N04
+  
+flickr7:
+  type: flickr
+  farm: 4
+  server: 3851
+  photo-id: 14992102680
+  secret: 7e237d04ae
+  id: 94307172
+  N: N04 
+  
+flickr8:
+  type: flickr
+  farm: 4
+  server: 3874
+  photo-id: 15178753105
+  secret: c1a8788888
+  id: 94307172
+  N: N04   
+
 ---
   
 # Purpose
@@ -117,6 +136,19 @@ The purpose of this post is to outline the flow of information from a 2-D Electr
 	
 	Another way for small scans (less than 5,000 points) is to enter every point (minus "bad" points) with equal intensity and spread.
 
-4.	Once you have the statistics, this presentatin outlines the step-by-step procedure in the Dream3D software package.
+4.	Once you have the statistics, this presentation outlines the step-by-step procedure in the Dream3D software package.
 	
 	{% include ContentManager.html content=page.content1 %}
+	
+## Current Microstructures from Dream3D
+
+We are currently working with the Dream3D Team to fix some errors in their implementation; below is a detailed account of our current implementation and areas that need correcting.
+
+1.	The grain size distribution is fit to a log-normal distribution (via SigmaPlot) and the $\mu$ and $\sigma$ values are used in StatsGenerator.  Unfortuantely, their log-normal plot with $\mu$ and $\sigma$ is not for all grain size values greater than zero; it cuts off grains smaller than ~200 microns (in diameter).  That is unfortunate for us because our grain size for Ti-64$\beta$ ranges from 10 to 600 microns.  They are aware of this discrepancy and are working to fix it.
+2.	The ODF import function in Dream3D cannot currently import .ang files, but that is something they are currently working on it.  Instead, I have found that a the pole figures can be approximated by simply entering the euler angles with highest intensity and varying the weights/spreads to match the experimental pole figures.
+
+	{% include ContentManager.html content=page.flickr8 %}
+
+3.	The MDF import function contains an error that miscalculates the frequency in the misorientation histogram.  Dream3D is aware of this error and is currently fixing it.
+
+	{% include ContentManager.html content=page.flickr7 %}
