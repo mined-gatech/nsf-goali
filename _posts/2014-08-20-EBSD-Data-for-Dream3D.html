@@ -127,7 +127,8 @@ The ODF can be calculated using different methods; however, the most common meth
 	
 {% gist jsweaver/bf5ca98bf4699b19fdb9 %}
 	
-Currently, Dream3D is limited to euler angle sets, intensity (mutliple times random), and spread (???) for specifiying the ODF. Suggested protocol:
+Currently, Dream3D is limited to euler angle sets, intensity (mutliple times random), and spread (???) for specifiying the ODF. Suggested protocol
+
 * Limit the euler angles based on crystal symmetry (The ODF is periodic). For hexagonal crystal symmerty the range is:  0 to 2pi, 0 to pi/2, 0 to pi/3 for phi1, Phi, phi2 respectively.
 * Limit the angles based on a minimum intensity. Maybe a value of 2 or greater. An intensity of 1 is equalivalent to a random texture.
 * Choose one spread value. Maybe 5 because of 5 degree spacing in calculating the ODF?
