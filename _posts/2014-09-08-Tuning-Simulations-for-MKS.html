@@ -28,19 +28,23 @@ hist_compare_fftn_MINED_GOALI_C3D8R:
 ### Comparison of boundary and loading conditions
 
 In order to make sure the boundary conditions and node-set definitions between MINED group and GOALI simulations were comparable, linear elastic (LE) finite element method (FEM) simulations were performed.
+
 * everything held constant bewtween simulations except for the BCs and node-set definitions
+
 * the MINED simulation framework was used as a baseline
 
-_The image below shows the comparison between a slice in the strain fields between the MINED and GOALI simulations_
+_The image below shows the comparison between a slice in the strain fields for the MINED and GOALI simulations_
 {% include ContentManager.html content=page.bc_compare %}
 
-The results of these simulations were **identical**, so the BCs and node-set definitions are completely equivalent.
+The results of these simulations are **identical**, so the BCs and node-set definitions are completely equivalent.
 
 
 ### Comparison of other simulation parameters
 
 As a final check, simulations were performed to compare the MINED and GOALI results using their respective frameworks. 
+
 *Mean E11 strain differed by 0.00028%
+
 *Standard deviation in E11 strain differed by 56%
 
 This difference was traced to the use of C3D8R elements in the GOALI simulations as compared to the C3D8 elements for MINED
@@ -59,5 +63,5 @@ Finally, analyses were performed to compare the FFT-space, strain frequency resp
 
 {% include ContentManager.html content=page.hist_compare_fftn_MINED_GOALI_C3D8R %}
 
-Future simulations will be performed with the C3D8R element type in order to ensure periodicity of the strain response-fields in the MKS.
+Future simulations will be performed with the C3D8 element type in order to ensure periodicity of the strain response-fields in the MKS.
 
