@@ -1,0 +1,51 @@
+---
+layout: post
+title: "Tuning FEM Simulation Parameters for MKS Applicability"
+
+bc_compare:
+  type: img
+  src: "https://farm6.staticflickr.com/5583/14992015487_ced05b41bb_o.png"
+  
+field_compare_MINED_GOALI_C3D8vsC3D8R:
+  type: img
+  src: "https://farm4.staticflickr.com/3887/15150375445_f9fb161c75_o.png"
+---
+
+### Comparison of boundary and loading conditions
+
+In order to make sure the boundary conditions and node-set definitions between MINED group and GOALI simulations were comparable, linear elastic (LE) finite element method (FEM) simulations were performed.
+* everything held constant bewtween simulations except for the BCs and node-set definitions
+* the MINED simulation framework was used as a baseline
+
+_The image below shows the comparison between a slice in the strain fields between the MINED and GOALI simulations_
+{% include ContentManager.html content=page.bc_compare %}
+
+The results of these simulations were **identical**, so the BCs and node-set definitions are completely equivalent.
+
+
+### Comparison of other simulation parameters
+
+As a final check, simulations were performed to compare the MINED and GOALI results using their respective frameworks. 
+*Mean E11 strain differed by 0.00028%
+*Standard deviation in E11 strain differed by 56%
+
+This difference was traced to the use of C3D8R elements in the GOALI simulations as compared to the C3D8 elements for MINED
+
+_Comparison of strain fields between MINED and GOALI results with different element types_
+{% include ContentManager.html content=page.field_compare_MINED_GOALI_C3D8vsC3D8R %}
+
+
+I think we've finally figured out this whole boundary conditions problem as well as the reason for the difference between our simulations. When I compared strain fields between our LE simulations (MINED) and the ones you provided (GOALI), I noticed that while the trends in the fields were similar, the standard deviation in strains in our simulations was nearly half that of yours. I had some help from Dipen looking at the files, and we discovered that your simulation utilized C3D8R elements instead of C3D8 elements. I've included these two plots below.
+
+Inline image 1
+I then changed the element types in our simulations to C3D8R elements, and as you can see below the results are nearly identical (max error < 0.3%).
+
+Inline image 2
+I also believe that the GOALI LE results would match the MINED LE results if the element type was changed from C3D8R to C3D8
+
+Lastly, I ran some evaluations comparing the FFT3 space strain histograms for the two fields. In the first comparison the MINED simulations use C3D8 elements while the GOALI simulations use C3D8R elements. In the second image both simulations use C3D8R elements.
+
+Inline image 3
+Inline image 4
+
+From these analyses I think it would make the most sense to run all future simulations using the C3D8 element type, not the C3D8R element. I think some of the weirdness in the frequency response originally may have also been due to the element type, not just the specific boundary conditions.
