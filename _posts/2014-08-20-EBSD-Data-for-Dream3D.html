@@ -88,15 +88,13 @@ The purpose of this post is to outline the flow of information from a 2-D Electr
 	
 	{% include ContentManager.html content=page.flickr1 %}
 	
-	
-	
-	IPF Map
+IPF Map
 	
 	{% include ContentManager.html content=page.flickr2 %}
 	
-	Bunge Euler Angle Map
+Bunge Euler Angle Map
 	
-	The raw data (currently not usable in Stats Generator) can be saved in the form of an .ang file which can be read as a text file. This step is necessary if you plan to use or analyze the data outside of OIM Analysis Software.
+The raw data (currently not usable in Stats Generator) can be saved in the form of an .ang file which can be read as a text file. This step is necessary if you plan to use or analyze the data outside of OIM Analysis Software.
 	
 	{% gist jsweaver/7b794b3587e0e27653fd %}
 
@@ -110,31 +108,31 @@ The purpose of this post is to outline the flow of information from a 2-D Electr
 	
 	{% include ContentManager.html content=page.flickr3 %}
 	
-	The historgram can be exported to a text file.
-	
- 	* Misorientatin Distribution (misorientation angle between boundaries)
+The historgram can be exported to a text file.
+
+* Misorientatin Distribution (misorientation angle between boundaries)
 	
 	{% include ContentManager.html content=page.flickr4 %}
 	
-	The historgram can be exported to a text file.
-	
-	* Orientation Distribution Function (ODF) and Key
+The historgram can be exported to a text file.
+
+* Orientation Distribution Function (ODF) and Key
 	
 	{% include ContentManager.html content=page.flickr5 %}
 	
 	{% include ContentManager.html content=page.flickr6 %}
 	
-	The ODF can be calculated using different methods; however, the most common method is the harmonic series expansion. The ODF is a compact way of representing the material's texture as a function. 
+The ODF can be calculated using different methods; however, the most common method is the harmonic series expansion. The ODF is a compact way of representing the material's texture as a function. 
 	
 	{% gist jsweaver/bf5ca98bf4699b19fdb9 %}
 	
-	Currently, Dream3D is limited to euler angle sets, intensity (mutliple times random), and spread (???) for specifiying the ODF. Suggested protocol:
-	* Limit the euler angles based on crystal symmetry (The ODF is periodic). For hexagonal crystal symmerty the range is:  0 to 2pi, 0 to pi/2, 0 to pi/3 for phi1, Phi, phi2 respectively.
-	* Limit the angles based on a minimum intensity. Maybe a value of 2 or greater. An intensity of 1 is equalivalent to a random texture.
-	* Choose one spread value. Maybe 5 because of 5 degree spacing in calculating the ODF?
-	* Enter in the euler angle sets that are left. The maximum number of entries is 5,000 lines.
+Currently, Dream3D is limited to euler angle sets, intensity (mutliple times random), and spread (???) for specifiying the ODF. Suggested protocol:
+* Limit the euler angles based on crystal symmetry (The ODF is periodic). For hexagonal crystal symmerty the range is:  0 to 2pi, 0 to pi/2, 0 to pi/3 for phi1, Phi, phi2 respectively.
+* Limit the angles based on a minimum intensity. Maybe a value of 2 or greater. An intensity of 1 is equalivalent to a random texture.
+* Choose one spread value. Maybe 5 because of 5 degree spacing in calculating the ODF?
+* Enter in the euler angle sets that are left. The maximum number of entries is 5,000 lines.
 	
-	Another way for small scans (less than 5,000 points) is to enter every point (minus "bad" points) with equal intensity and spread.
+Another way for small scans (less than 5,000 points) is to enter every point (minus "bad" points) with equal intensity and spread.
 
 4.	Once you have the statistics, this presentation outlines the step-by-step procedure in the Dream3D software package.
 	
