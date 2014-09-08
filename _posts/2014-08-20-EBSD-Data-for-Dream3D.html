@@ -85,9 +85,7 @@ The purpose of this post is to outline the flow of information from a 2-D Electr
 3. Compute grain size distribution, misorientation distribution, and the orientation distribution function (ODF).
 4. Create a 3D microstructure in Dream3D based on the microstructure statistics.
 
-## Example
-
-### Step 1
+## Step 1
 	This data was collected on a field emission scanning electron microscope [(Tescan Mira XMH FE-SEM)](http://tescan-usa.com/products/mira-feg-sem) equiped with a backscatter diffraction detector [(EDAX Hikari)](http://www.edax.com/Products/EBSD/Hikari-EBSD-Cameras.aspx) with OIM Data Collection Software. Important information includes Beam Voltage, Beam Intensity, Working Distance,Step Size, etc. This information is typically in the summary of the scan. The material is Ti-6Al-4V which with a beta annealled heat treatment. Both alpha and beta crystal phases were selected. 
 	The EBSD scan can be visualized as an inverse pole figure IPF map where the color represents the crystal plane normal that is parallel with the surface normal or with an Bunge Euler angle plot where the color represents the location in the Euler angle space. All analysis and plots were done using OIM Analysis Software.
 	
@@ -101,12 +99,13 @@ The purpose of this post is to outline the flow of information from a 2-D Electr
 	
 	{% gist jsweaver/7b794b3587e0e27653fd %}
 
-	### Step 2
+## Step 2
 	Cleanup was done on data points which did not belong to a grain with a size of 10 microns or more. These data points were iteratively assigned to existing grains using the Grain Dilation procedue in OIM Analysis. For this example, we were only concerned with the alpha phase.
 	* Grains in EBSD are groups of similarly oriented points. A grain tolerance angle is specified such that the nearest neighbors don't exceed this tolerance value. This means there is a very small misorienttion spread between closely neighboring points, but a single grain composed of many points could have a much larger misorientation spread. A minimum grain size is also specified. Points which don't meet the neighbor tolerance angle of a grain greater than or equal to the minimum grain size are not assigned to a grain.
 	* Grain size is given as a diameter. The diameter is computed by inserting the area of the grain into the area equation for a circle and solving for the diameter.
 
-3. 	Statistics
+## Step 3
+Statistics
 
 	* Grain Size Distribution
 	
