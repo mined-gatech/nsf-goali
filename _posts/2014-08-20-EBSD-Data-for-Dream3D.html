@@ -142,7 +142,7 @@ Another way for small scans (less than 5,000 points) is to enter every point (mi
 
 We are currently working with the Dream3D Team to fix some errors in their implementation; below is a detailed account of our current implementation and areas that need correcting.
 
-1.	The grain size distribution is fit to a log-normal distribution (via SigmaPlot) and the $\mu$ and $\sigma$ values are used in StatsGenerator.  Unfortuantely, their log-normal plot with $\mu$ and $\sigma$ is not for all grain size values greater than zero; it cuts off grains smaller than ~200 microns (in diameter).  That is unfortunate for us because our grain size for Ti-64$\beta$ ranges from 10 to 600 microns.  They are aware of this discrepancy and are working to fix it.
+1.	The grain size distribution is fit to a log-normal distribution (via SigmaPlot) and the $ \mu $ and $ \sigma $ values are used in StatsGenerator.  Unfortuantely, their log-normal plot with $ \mu $ and $ \sigma $ is not for all grain size values greater than zero; it cuts off grains smaller than ~200 microns (in diameter).  That is unfortunate for us because our grain size for Ti-64$\beta$ ranges from 10 to 600 microns.  They are aware of this discrepancy and are working to fix it.
 2.	The ODF import function in Dream3D cannot currently import .ang files, but that is something they are currently working on it.  Instead, I have found that a the pole figures can be approximated by simply entering the euler angles with highest intensity and varying the weights/spreads to match the experimental pole figures.
 
 	{% include ContentManager.html content=page.flickr8 %}
