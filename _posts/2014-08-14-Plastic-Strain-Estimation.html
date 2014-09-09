@@ -89,14 +89,17 @@ $$
 
 From there, the elastic Green strain tensor can be determined,
 
-$$\begin{equation}
+$$
+\begin{equation}
 \mathbf{E}^\mathrm{e} = \frac{1}{2} \left[ \left(\mathbf{F}^\mathrm{e}\right)^\text{T} \cdot \
 \mathbf{F}^\mathrm{e} - \mathbf{I} \right]     \;.
-\end{equation}$$
+\end{equation}
+$$
 
 As well as the second Piola-Kirchhoff stress tensor (symmetric)
 
-$$\begin{equation}
+$$
+\begin{equation}
 \boldsymbol\sigma^\text{PK2} = \mathbb{C}_0 : \mathbf{E}^\mathrm{e} \;,
 \end{equation}
 $$
@@ -112,10 +115,12 @@ $$
 
 The resolved shear stress, $\boldsymbol\tau$, resides in the intermediate configuration and is therefore calculated from the second Piola-Kirchhoff.  The resolved shear stress on each slip system is
 
+$$
 \begin{equation}
 \tau^{(\alpha)} =
 \boldsymbol\sigma^\text{PK2} : \left(\mathbf{s}_0^{(\alpha)} \otimes \mathbf{n}_0^{(\alpha)}\right)     \;.
 \end{equation}
+$$
 
 With a first estimate of the resolved shear stress (RSS), the slip rate on each slip system can be evaluated with the flow rule.  For this work, a power-law flow rule is employed in the following form,
 
@@ -141,22 +146,19 @@ The rate of change of the plastic deformation gradient can be estimated from the
 
 $$
 \begin{equation}
-\mathbf{F}_{t+\Delta t}^\mathrm{p} = \exp{\left( \mathbf{L}^\mathrm{p} \Delta t \right)} \cdot \;.
-\end{equation}
-$$
-
-$$
-\begin{equation}
 {\mathbf{F}_{t+\Delta t}^\mathrm{p} = \exp{\left( \mathbf{L}^\mathrm{p} \Delta t \right)} \cdot \mathbf{F}_{  t}^\mathrm{p}} \;.
 \end{equation}
 $$
-
 
 An updated estimate for the plastic velocity gradient has now been found and can be compared with the trial version.  If the difference between the trial and updated is greater than some defined tolerance, further iterations are performed until said tolerance is achieved.
 
 ## Estimation of Plastic Strain from Elastic Quantities
 
-In the previous section, the second Piola-Kirchhoff stress is used to determine the resolved shear stress, but it could be approximated by the Cauchy stress if the plastic deformation is minimal, therefore
+In crystal plasticity, the integration of the shearing rate, $\dot{\gamma}^{\alpha}$, is performed with an implicit or explicit integration scheme.  Implicit integration schemes are typically used for quasi-static loading (i.e. small changes in deformation over a time increment) while explicit integration schemes are reserved for high-rate deformation.  Further explanations can be found in (citations).  
+
+The purpose of this study is to ascertain the accuracy of the numerical integration of $\dot{\gamma}^{\alpha}$.  As shown in a previous equation, it is a function of a variety of quantities.  For now, lets assume $\dot{\gamma}^{\alpha} = f(\tau^{\alpha})$, meaning it is only a function of the resolved shear stress on a particular slip system.  If that is the case, the numerical integration of $\dot{\gamma}^{\alpha}$ relies on providing accurate values of $\tau^{\alpha}$.
+
+In the previous section, it is shown the resolved shear stress is a function of the second Piola-Kirchhoff stress and the slip direction and slip plane normal.  In a linear-elastic simulation, the output information is the total (Cauchy) stress and total strain.  However, if the deformation is minimal, the value for the Cauchy stress is approaches the value for the second Piola-Kirchhoff stress, so the resolved shear stress can be approximated as
 
 $$
 \begin{equation}
@@ -164,11 +166,31 @@ $$
 \end{equation}
 $$
 
+Alternatively, the second Piola-Kirchhoff stress is related to the Cauchy stress through the elastic deformation gradient.  If the plastic deformation is minimal, the elastic deformation gradient can be approximated as the total deformation gradient $(\mathbf{F}^\mathrm{e} \approx \mathbf{F})$.  Also shown previously was the relation for the elastic Green strain, which is a function of the elastic deformation gradient.  Unfortunately, the total deformation gradient has 9 independent components while the strain tensor only has 6 independent components, so the strain can be determined from the deformation gradient but the reverse is not possible.  However, under small strain approximations, the certain properties hold true and allow for an approximation of the deformation gradient.  For example, the Jacobian of the deformation gradient, $\mathrm{J}$, can be approximated as
+
+$$
+\begin{equation}
+\mathrm{J} = 1 + \epsilon_{11} + \epsilon{22} + \epsilon{33} \;.
+\end{equation}
+$$
+
+Additionally, under uniaxial deformation, the diagonal components of the deformation gradient can be approximated as 
+
+$$
+\begin{equation}
+\mathrm{F}_{11} = 1 + \epsilon_{11}; \mathrm{F}_{22} = 1 + \epsilon_{22}; \mathrm{F}_{33} = 1 + \epsilon_{33} \;.
+\end{equation}
+$$
+
+
+
 Then, the plastic shear strain rate ($ \dot{\gamma}^\alpha $) is calculated from the equation below.  Finally, the plastic strain can be determined from
 
-$$\begin{equation}
+$$
+\begin{equation}
 {\boldsymbol\epsilon^\mathrm{p} = \sum_{\alpha=1}^{\mathrm{N}}{\gamma}^{(\alpha)}\left(\mathbf{s}_0^{(\alpha)} \otimes \mathbf{n}_0^{(\alpha)}\right)_{sym}} \;,
-\end{equation}$$
+\end{equation}
+$$
 
 where $ \gamma^{(\alpha)} = \dot \gamma^{(\alpha)} \Delta t $.
 
