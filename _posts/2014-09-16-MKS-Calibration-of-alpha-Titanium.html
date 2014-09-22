@@ -16,6 +16,12 @@ ori_hex_cal:
 ori_hex_val:
   type: img
   src: "https://farm4.staticflickr.com/3908/15257926485_075ee210fe_o.png"
+error_in_mks_prediction_for_stress_components:
+  type: img
+  src: "https://farm4.staticflickr.com/3910/15134418087_b8e74b8f48_o.png"
+error_in_mks_prediction_cycle_min_max:
+  type: img
+  src: "https://farm6.staticflickr.com/5576/15134418057_4406738e95_o.png"
 
 ---
 
@@ -82,6 +88,25 @@ _The histogram below shows a comparison of the $$\epsilon_{11}$$ between the MKS
 
 ### Stress Tensor Calibration for time-steps 1 through 6
 
+The MKS calibration and subsequent validation were successfully performed for the full stress tensor (all components) over each step in the cyclic loading (steps 1 - 6)
+
+_The image below details the steps in the cyclic loading_
+
+_The graph below shows the error in the MKS prediction of the CPFEM stress fields during the first loading step_
+
+{% include ContentManager.html content=page.error_in_mks_prediction_for_stress_components %}
+
+Three error measures are used; each is a measure of the difference in stress between identical voxels in the CPFEM results and the MKS prediction, divided by the mean von-Mises stress in the CPFEM response. This is in comparison to the error definitions in the strain calibration section, where the voxel difference was normalized by the CPFEM strain in the current voxel. The current error definition was chosen to allow for the comparison of errors between components, even when the stress values of certain components may be near zero. These three types of errors are detailed below. 
+
+1. Mean Error: The error averaged over all voxels in all 50 validation microstructures
+2. Average Maximum Error: The average of the maximum error (on a voxel by voxel basis) seen in each validation microstructure
+3. Absolute Maximum Error: The maximum error value seen in any voxel in any of the validation microstructures
+
+_The graph below shows the difference in average maximum error between the minimum and maximum (i.e. step 1 vs step 2) locations in the cyclic loading_ 
+
+{% include ContentManager.html content=page.error_in_mks_prediction_cycle_min_max %}
+
+The reason these errors can be plotted this way is because the errors in each of the maximums and minimums are nearly identical to each other. In all cases the cycle minimum had a higher error than the cycle maximum. 
 
 ## Conclusions
 
@@ -92,9 +117,9 @@ The MKS was successfully calibrated and is able to predict the elastic response 
 * Calibrate the MKS to predict the response of realistic alpha-beta titanium microstructures
 	* Select appropriate set of microstructures for calibration
 * Zero padding the influence coefficients to predict the response of larger microstructures
-	* Would that approach the response of an RVE with sufficient size?
-* Streamlining the computations and analyzing the efficiency of those computations.
-	* With particular interest in comparing with CPFEM computational efficiency.
+	* Would this approach the response of an RVE with sufficient size?
+* Streamline the computations and analyze the efficiency of those computations.
+	* Pay particular interest in the comparison with CPFEM computational efficiency.
 
 ### References
 
