@@ -141,9 +141,11 @@ The following image compares the $$\sigma_{vm}$$ stress fields between the MKS p
 
 The errors are slightly higher with zero-padding (Mean error = 0.74%, Max error = 3.94%), but the response fields remain nearly identical in appearance.
 
-The following chart compares the mean error, max error, and time to validate for different microstructure sizes using the zero-padding technique. All computations were performed on a desktop workstation with 4gb of RAM and an Intel i5 processor at 2.9 GHz.
+The following chart compares the mean error, max error, and time to validate for different microstructure sizes using the zero-padding technique. These error measures were calculated for single microstructures for all stress components. The error was calculated from the von-Mises effective stress. All computations were performed on a desktop workstation with 4gb of RAM and an Intel i5 processor at 2.9 GHz.
 
 {% include ContentManager.html content=page.zero_padding_comparison %}
+
+While the mean error stays low for all simulations, the maximum error tends to rise.
 
 
 ## Conclusions
