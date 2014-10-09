@@ -31,6 +31,9 @@ error_in_mks_prediction_cycle_min_max:
 error_violin_sigmaVM_50val_no_abs:
   type: img
   src: "https://farm4.staticflickr.com/3931/15378358216_6ac00bb473_o.png"
+field_step1_comp9_1val39el:
+  type: img
+  src: "https://farm3.staticflickr.com/2948/15484136261_23305ce949_o.png"
 
 ---
 
@@ -126,6 +129,15 @@ The reason these errors can be plotted this way is because the errors in each of
 This final violin plot shows the error distributions for 15 bins of the von-Mises stress response, which range from the minimum to the maximum stresses in all voxels in the validation samples.
 
 {% include ContentManager.html content=page.error_violin_sigmaVM_50val_no_abs %}
+
+
+## Zero-Padding for the Prediction of Large Microstructures
+
+Next, the influence coefficients from the previous calibration for stress were zero padded and the response fields were predicted for some larger microstructures.
+
+The following image compares the $$\sigma_{vm}$$ stress fields between the MKS prediction and CPFEM response of a 39x39x39 element microstructure. The microstructure was composed of 3x3x3 element 'grains' each with a randomly assigned orientation from the hexagonal fundamental zone (this particular structure was chosen for computational reasons).
+
+{% include ContentManager.html content=page.field_step1_comp9_1val39el %}
 
 ## Conclusions
 
