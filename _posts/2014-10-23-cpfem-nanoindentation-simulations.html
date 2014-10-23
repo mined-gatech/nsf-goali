@@ -35,7 +35,21 @@ For reference, Patel and Kalidindi (2014) have successfully performed spherical 
 
 Many 2D nanoindentation FEM simulations have been employed in the literature, but there are very few fully-3D simulations for nanoindentation (besides Patel and Kalidindi, 2014).  In this work, fully-3D simulations are required to look at the elastic and inelastic response of HCP crystal structures (such as Ti-64) loaded in an arbitrary direction.  As a side note, special loading directions with crystal symmetry would allow for the use of 2D simulations.  As for mesh development, Dipen Patel and Dr. Kalidindi have been nice enough to allow us to use the meshing algorithm for spherical nanoindentation that was developed in his research.
 
-Before employing that meshing strategy, simple spherical nanoindentation CPFEM simulations are performed.  The material region is a cubic volume with a constant mesh density in all direction and the spherical indenter is modeled as a regid half-sphere.  The cubic volume has a sidelength of 20$\mu m$ and the mesh density varies from 20 to 50 elements per side (1$\mu m$ to 0.4$\mu m$).
+Before employing that meshing strategy, simple spherical nanoindentation CPFEM simulations were performed.  The material region is a cubic volume with a constant mesh density in all direction and the spherical indenter is modeled as a regid half-sphere.  The cubic volume has a sidelength of 20$\mu m$ and the mesh density varies from 20 to 50 elements per side (1$\mu m$ to 0.4$\mu m$ element sidelength).  An example simulation schematic is shown below.
+
+(insert spherical indentation image here)
+
+A comparison of the force versus displacement response for a mesh with 20 elements per side and a mesh with 30 elements per side is shown in the figure below.  It is important to note the response has a slight oscillation.  This is most likely due to a lack of mesh refinement directly beneath the indenter.  As the material beneath the indenter deforms plastically, the stiffness of the overall response decreases.  But, when additional material is engaged by the indenter, it is elastically deforming, thus increasing the stiffness.   
+
+(insert 20 v 30 here)
+
+As the mesh is further refined, the oscillation becomes less apparent, as shown in the force versus displacement curve for the mesh with 50 elements per sidelength.
+
+(insert 20 v 50 here)
+
+In terms of computational time and resources, the constant mesh density simulations are compared in the table below.
+
+
 
 In HCP material systems, it is convenient to employ the 4-index Miller-Bravais (M-B) coordinate system to describe slip directions and slip plane normals.  The basal plane contains three directions $$ (a_1, a_2, a_3) $$ that form angles of 120$$^\circ$$ with each other and one direction $$ (c) $$ that is perpendicular to the basal plane.  With this particular system, the symmetry of the directions is apparent through the shuffling of the 3 non-zero indices.  For example, the basal slip directions in the 4-index M-B coordinate system are $$ [\bar{1}2\bar{1}0] $$, $$ [\bar{2}110] $$, and $$ [\bar{1}\bar{1}20] $$.  
 
