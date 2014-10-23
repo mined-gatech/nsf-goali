@@ -3,25 +3,16 @@ layout: post
 title: "CPFEM simulations of nanoindentation - ongoing research"
 latex: true
 
-im:
+plot1:
   type: img
-  src:  "https://farm4.staticflickr.com/3919/14466781737_a37c893a07_n.jpg"
-content1:
-  type: slideshare
-  id: 33944674
-link1:
-  type: a
-  src: http://www.google.com
-  text: A bunch of stuff
-  alt: overtop the jawn
-flickr1:
-  type: flickr
-  farm: 6
-  server: 5578
-  photo-id: 14523859440
-  secret: 3e28e8b469
-  id: 123578762
-  N: N06
+  src:  "https://farm6.staticflickr.com/5614/15611374615_ed25db4011.jpg"
+plot2:
+  type: img
+  src:  "https://farm4.staticflickr.com/3936/15425255398_6465d57be7.jpg"
+plot3:
+  type: img
+  src:  "https://farm4.staticflickr.com/3938/15587701466_3151a9a4dd.jpg" 
+
 
 ---
 
@@ -41,7 +32,7 @@ Before employing that meshing strategy, simple spherical nanoindentation CPFEM s
 
 A comparison of the force versus displacement response for a mesh with 20 elements per side and a mesh with 30 elements per side is shown in the figure below.  It is important to note the response has a slight oscillation.  This is most likely due to a lack of mesh refinement directly beneath the indenter.  As the material beneath the indenter deforms plastically, the stiffness of the overall response decreases.  But, when additional material is engaged by the indenter, it is elastically deforming, thus increasing the stiffness.   
 
-(insert 20 v 30 here)
+(insert 20 v 30 here) 
 
 As the mesh is further refined, the oscillation becomes less apparent, as shown in the force versus displacement curve for the mesh with 50 elements per sidelength.
 
@@ -62,6 +53,8 @@ In the 4-region mesh, the elements in the most outer region have a sidelength of
 (insert 4 region plot here)
 
 However, the stress-strain data for these 2-, 3-, and 4-region meshes were erroneous and thus, not shown.
+
+In terms of computational time and resources, the 2-region mesh (20,097 elements) took approximately 8 hours to complete with 8 processors, the 3-region mesh (23,681 elements) took approximately 14 hours with 8 processors, and the 4-region mesh (24,129 elements) took 16 hours with 8 processors.
 
 ## Moving forward
 
