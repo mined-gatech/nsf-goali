@@ -59,9 +59,9 @@ In terms of computational time and resources, the 2-region mesh (20,097 elements
 ## Moving forward
 
 It is apparent from these results the mesh density still needs additional refinement directly beneath the indenter.  I plan to:
-- Explore finer meshes while also trying to balance simulation run time.  Dipen's latest simulations have shown that an element size of approximately 5nm is needed to resolved the stress gradient at the indenter tip.
-- The experimental data is actually generated with force-controlled BCs and right now the simulations have displacement-controlled BCs.  Implementing force-controlled would allow us to match the loading rate of the experimental data.
-- In order to limit the number of elements in the simulation, we are also considering using wedge and cylindrical elements instead of brick elements.  This would provide us with greater mesh control and also remove the MPCs, which are also slowing the simulations.
+* Explore finer meshes while also trying to balance simulation run time.  Dipen's latest simulations have shown that an element size of approximately 5nm is needed to resolved the stress gradient at the indenter tip.
+* The experimental data is actually generated with force-controlled BCs and right now the simulations have displacement-controlled BCs.  Implementing force-controlled would allow us to match the loading rate of the experimental data.
+* In order to limit the number of elements in the simulation, we are also considering using wedge and cylindrical elements instead of brick elements.  This would provide us with greater mesh control and also remove the MPCs, which are also slowing the simulations.
 
 
 ### References
