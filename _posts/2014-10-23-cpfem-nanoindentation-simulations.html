@@ -47,7 +47,15 @@ As the mesh is further refined, the oscillation becomes less apparent, as shown 
 
 (insert 20 v 50 here)
 
-In terms of computational time and resources, the constant mesh density simulations are compared in the table below.
+In terms of computational time and resources, the mesh with 20 elements per side (total of 8,000 elements) took approximately 9 hours to complete with 4 processors.  In contrast, the mesh with 50 elements per side (total of 250,000 elements) took approximately 64 hours to complete with 24 processors.
+
+The purpose of this study is to compare the indentation stress-strain responses from experiments with those from CPFEM simulations to better inform the model parameters. However, the indentation stress-strain curves for these simulation results are of no use, most likely because of the lack of mesh refinement directly beneath the indenter.
+
+## FEM Mesh with Multiple Regions
+
+The results in the previous section indicate a finer mesh density is needed below the indenter tip.  Therefore, the mesh construction method employed in Patel and Kalidindi (2014) is used in this section.  The meshes range from 2- to 4-regions, with each region having a higher mesh density.  The element length is cut in half for each successive region.  An example of the 4-region mesh is shown below.
+
+(4 region mesh image)
 
 
 
