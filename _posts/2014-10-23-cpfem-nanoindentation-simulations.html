@@ -32,11 +32,11 @@ Before employing that meshing strategy, simple spherical nanoindentation CPFEM s
 
 A comparison of the force versus displacement response for a mesh with 20 elements per side and a mesh with 30 elements per side is shown in the figure below.  It is important to note the response has a slight oscillation.  This is most likely due to a lack of mesh refinement directly beneath the indenter.  As the material beneath the indenter deforms plastically, the stiffness of the overall response decreases.  But, when additional material is engaged by the indenter, it is elastically deforming, thus increasing the stiffness.   
 
-(insert 20 v 30 here) 
+{% include ContentManager.html content=page.plot1 %}
 
 As the mesh is further refined, the oscillation becomes less apparent, as shown in the force versus displacement curve for the mesh with 50 elements per sidelength.
 
-(insert 20 v 50 here)
+{% include ContentManager.html content=page.plot2 %}
 
 In terms of computational time and resources, the mesh with 20 elements per side (total of 8,000 elements) took approximately 9 hours to complete with 4 processors.  In contrast, the mesh with 50 elements per side (total of 250,000 elements) took approximately 64 hours to complete with 24 processors.
 
@@ -50,7 +50,7 @@ The results in the previous section indicate a finer mesh density is needed belo
 
 In the 4-region mesh, the elements in the most outer region have a sidelength of $1.0\mu m$ and the elements in the most inner region has a sidelength of $0.125\mu m$.  Moving from outer to inner regions, the inner region has an element sidelength that is half of the element sidelength of the outer region.  The force-displacement curves for the various regions are shown below.  The constant mesh density curve (blue) is shown as a benchmark for the other meshes.  The oscillation is less in the 2-region mesh (red), while the 3-region (green) and 4-region (orange) mesh curves show little difference.
 
-(insert 4 region plot here)
+{% include ContentManager.html content=page.plot3 %}
 
 However, the stress-strain data for these 2-, 3-, and 4-region meshes were erroneous and thus, not shown.
 
