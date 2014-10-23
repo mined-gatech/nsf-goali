@@ -57,21 +57,17 @@ The results in the previous section indicate a finer mesh density is needed belo
 
 (4 region mesh image)
 
+In the 4-region mesh, the elements in the most outer region have a sidelength of $1.0\mu m$ and the elements in the most inner region has a sidelength of $0.125\mu m$.  Moving from outer to inner regions, the inner region has an element sidelength that is half of the element sidelength of the outer region.  The force-displacement curves for the various regions are shown below.  The constant mesh density curve (blue) is shown as a benchmark for the other meshes.  The oscillation is less in the 2-region mesh (red), while the 3-region (green) and 4-region (orange) mesh curves show little difference.
 
+(insert 4 region plot here)
 
-In HCP material systems, it is convenient to employ the 4-index Miller-Bravais (M-B) coordinate system to describe slip directions and slip plane normals.  The basal plane contains three directions $$ (a_1, a_2, a_3) $$ that form angles of 120$$^\circ$$ with each other and one direction $$ (c) $$ that is perpendicular to the basal plane.  With this particular system, the symmetry of the directions is apparent through the shuffling of the 3 non-zero indices.  For example, the basal slip directions in the 4-index M-B coordinate system are $$ [\bar{1}2\bar{1}0] $$, $$ [\bar{2}110] $$, and $$ [\bar{1}\bar{1}20] $$.  
+However, the stress-strain data for these 2-, 3-, and 4-region meshes were erroneous and thus, not shown.
 
-However, determining direction cosines directly from the 4-index M-B coordinate system can be somewhat confusing because it is not orthonormal.  Therefore, we will step through the procedure for moving from a 4-index M-B coordinate system to an orthonormal system.
+## Moving forward
 
-The first step is to convert the 4-index system to a 3-index system.  This is done by eliminating the $$ a_3 $$ direction.  Let's assume the 4-index indices are $$ [ u v t w] $$ and the 3-index indices are $$ [U V W] $$.  The conversion follows:
+It is apparent from these results the mesh density still needs additional refinement directly beneath the indenter.  I plan to:
+- Explore finer meshes while also trying to balance simulation run time.
 
-$$ U = u - t; V = v - t; W = w $$
-
-Now that we have a 3-direction coordinate sysem, A simple transformation is performed to convert the 3-index M-B $$ [U V W] $$ to the orthonormal system $$ [x, y, z] $$.  The conversion follows:
-
-$$ \begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} 1 & -\frac{1}{2} & 0 \\ 0 & \frac{\sqrt{3}}{2} & 0 \\ 0 & 0 & \frac{c}{a} \end{bmatrix} \begin{bmatrix} U \\ V \\ W \end{bmatrix} $$
-
-Note that this transformation aligns two directions, $$ a_1 \| x $$ and $$ c \| z $$.
 
 ### References
 - M. Niewczas (2010). "Lattice correspondence during twinning in hexagonal close-packed crystal," Acta Mat 58, 5848-5857.
