@@ -63,15 +63,15 @@ In the 4-region mesh, the elements in the most outer region have a sidelength of
 
 {% include ContentManager.html content=page.plot3 %}
 
-By comparing the 2-, 3-, and 4-region mesh responses, some light can be shed on the increased mesh density beneath the indenter tip.  At first glance, the von Mises stress for each mesh looks very similar.  
+By comparing the 2-, 3-, and 4-region mesh responses, some light can be shed on the increased mesh density beneath the indenter tip.  At first glance, the von Mises stress for each mesh looks very similar.  However, the peak value increases from 1.90 GPa (2-region mesh, left) to 2.30 GPa (4-region mesh, right).
 
 {% include ContentManager.html content=page.im3 %}
 
-But, by looking at the strain component in the loading direction, it is revealed that the peak strain values increase with mesh density.  
+Additionally, by looking at the strain component in the loading direction, it is revealed that the peak strain values increase with mesh density.  The maximum compressive strain is 0.0532, 0.0593, and 0.0666 in the 2-region mesh (top), 3-region mesh (middle), and 4-region mesh (bottom), respectively.
 
 {% include ContentManager.html content=page.im4 %}
 
-However, the stress-strain data for these 2-, 3-, and 4-region meshes were erroneous and thus, not shown.
+The stress-strain data for these 2-, 3-, and 4-region meshes were erroneous and thus, not shown.
 
 In terms of computational time and resources, the 2-region mesh (20,097 elements) took approximately 8 hours to complete with 8 processors, the 3-region mesh (23,681 elements) took approximately 14 hours with 8 processors, and the 4-region mesh (24,129 elements) took 16 hours with 8 processors.
 
@@ -85,4 +85,3 @@ It is apparent from these results the mesh density still needs additional refine
 
 
 ### References
-- M. Niewczas (2010). "Lattice correspondence during twinning in hexagonal close-packed crystal," Acta Mat 58, 5848-5857.
