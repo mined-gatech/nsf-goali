@@ -13,7 +13,18 @@ plot3:
   type: img
   src:  "https://farm4.staticflickr.com/3938/15587701466_3151a9a4dd.jpg" 
 
-
+im1:
+  type: img
+  src:  "https://farm4.staticflickr.com/3944/15611492775_e0c0990c8d.jpg" 
+im2:
+  type: img
+  src:  "https://farm6.staticflickr.com/5605/15425488607_922ca2d161.jpg"  
+im3:
+  type: img
+  src:  "https://farm6.staticflickr.com/5607/15615756925_dd33be3f7a.jpg" 
+im4:
+  type: img
+  src:  "https://farm6.staticflickr.com/5607/15430165850_83fa8c12fe.jpg" 
 ---
 
 ## Background
@@ -24,11 +35,11 @@ For reference, Patel and Kalidindi (2014) have successfully performed spherical 
 
 ## Initial FEM Meshes
 
-Many 2D nanoindentation FEM simulations have been employed in the literature, but there are very few fully-3D simulations for nanoindentation (besides Patel and Kalidindi, 2014).  In this work, fully-3D simulations are required to look at the elastic and inelastic response of HCP crystal structures (such as Ti-64) loaded in an arbitrary direction.  As a side note, special loading directions with crystal symmetry would allow for the use of 2D simulations.  As for mesh development, Dipen Patel and Dr. Kalidindi have been nice enough to allow us to use the meshing algorithm for spherical nanoindentation that was developed in his research.
+Many 2D nanoindentation FEM simulations have been employed in the literature, but there are very few fully-3D simulations for nanoindentation (besides Patel and Kalidindi, 2014).  In this work, fully-3D simulations are required to look at the elastic and inelastic response of HCP crystal structures (such as Ti-64) loaded in an arbitrary direction.  As a side note, special loading directions with crystal symmetry would allow for the use of 2D simulations.  As for mesh development, Dipen Patel and Dr. Kalidindi have been nice enough to allow us to use the meshing algorithm for spherical nanoindentation that was developed in his research.  An example simulation schematic is shown below.
 
-Before employing that meshing strategy, simple spherical nanoindentation CPFEM simulations were performed.  The material region is a cubic volume with a constant mesh density in all direction and the spherical indenter is modeled as a regid half-sphere.  The cubic volume has a sidelength of 20$\mu m$ and the mesh density varies from 20 to 50 elements per side (1$\mu m$ to 0.4$\mu m$ element sidelength).  An example simulation schematic is shown below.
+{% include ContentManager.html content=page.im1 %}
 
-(insert spherical indentation image here)
+Before employing that meshing strategy, simple spherical nanoindentation CPFEM simulations were performed.  The material region is a cubic volume with a constant mesh density in all direction and the spherical indenter is modeled as a regid half-sphere.  The cubic volume has a sidelength of 20$\mu m$ and the mesh density varies from 20 to 50 elements per side (1$\mu m$ to 0.4$\mu m$ element sidelength).  
 
 A comparison of the force versus displacement response for a mesh with 20 elements per side and a mesh with 30 elements per side is shown in the figure below.  It is important to note the response has a slight oscillation.  This is most likely due to a lack of mesh refinement directly beneath the indenter.  As the material beneath the indenter deforms plastically, the stiffness of the overall response decreases.  But, when additional material is engaged by the indenter, it is elastically deforming, thus increasing the stiffness.   
 
@@ -46,11 +57,19 @@ The purpose of this study is to compare the indentation stress-strain responses 
 
 The results in the previous section indicate a finer mesh density is needed below the indenter tip.  Therefore, the mesh construction method employed in Patel and Kalidindi (2014) is used in this section.  The meshes range from 2- to 4-regions, with each region having a higher mesh density.  The element length is cut in half for each successive region.  An example of the 4-region mesh is shown below.
 
-(4 region mesh image)
+{% include ContentManager.html content=page.im2 %}
 
 In the 4-region mesh, the elements in the most outer region have a sidelength of $1.0\mu m$ and the elements in the most inner region has a sidelength of $0.125\mu m$.  Moving from outer to inner regions, the inner region has an element sidelength that is half of the element sidelength of the outer region.  The force-displacement curves for the various regions are shown below.  The constant mesh density curve (blue) is shown as a benchmark for the other meshes.  The oscillation is less in the 2-region mesh (red), while the 3-region (green) and 4-region (orange) mesh curves show little difference.
 
 {% include ContentManager.html content=page.plot3 %}
+
+By comparing the 2-, 3-, and 4-region mesh responses, some light can be shed on the increased mesh density beneath the indenter tip.  At first glance, the von Mises stress for each mesh looks very similar.  
+
+{% include ContentManager.html content=page.im3 %}
+
+But, by looking at the strain component in the loading direction, it is revealed that the peak strain values increase with mesh density.  
+
+{% include ContentManager.html content=page.im4 %}
 
 However, the stress-strain data for these 2-, 3-, and 4-region meshes were erroneous and thus, not shown.
 
