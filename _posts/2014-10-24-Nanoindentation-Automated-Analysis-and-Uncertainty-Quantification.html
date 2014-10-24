@@ -5,8 +5,7 @@ author: jsweaver
 date:   2014-10-24 9:30:00
 ---
 
-# NI Stress-Strain Analysis Automation for Elastically Anisotropic Polycrystalline Ti #  
-*Author: Jordan Weaver*  
+# NI Stress-Strain Analysis Automation for Elastically Anisotropic Polycrystalline Ti #
 ## Goals ##
 1. Determine and document criteria for acceptable analysis and best analysis
 2. Record statistics of acceptable analysis: mean, median, stdev
@@ -19,7 +18,7 @@ date:   2014-10-24 9:30:00
 - Euler angles (Phi, phi2?) vs Mean Indentation Yield Strength
 - Euler angles (Phi, phi2?) vs Best Answer Indentation Yield Strength
 
-## Goal 1. Determine and document criteria for acceptable analysis. ##
+## Goal 1. Determine and document criteria for acceptable analysis and best analysis. ##
 **a. The overlap between the zero point and modulus fit segments must be greater than 95%.** The reason for this is that in selecting a segment for the zero point, it is assumed to follow Hertzian contact and therefore should also produce the correct modulus. If the zero point corrections are so large that the corrected load and displacement shift more than 5% of the data to be negative.This seems strict but gets rid of a lot of poor to mediocre analyses.
 
 ***Note: The end of the segments is always the same and the length of the modulus fit segment can be less than or equal to the length of zero point segment. Length is the number of data points.***
@@ -88,11 +87,20 @@ Selected part of MyPlotSearch.m
 - **poor agreement** between the modulus line and the elastic stress-strain data  (same as above)
 - **too few data points** for the elastic stress-strain data i.e. when your fit is on the order of the variability within what appears to be a linear elastic region of the stress-strain curve (look at modulus_length or use R2 which typically favors longer segments) 
 
-The poor curves can be the result of the analysis parameters. If all the curves look poor, it is likely a bad data. **To remove the poor analyses, use the filter variable to select the top analyses based on the available variables: dP, dH, p change, h change, R2 (final), AARf (final), modulus length.** What remains are acceptable analyses for computing statistics to determine the uncertainty in a single test.
+The poor curves can be the result of the analysis parameters. If all the curves look poor, it is likely a bad data. **To remove the poor analyses, use the filter variable to select the top analyses based on the available variables: dP, dH, p change, h change, R2 (final), AARf (final), modulus length.** 
+
+## Goal 2. Compute Statistics on the Acceptable Analsyis. ##
+What remains are **acceptable analyses** for computing statistics to determine the uncertainty in a single test.
+
+## Goal 3. Determine Sensitivity to Number of Input Analyses ##
+The most input analyses possible would be an array of segment lengths which increase by 1 point. The result can be compared against this case.
+
+## Goal 4. Record Best and Closest to the Mean Expected Value ##
+The **closest to the Mean Expected Value** will be manually selected. The **best analysis** will be  manually selected based on the criteria bulleted above Goal 1.d. 
 
 # Next Steps #
 
 - Confirm FEM indentation modulus range for CP Ti elastic constants.
-- Re-analyze nanoindentation data with above protocol.
+- Re-analyze nanoindentation data with above protocol. (50-100 tests)
 - Collect more data if necessary.
 
