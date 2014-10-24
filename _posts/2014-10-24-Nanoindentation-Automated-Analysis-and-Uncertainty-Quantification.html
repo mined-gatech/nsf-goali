@@ -1,6 +1,10 @@
---
+---
 layout: post
---
+title:  "Nanoindentation Automated Analysis and Uncertainty Quantification"
+author: jsweaver
+date:   2014-10-24 9:30:00
+---
+
 # NI Stress-Strain Analysis Automation for Elastically Anisotropic Polycrystalline Ti #  
 *Author: Jordan Weaver*  
 ## Goals ##
@@ -84,4 +88,12 @@ Selected part of MyPlotSearch.m
 - **poor agreement** between the modulus line and the elastic stress-strain data  (same as above)
 - **too few data points** for the elastic stress-strain data i.e. when your fit is on the order of the variability within what appears to be a linear elastic region of the stress-strain curve (look at modulus_length or use R2 which typically favors longer segments) 
 
-The poor curves can be the result of the analysis parameters. If all the curves look poor, it is likely a bad data. **To remove the poor analyses, use the filter variable to select the top analyses based on the available variables: dP, dH, p change, h change, R2 (final), AARf (final), modulus length**
+The poor curves can be the result of the analysis parameters. If all the curves look poor, it is likely a bad data. **To remove the poor analyses, use the filter variable to select the top analyses based on the available variables: dP, dH, p change, h change, R2 (final), AARf (final), modulus length.** What remains are acceptable analyses for computing statistics to determine the uncertainty in a single test.
+
+# Next Steps #
+
+- Confirm FEM indentation modulus range for CP Ti elastic constants.
+- Re-analyze nanoindentation data with above protocol.
+- Collect more data if necessary.
+
+**
