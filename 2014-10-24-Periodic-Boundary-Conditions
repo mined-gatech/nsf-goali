@@ -1,0 +1,27 @@
+---
+layout: post
+author: Noah Paulson, Matthew Priddy
+title: Periodic Boundary Conditions for X, Y and Z Loading
+
+xboundary_periodic:
+  typ: img
+  src: https://farm6.staticflickr.com/5601/15429834547_1e0d5cfeec_o.png
+yboundary_periodic:
+  typ: img
+  src: https://farm4.staticflickr.com/3939/14995082514_3d97e73f8d_o.png
+zboundary_periodic:
+  typ: img
+  src: https://farm4.staticflickr.com/3936/15429718278_6e2707722d_o.png
+---
+
+### Periodic Boundary Conditions for +X Loading
+
+{% include ContentManager.html content=page.xboundary_periodic %}
+
+### Periodic Boundary Conditions for +Y Loading
+
+{% include ContentManager.html content=page.yboundary_periodic %}
+
+### Periodic Boundary Conditions for +Z Loading
+
+{% include ContentManager.html content=page.zboundary_periodic %}
