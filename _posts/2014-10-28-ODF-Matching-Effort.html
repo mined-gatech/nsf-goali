@@ -5,14 +5,22 @@ author: Noah Paulson, Dipen Patel
 
 latex: true
 
-pic1:
+hex_fz360:
   type: img
-  src: (htmllink)
+  src: https://farm8.staticflickr.com/7579/15467931677_2e07a23708_o.png
 ---
-
-{% include ContentManager.html content=page.pic1 %}
 
 ### Selection of Orientations
 
 * Orientations selected from Hexagonal-Triclinic fundamental zone ($ 0 \leq \phi_1 \leq 2\pi, 0 \leq \Phi < \frac{\pi}{2}, 0 \leq \phi_2 \leq \frac{\pi}{3}
 $)
+
+* The fundamental zone was uniformly binned and a single orientation was selected from the center of each bin for a total of 360 orientaions.
+  * Bin spacing in $ \phi_1 = 24 $ degrees
+  * Bin spacing in $ \Phi = 15 $ degrees
+  * Bin spacing in $ \phi_2 = 12 $ degrees
+
+_The image below shows the unique orientations selected from the hexagonal - triclinic fundamental zone_
+
+{% include ContentManager.html content=page.hex_fz360 %}
+
