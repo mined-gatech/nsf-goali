@@ -21,9 +21,15 @@ A single crystal orientation can also be represented as an ODF through the use o
 
 $$
 \begin{equation}
-{minimize}_{v_i}  \big\{\sum\limits_{l=0}^L  \big(\tilde{C}^L - \sum\limits_{i=1}^{N}v_iC_i^L\big)^2\big\}
+{minimize}_{v_i}  \big\{\sum\limits_{l=0}^L'  \big(\tilde{C}^L - \sum\limits_{i=1}^{N}v_iC_i^L\big)^2\big\}
 \end{equation}
 $$
+
+* $ \tilde{C}^L $ : the set of reference GSH coefficients (from the experimental ODF)
+* $ C_i^L $: the set of GSH coefficients use to represent the single crystal ODFs in GSH functions.
+
+where $ L $ permutes $ l $, $\mu $ and $ \nu $.
+
 
 The following conditions must be imposed to constrain the solution:
 
