@@ -23,9 +23,8 @@ $$ \begin{equation} 0 \leq v_i \leq 1 \end{equation} $$
 
 The following equation is minimized using Matlab's FMINCON
 
-  f = @(V) sum(conj(Y_coeff - X_coeff*V).*(Y_coeff - X_coeff*V) );
-
-  [x,fval,exitflag,output] = fmincon(f,Vo,[],[],Aeq,beq,lb,ub,[],options);
+    f = @(V) sum(conj(Y_coeff - X_coeff*V).*(Y_coeff - X_coeff*V) );
+    [x,fval,exitflag,output] = fmincon(f,Vo,[],[],Aeq,beq,lb,ub,[],options);
 
 
 * $ Y_{coeff} $: The set of GSH coefficients from the OIM software representing the actual ODF
@@ -36,14 +35,14 @@ The following equation is minimized using Matlab's FMINCON
 
 The constraints on the solution were imposed as shown in the following Matlab code:
 
-  % an initial guess for the volume fractions of each orientation
-  Vo = (1/size(X_coeff,2))*ones(size(X_coeff,2),1);
-  % Aeq * x = beq
-  Aeq = ones(size(X_coeff,2),size(X_coeff,2));
-  beq = ones(size(X_coeff,2),1);
-  % lb =< x <= ub
-  lb = zeros(size(X_coeff,2),1);
-  ub = ones(size(X_coeff,2),1);
+    % an initial guess for the volume fractions of each orientation
+    Vo = (1/size(X_coeff,2))*ones(size(X_coeff,2),1);
+    % Aeq * x = beq
+    Aeq = ones(size(X_coeff,2),size(X_coeff,2));
+    beq = ones(size(X_coeff,2),1);
+    % lb =< x <= ub
+    lb = zeros(size(X_coeff,2),1);
+    ub = ones(size(X_coeff,2),1);
 
 ### Procedure to Perform ODF Matching
 
