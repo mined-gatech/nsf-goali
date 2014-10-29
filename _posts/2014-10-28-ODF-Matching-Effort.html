@@ -11,11 +11,45 @@ hex_fz360:
   src: https://farm8.staticflickr.com/7579/15467931677_2e07a23708_o.png
 ---
 
+### Problem Definition
+
+The following conditions are imposed to constrain the solution:
+
+$$ \begin{equation} \sum\limits_{i=1}^N v_i = 1 \end{equation} $$
+
+$$ \begin{equation} 0 \leq v_i \leq 1 \end{equation} $$
+
+### Optimization Using FMINCON
+
+The following equation is minimized using Matlab's FMINCON
+
+  f = @(V) sum(conj(Y_coeff - X_coeff*V).*(Y_coeff - X_coeff*V) );
+
+  [x,fval,exitflag,output] = fmincon(f,Vo,[],[],Aeq,beq,lb,ub,[],options);
+
+
+* $ Y_{coeff} $: The set of GSH coefficients from the OIM software representing the actual ODF
+
+* $ X_{coeff} $: An array of GSH coefficients for each selected oriention which have been properly scaled (details are shown in the next section)
+
+* $ V $ : Vector of volume fractions associated with each selected orientation
+
+The constraints on the solution were imposed as shown in the following Matlab code:
+
+  % an initial guess for the volume fractions of each orientation
+  Vo = (1/size(X_coeff,2))*ones(size(X_coeff,2),1);
+  % Aeq * x = beq
+  Aeq = ones(size(X_coeff,2),size(X_coeff,2));
+  beq = ones(size(X_coeff,2),1);
+  % lb =< x <= ub
+  lb = zeros(size(X_coeff,2),1);
+  ub = ones(size(X_coeff,2),1);
+
 ### Procedure to Perform ODF Matching
 
 $$ \begin{equation} C_l^{\mu\nu} = \frac{2l + 1}{N}\sum\limits_{i=1}^N K\dot{\ddot{T}}_l^{\mu\nu}(g_i) \end{equation} $$
 
-Where $ Y_{coeff} $ is the set of GSH coefficients we are trying to match, and $ X_{coeff} $ is a matrix of GSH coefficients for each selected oriention which have been properly scaled.
+
 
 $$ \begin{equation} K =  \frac{e^{-0.25l^{2}w^{2}} - e^{-.25(l+1)^{2}w^{2}}}{1 -  e^{ -0.25w^{2}} } \end{equation} $$
 
