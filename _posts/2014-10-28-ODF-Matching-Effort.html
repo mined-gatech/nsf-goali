@@ -13,7 +13,19 @@ hex_fz360:
 
 ### Problem Definition
 
-The following conditions are imposed to constrain the solution:
+We would like to select a limited number of crystalline orientations and their relative volume fractions in order to represent the ODF calculated from a much larger set of orientations. Specifically, we would like to select a set of less than 5000 orientations and associated volume fractions to match the ODF calculated from a EBSD map from a titanium alloy microstructure.
+
+The Orientation Imaging (OIM) software can represent the ODF by a specified number of complex coefficients in **Generalized Spherical Harmonic** (GSH) functions. The truncation level of the GSH functions determines the number of coefficients and the resolution of the ODF.
+
+A single crystal orientation can also be represented as an ODF through the use of GSH functions and their associated coefficients. Therefore, the set of volume fractions which best represent the experimental ODF are the weights in the linear combination of GSH coefficient sets (for each unique orientation) which minimize error with the refrence GSH coefficient set (for the experimental ODF). This relationship is expressed in the following equation,
+
+$$
+\begin{equation}
+minimize_{v_i}  \big\{\sum\lims_{l=0}^L  \big(\tilde{C}^L - \sum\limit_{i=1}^{N}v_iC_i^L\big)^2\big\}
+\end{equation}
+$$
+
+The following conditions must be imposed to constrain the solution:
 
 $$ \begin{equation} \sum\limits_{i=1}^N v_i = 1 \end{equation} $$
 
