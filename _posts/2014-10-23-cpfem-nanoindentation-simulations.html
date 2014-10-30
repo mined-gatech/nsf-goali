@@ -12,6 +12,9 @@ plot2:
 plot3:
   type: img
   src:  "https://farm4.staticflickr.com/3938/15587701466_3151a9a4dd.jpg" 
+plot4:
+  type: img
+  src:  "https://farm4.staticflickr.com/3932/15481000917_50f1cde61b.jpg" 
 
 im1:
   type: img
@@ -25,6 +28,12 @@ im3:
 im4:
   type: img
   src:  "https://farm6.staticflickr.com/5607/15430165850_83fa8c12fe.jpg" 
+  
+
+video1:
+  type: img
+  src:  "https://www.youtube.com/watch?v=3q3TRhPH7_U&feature=player_detailpage" 
+ 
 ---
 
 ## Background
@@ -74,6 +83,14 @@ Additionally, by looking at the strain component in the loading direction, it is
 The stress-strain data for these 2-, 3-, and 4-region meshes were erroneous and thus, not shown.
 
 In terms of computational time and resources, the 2-region mesh (20,097 elements) took approximately 8 hours to complete with 8 processors, the 3-region mesh (23,681 elements) took approximately 14 hours with 8 processors, and the 4-region mesh (24,129 elements) took 16 hours with 8 processors.
+
+## More detailed look at the 2-region mesh shown above
+
+The force v. displacement curve for the 2-region mesh is shown below; notice there is a distinct slope change at approximately 10nm.  
+
+{% include ContentManager.html content=page.plot4 %}
+
+{% include ContentManager.html content=page.video1 %}
 
 ## Moving forward
 
