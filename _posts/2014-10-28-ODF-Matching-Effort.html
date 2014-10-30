@@ -13,7 +13,7 @@ hex_fz360:
 
 ### Problem Definition
 
-We would like to select a limited number of crystalline orientations and their relative volume fractions in order to represent the ODF calculated from a much larger set of orientations. Specifically, we would like to select a set of less than 5000 orientations and associated volume fractions to match the ODF calculated from a EBSD map from a titanium alloy microstructure.
+The goal of this work is to select a set of less than 5000 orientations, and to determine the volume fractions of these orientations required to match an experimental Orientation Distribution Fuctions (ODF) (calculated from a EBSD map from a titanium alloy microstructure).
 
 The Orientation Imaging (OIM) software can represent the ODF by a specified number of complex coefficients in **Generalized Spherical Harmonic** (GSH) functions. The truncation level of the GSH functions determines the number of coefficients and the resolution of the ODF.
 
@@ -62,19 +62,25 @@ The constraints on the solution were imposed as shown in the following Matlab co
     lb = zeros(size(X_coeff,2),1);
     ub = ones(size(X_coeff,2),1);
 
-### Procedure to Perform ODF Matching
+#### Development of $ X_{coeff} $
 
-$$ \begin{equation} C_l^{\mu\nu} = \frac{2l + 1}{N}\sum\limits_{i=1}^N K\dot{\ddot{T}}_l^{\mu\nu}(g_i) \end{equation} $$
-
-
+First, the constant $ K $ is defined as
 
 $$ \begin{equation} K =  \frac{e^{-0.25l^{2}w^{2}} - e^{-.25(l+1)^{2}w^{2}}}{1 -  e^{ -0.25w^{2}} } \end{equation} $$
 
-where $ w $ is the gaussian half-width and
+where $ w $ is the gaussian half-width and is set to 5 degrees
 
-$ w = 5 $ degrees
+Finally,
 
-### Selection of Orientations
+$$ \begin{equation} C_l^{\mu\nu} = (2l + 1)\sum\limits_{i=1}^N K\dot{\ddot{T}}_l^{\mu\nu}(g_i) \end{equation} $$
+
+$ X_{coeff} $ is created by assembling an array of the coefficients where each column is the set of $ C_l^{\mu\nu} $.
+
+### Preliminary Results
+
+The preceding algorithm was employed to approximate the experimental ODF using a set of 360 unique crystal orientations.
+
+#### Selection of Orientations
 
 * Orientations selected from Hexagonal-Triclinic fundamental zone ($ 0 \leq \phi_1 \leq 2\pi, 0 \leq \Phi < \frac{\pi}{2}, 0 \leq \phi_2 \leq \frac{\pi}{3}
 $)
@@ -87,4 +93,6 @@ $)
 _The image below shows the unique orientations selected from the hexagonal - triclinic fundamental zone_
 
 {% include ContentManager.html content=page.hex_fz360 %}
+
+#### Pole Figure Comparison
 
