@@ -25,23 +25,23 @@ Orienatations were selected to reside in bins of equal size in orientation space
 
 Once the orientations were selected the elastic stiffness tensor for each in the sample configuration were calculated (X.Wu 2007).
 
-  # -*- coding: utf-8 -*-
-  """
-  Created on Thu Nov 13 09:52:43 2014
-  
-  The following python code generates the elastic stiffness tensor and matrix
-  for a single hexagonal crystal given Bunge-Euler angles and the relevant
-  elastic stiffness constants in the reference frame.
-  
-  @author: nhpnp3
-  """
-  
-  import numpy as np
-  
-  def stiffness_calc(phi):
-  ## phi: vector of bunge euler angles [phi1,Phi,phi2]
-  ## Cs: 3x3x3x3 stiffness tensor
-  ## CsM: 6x6 stiffness matrix
+    # -*- coding: utf-8 -*-
+    """
+    Created on Thu Nov 13 09:52:43 2014
+    
+    The following python code generates the elastic stiffness tensor and matrix
+    for a single hexagonal crystal given Bunge-Euler angles and the relevant
+    elastic stiffness constants in the reference frame.
+    
+    @author: nhpnp3
+    """
+    
+    import numpy as np
+    
+    def stiffness_calc(phi):
+    ## phi: vector of bunge euler angles [phi1,Phi,phi2]
+    ## Cs: 3x3x3x3 stiffness tensor
+    ## CsM: 6x6 stiffness matrix
   
       # These are the Elastic Stiffness Constants
       C11 = 154
