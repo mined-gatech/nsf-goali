@@ -1,10 +1,9 @@
 ---
 layout: post
-title: ODF Matching through the use of Matlab's FMINCON
+title: Finding Orientations in the Hexagonal-Triclinic Fundamental Zone with Unique Elastic Stiffness Tensors
 author: Noah Paulson, Yuksel Yabansu
 
 latex: true
-autonumber: true
 
 hexagonal_stiffness_plot:
   type: img
@@ -16,15 +15,32 @@ unique_elastic_stiffness_orientations:
 
 ## Introduction
 
+The elastic stiffness tensor for different orientations from the Hexagonal-Triclinic fundamental zone may be identical. This non-uniqueness may be a result of both the definition of Bunge Euler angles and the elastic properties of crystals with Hexagonal symmetry. In this post we find which orientations have the same elastic stiffness tensors so that we may more efficiently select orientations for calibration in the Materials Knowledge System. 
 
-* Orientations selected from Hexagonal-Triclinic fundamental zone ($ 0 \leq \phi_1 \leq 2\pi, 0 \leq \Phi < \frac{\pi}{2}, 0 \leq \phi_2 \leq \frac{\pi}{3}
+## Procedure
+
+Orientations were selected from Hexagonal-Triclinic fundamental zone ($ 0 \leq \phi_1 \leq 2\pi, 0 \leq \Phi < \frac{\pi}{2}, 0 \leq \phi_2 \leq \frac{\pi}{3}
 $)
 
 
+## Results
+
+The following two images show which orientations in the Hexagonal-Triclinic fundamental zone have identical elastic stiffness tensors.
+
+_in the following image orientations with the same elastic stiffness tensors are the same color_
+
 {% include ContentManager.html content=page.hexagonal_stiffness_plot %}
+
+
+_the following image shows a selection of unique orientations in the Hexagonal-Triclinic fundamental zone_
 
 {% include ContentManager.html content=page.unique_elastic_stiffness_orientations %}
 
+The following observations are made from the preceding images:
+
+1. The stiffness tensor is independent of the $\phi_2$ angle
+2. The stiffness tensors are identical for all orientations on the $\Phi = 0$ face
+3. The stiffness tensors are identical when $\phi_1 = 0$ degrees and $\phi_1 = 360$ degrees if the $\Phi$ angles are the same.
 
 ## References
 
