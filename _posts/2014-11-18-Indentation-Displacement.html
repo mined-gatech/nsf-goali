@@ -9,8 +9,8 @@ autonumber: true
 
 Hertz theory describes the elastic, frictionless contact between two isotropic materials with parabolic surfaces. In the case of spherical nanoindentation we have a diamond spherical indenter ($i$) and a flat sample ($s$). In this case Hertz Equation takes the following form:
 
-$$
-\begin{equation}
+
+$$\begin{equation}
 P=\frac{4}{3}E_{eff}R_{eff}^\frac{1}{2}h^\frac{3}{2}
 \end{equation} 
 
@@ -24,8 +24,7 @@ a=\sqrt{R_{eff}h}
 
 \begin{equation}
 \frac{1}{E_{eff} }= \frac{1-\nu_i^2}{E_i} + \frac{1-\nu_s^2}{E_s} 
-\end{equation}
-$$  
+\end{equation}$$
 
 The indenter properties are $E_i = 1140 GPa$ and $\nu_i = 0.07$, and the sample radius of curvature is $R_s = \infty$ making $R_{eff} = R_i$ provided that no plastic deformation occurs.
 
@@ -48,15 +47,14 @@ h = h_i + h_s
 
 There are two options to account for the indenter displacement both of which use the idea of a compliance correction from compression testing. Note that the load frame compliance is already accounted for in the measurement of $h$, but this does not take into account the deformation of the tip itself. We assume the deformation of the tip is elastic.  The tip displacement can be determined as a function of load by assuming the tip is indented into a rigid flat surface when no sample is present. Alternatively, we can do the same calculation but calculate it for a surface for any radius of curvature. This comes into play after the sample has been plastically deformed because $R_{eff}$ is no longer $R_i$.
 
-$$
-\begin{equation}
-h_i(P) = \left({ \frac{3(1-\nu_i^2)P}{4E_i R_i^{\frac{1}{2}}}} \right)^{\frac{2}{3}}
-\end{equation}  
 
-\begin{equation}
+$$\begin{equation}
+h_i(P) = \left({ \frac{3(1-\nu_i^2)P}{4E_i R_i^{\frac{1}{2}}}} \right)^{\frac{2}{3}}
+\end{equation}$$  
+
+$$\begin{equation}
 h_i(P,\: R_{eff}) = \left({ \frac{3(1-\nu_i^2)P}{4E_i R_{eff}^{\frac{1}{2}}}} \right)^{\frac{2}{3}}
-\end{equation}
-$$
+\end{equation}$$
 
 So the updated procedure looks like the following...
 
@@ -67,7 +65,7 @@ So the updated procedure looks like the following...
 5. Find $h_s$ using Equations (7) and (9)
 6. Find the indentation stress and strain using equations (5) and (6); however, use $h_s$ instead of $h$.
 
-How do we calculate $E_{ind}$ where $E_{ind} = \frac{E_s}{1-\nu^2}$?
+How do we calculate $E_{ind}$ where $E_{ind} = \frac{E_s}{1-\nu^2}$ ?
 
 
 a. Calculate from Equation (4)
