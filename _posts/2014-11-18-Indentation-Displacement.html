@@ -9,7 +9,7 @@ latex: true
 Hertz theory describes the elastic, frictionless contact between two isotropic materials with parabolic surfaces. In the case of spherical nanoindentation we have a diamond spherical indenter ($i$) and a flat sample ($s$). In this case Hertz Equation takes the following form:
 
 \begin{equation}
-P=\frac{4}{3}E_{eff}R_{eff}^\frac{1}{2}h^\frac{3}{2}
+{P=\frac{4}{3}E_{eff}R_{eff}^\frac{1}{2}h^\frac{3}{2}}
 \end{equation}  
 
 \begin{equation}
@@ -18,28 +18,32 @@ a=\sqrt{R_{eff}h}
 
 \begin{equation}
 \frac{1}{R_{eff} }= \frac{1}{R_i} + \frac{1}{R_s} \\
-\end{equation}
+\end{equation}  
+
 \begin{equation}
 \frac{1}{E_{eff} }= \frac{1-\nu_i^2}{E_i} + \frac{1-\nu_s^2}{E_s} 
-\end{equation}
+\end{equation}  
+
 The indenter properties are $E_i = 1140 \: GPa$ and $\nu_i = 0.07$, and the sample radius of curvature is $R_s = \infty$ making $R_{eff} = R_i$ provided that no plastic deformation occurs.
 
-The definition of indentation stress and strain is given as:
+The definition of indentation stress and strain is given as:  
+
 \begin{equation}
 \sigma_{ind} = \frac{P}{\pi a^2}
-\end{equation}
+\end{equation}  
+
 \begin{equation}
 \varepsilon_{ind} = \frac{4}{3\pi} \frac{h}{a}
 \end{equation}
 
-It is important to note that the pressure in the indenter and sample is the same and therefore the effectve stress is also. However the indentation depth, $h$, is the total displacement or characteristic of the total deformation of the indenter and sample, and the effective strains of the indenter and sample depend on the indenter and sample displacements. To establish the sample strain, we must account for the indenter displacement.
+It is important to note that the pressure in the indenter and sample is the same and therefore the effective stress is also. However the indentation depth, $h$, is the total displacement or characteristic of the total deformation of the indenter and sample, and the effective strains of the indenter and sample depend on the indenter and sample displacements. To establish the sample strain, we must account for the indenter displacement.
 
 \begin{equation}
 h = h_i + h_s
 \end{equation}
 
 
-There are two options to account for the indenter dispalcement both of which use the idea of a compliance correction from compression testing. Note that the load frame compliance is already accounted for in the measurement of $h$, but this does not take into account the deformation of the tip itself. We assume the deformation of the tip is elastic.  The tip displacement can be determined as a function of load by assuming the tip is indented into a rigid flat surface when no sample is present. Alternatively, we can do the same calculation but calculate it for a surface for any radius of curvature. This comes into play after the sample has been plastically deformed because $R_{eff}$ is no longer $R_i$.
+There are two options to account for the indenter displacement both of which use the idea of a compliance correction from compression testing. Note that the load frame compliance is already accounted for in the measurement of $h$, but this does not take into account the deformation of the tip itself. We assume the deformation of the tip is elastic.  The tip displacement can be determined as a function of load by assuming the tip is indented into a rigid flat surface when no sample is present. Alternatively, we can do the same calculation but calculate it for a surface for any radius of curvature. This comes into play after the sample has been plastically deformed because $R_{eff}$ is no longer $R_i$.
 
 \begin{equation}
 h_i(P) = \left({ \frac{3(1-\nu_i^2)P}{4E_i R_i^{\frac{1}{2}}}} \right)^{\frac{2}{3}}
