@@ -64,7 +64,7 @@ Once the orientations were selected the elastic stiffness tensor for each in the
                      [                 0,              0, 1]])
                      
       
-      g = np.dot(z2,np.dot(x,z1)) # transformation matrix from crystal to sample
+      g = np.dot(z1,np.dot(x,z2)) # transformation matrix from crystal to sample
       
       Cs = np.zeros([3,3,3,3])
       
