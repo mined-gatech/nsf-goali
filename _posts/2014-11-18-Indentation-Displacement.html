@@ -61,7 +61,7 @@ So the updated procedure looks like the following...
 1. Find the zero point correction using $P, h, S$
 2. Find $E_{eff}$ from the zero point corrected $P, h$
 3. Find the contact area, $a$, from $E_{eff}, S$
-4. Find $R_{eff}$ from $a, h$
+4. Find $R_{eff}$ from $a, h_e$ where $h_e = \frac{3P}{2S}$
 5. Find $h_s$ using Equations (7) and (9)
 6. Find the indentation stress and strain using equations (5) and (6); however, use $h_s$ instead of $h$.
 
@@ -74,14 +74,16 @@ Note we do not calculate $E_{ind}$ from the stress-strain curve as is traditiona
 
 Below is an example analysis.
 Load vs Displacement for different sample displacement corrections
-<a href="https://www.flickr.com/photos/125994770@N04/15643319828" title="LoadvsDisplacement by Jordan Weaver, on Flickr"><img src="https://farm6.staticflickr.com/5611/15643319828_eb0b629822_o.jpg" width="560" height="420" alt="LoadvsDisplacement"></a>  
-Zoomed in on the intiial portion...
-<a href="https://www.flickr.com/photos/125994770@N04/15828737395" title="LoadvsDisplacement_zoomed by Jordan Weaver, on Flickr"><img src="https://farm9.staticflickr.com/8117/15828737395_0d5457d09f_o.jpg" width="560" height="420" alt="LoadvsDisplacement_zoomed"></a>  
-
+<a href="https://www.flickr.com/photos/125994770@N04/15651448538" title="LoadvsDisplacement by Jordan Weaver, on Flickr"><img src="https://farm6.staticflickr.com/5609/15651448538_4b7be5fee1_o.jpg" width="560" height="420" alt="LoadvsDisplacement"></a>
+Zoomed in on the initial portion...
+<a href="https://www.flickr.com/photos/125994770@N04/15216903394" title="LoadvsDisplacement_zoomed by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7513/15216903394_5051650b7c_o.jpg" width="560" height="420" alt="LoadvsDisplacement_zoomed"></a>
 Stress vs Strain for different strain equations
-<a href="https://www.flickr.com/photos/125994770@N04/15830293922" title="StressvsStrain by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7579/15830293922_4c1341312a_o.jpg" width="560" height="420" alt="StressvsStrain"></a>
+<a href="https://www.flickr.com/photos/125994770@N04/15651448518" title="StressvsStrain by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7490/15651448518_49b16312cd_o.jpg" width="560" height="420" alt="StressvsStrain"></a>
 
-Eeff and Eind for different case of Eind
-<a href="https://www.flickr.com/photos/125994770@N04/15805094436" title="StressvsStrain_ModLines by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7543/15805094436_b078c02622_o.jpg" width="560" height="420" alt="StressvsStrain_ModLines"></a>
+$E_{eff}$ and $E_{ind}$ for different cases of Eind
+<a href="https://www.flickr.com/photos/125994770@N04/15651740327" title="StressvsStrain_ModLines by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7568/15651740327_8063e0b4f4_o.jpg" width="560" height="420" alt="StressvsStrain_ModLines"></a>
+$E_{eff} = 103.7 GPa$  
+$E_{ind} = 114.1 GPa$ case (a)
+$E_{ind} = 144.5 GPa$ case (b)
 
 These plots were generated using a single analysis from this [case study](http://tonyfast.com/nsf-goali/2014/11/13/Nanoindentation-Analysis-Uncertainty/) using the following Matlab [code](https://www.dropbox.com/sh/bxoaqv3qe8ye4kp/AACNeScNO4rf3k6DKUBBLTMAa?dl=0)
