@@ -21,19 +21,19 @@ gshplt_1_3_14:
 
 ## Introduction
 
-In a previous study it was shown that orientations on the exterior of the cubic-triclinic fundamental zone in euler angles completely bound the interior points in both euler and gsh space. This post investigates whether this is also the case for GSH coefficients up to a truncation level of L = 4.
+In a previous study it was shown that orientations on the exterior of the cubic-triclinic fundamental zone in Euler space completely bound the interior points in both Euler and GSH space. This post investigates whether this is also the case for GSH coefficients up to a truncation level of L = 4.
 
 ## Procedure
 
-The first step was to select a set of orientations from the hexagonal-triclinic fundamental zone to plot in GSH coefficient space. While the entire hexagonal-triclinic fundamental zone covers  $ 0 \leq \phi_1 \leq 2\pi, 0 \leq \Phi < \frac{\pi}{2}, 0 \leq \phi_2 \leq \frac{\pi}{3} $, only orientations in the $ \phi_2 = 0 $ face were used as $ \phi_2 $ has no influence on the GSH coeffcients at the L = 4 truncation level.
+The first step was to select a set of orientations from the hexagonal-triclinic fundamental zone to plot in GSH coefficient space. While the entire hexagonal-triclinic fundamental zone covers  $ 0 \leq \phi_1 \leq 2\pi, 0 \leq \Phi < \frac{\pi}{2}, 0 \leq \phi_2 \leq \frac{\pi}{3} $, only orientations in the $ \phi_2 = 0 $ face were used as $ \phi_2 $ has no influence on the GSH coefficients at the L = 4 truncation level.
 
 _the following plot shows the orientations selected for this effort_
 
 {% include ContentManager.html content=page.euler_angle_set %}
 
-Notice that the interior points in this face are colored green while the exterior is red (the $ \Phi = 0 $ edge points are blue, and all have identical orientations in Bunge Euler angles). for an explanation of the spacing in the selection of points along the $ \Phi $ direction see the following [post](http://tonyfast.com/nsf-goali/2014/11/17/Unique-Orientations-in-the-Hexagonal-Triclinic-FZ/)
+Notice that the interior points in this face are colored green while the exterior is red (the $ \Phi = 0 $ edge points are blue, and all have identical orientations in Bunge Euler angles). For an explanation of the spacing in the selection of points along the $ \Phi $ axis see the following [post](http://tonyfast.com/nsf-goali/2014/11/17/Unique-Orientations-in-the-Hexagonal-Triclinic-FZ/).
 
-Next, the GSH coefficients for each set of euler angles were calculated. Since most of the coefficients are complex, they were each split into their real and imaginary parts so that they could be visualized. Due to symmetry inherent in the coefficients certain real/imaginary parts could be ignored.
+Next, the GSH coefficients for each set of Euler angles were calculated. Since most of the coefficients are complex, they were each split into their real and imaginary parts so that they could be visualized. Due to symmetry inherent in the coefficients certain real/imaginary parts could be ignored.
 
 _the following chart shows which real and imaginary parts were selected from each coefficient and the label they were given_
 
@@ -43,7 +43,7 @@ Finally, the components were plotted against each other in both 2-D and 3-D.
 
 ## Results
 
-_In the following two images sections of the GSH coefficients of the original orientations are plotted in 3-D_
+_In the following two images, sections of the GSH coefficients of the original orientations are plotted in 3-D_
 
 {% include ContentManager.html content=page.gshplt_1_5_6 %}
 
@@ -56,7 +56,7 @@ _In the following gallery the first GSH coefficient is plotted against the other
 
 ## Conclusions
 
-From these images it is clear that the exterior points of the $ \phi_2 = 0 $ face of the hexagonal-triclinic fundamental zone in no way bound the interior points for a truncation level of L = 4. This indicates that it is necessary to use the entire face (sans the non-uniqueness inherent in the definition of Bunge Euler angles) in the calibration of the MKS to achive the most accurate possible results.
+From these images it is clear that the exterior points of the $ \phi_2 = 0 $ face of the hexagonal-triclinic fundamental zone in no way bound the interior points for a truncation level of L = 4. This indicates that it is necessary to use the entire face (sans the non-uniqueness inherent in the definition of Bunge Euler angles) in the calibration of the MKS to achieve the most accurate possible results.
 
 ## References
 
