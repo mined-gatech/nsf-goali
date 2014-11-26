@@ -65,7 +65,7 @@ h_i(P, R_{eff}) = \left({ \frac{3(1-\nu_i^2)P}{4E_i R_{eff}^{\frac{1}{2}}}} \rig
 Additionally we will need Equation (2) and the following expression found using $S=\frac{dP}{dh}$ to calculate $R_{eff}$ at each point during the actual test
 $$h_e = \frac{3P}{2S}$$
 
-Finally, there is yet another way to calculate {h_i} that is algebraically the same as the case above only uses $a$ instead of $R_{eff}$, yet produces a different value.
+Finally, there is yet another way to calculate $$ h_i $$ that is algebraically the same as the case above only uses $a$ instead of $R_{eff}$, yet produces a different value.
 
 $$\begin{equation}
 h_i(P, a) =\frac{3(1-\nu_i^2)P}{4E_i a}
@@ -78,23 +78,31 @@ a) Calculate from Equation (4)
 b) Calculate from $P^{2/3}$ vs $h_s$
 
 ## Results ##
-4 plots here
+<a href="https://www.flickr.com/photos/125994770@N04/15698827018" title="LoadvsDisplacement_Updated by Jordan Weaver, on Flickr"><img src="https://farm9.staticflickr.com/8587/15698827018_e154b4f612_c.jpg" width="800" height="445" alt="LoadvsDisplacement_Updated"></a>
+
+<a href="https://www.flickr.com/photos/125994770@N04/15699024700" title="StressvsStrain_Updated by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7461/15699024700_37e16fb935_c.jpg" width="800" height="445" alt="StressvsStrain_Updated"></a>
+
+<a href="https://www.flickr.com/photos/125994770@N04/15700288789" title="StressvsStrain_ModLines_Updated by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7469/15700288789_a47d287e7f_c.jpg" width="800" height="445" alt="StressvsStrain_ModLines_Updated"></a>
+
+<a href="https://www.flickr.com/photos/125994770@N04/15700288789" title="StressvsStrain_ModLines_Updated by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7469/15700288789_a47d287e7f_c.jpg" width="800" height="445" alt="StressvsStrain_ModLines_Updated"></a>
 
 ## Discussion ##
 
-Equation (10) provides the smallest correction and closest agreement with Equation (4). It can be seen that $E_{ind}$ from Equation (4) and $$ E_{ind}$$ from the $$ P^{/frac{2}{3}}$$ Vs. $$ h_s$$ do not match (a difference of ~5 GPa). If we consider that the material indented is a single grain which is anisotropic, Equation (4) is incorrect. From Pathak and Kalidindi 2009 and Vlassak and Nix 1993 and 1994 Equation (4) is modified as such
+Equation (10) provides the smallest correction and closest agreement with Equation (4) for determining $$ E_{ind}$$. It can be seen that $E_{ind}$ from Equation (4) and $$ E_{ind}$$ from the $$ P^{2/3}$$ Vs. $$ h_s$$ do not match (a difference of ~5 GPa). If we consider that the material indented is a single grain which is anisotropic, Equation (4) is incorrect. From Pathak et al. 2009 and Vlassak and Nix 1993 and 1994 Equation (4) is modified as such
 
 $$\begin{equation}
 \frac{1}{E_{eff} }= \frac{1-\nu_i^2}{E_i} + \frac{1}{\beta}\frac{1-\nu_s^2}{E_s} 
 \end{equation}$$
 
-where $$ \beta$$ depends on the crystal orientation and $$ \nu_s$$ and $$ E_s$$ are constants based a randomly textured polycrystalline sample. For cubic crystals $\beta$ has some physical meaning as it correlates with the anisotropy ratio. Therefore from a $$ P^{2/3}$$ vs $$ h_s$$ plot we have found
+where $$ \beta$$ depends on the crystal orientation and $$ \nu_s$$ and $$ E_s$$ are constants based on a randomly textured polycrystalline sample. For cubic crystals $\beta$ has some physical meaning as it correlates with the anisotropy ratio.
+
+Therefore from a $$ P^{2/3}$$ vs $$ h_s$$ plot we have found
 
 $$\begin{equation}
 E_{ind,\beta} = \frac{\beta E_s}{1-\nu^2}
 \end{equation}$$
 
-The indentation stress-strain procedure should be as follows
+The indentation stress-strain procedure should be as follows  
 1. Find the zero point correction using $P, h, S$.  
 2. Find $E_{eff}$ from the zero point corrected $P, h$.  
 3. Find the contact area, $a$, from $$ E_{eff}, S$$.  
@@ -106,3 +114,10 @@ The indentation stress-strain procedure should be as follows
 1. The correction while small is important in order to define the constitutive stress-strain relationship for the material system.
 2. Some explanation is still needed for why Equations (9) and (10) produce different results and better justification for using Equation (10).
 3. In order to calculate $$ E_{ind}$$ from $$ E_{eff}$$, $$ \beta$$ must be known.
+
+## References ##
+- Kalidindi, S.R. and S. Pathak. "Determination of the effective zero-point and the extraction of spherical nanoindentation stress–strain curves". Acta Materialia. 2008
+- Pathak, S. et al. "Measurement of the local mechanical properties in polycrystalline samples using spherical nanoindentationand orientation imaging microscopy." Acta Materialia. 2009.
+- K.L. Johnson. Contact Mechanics. New York, 1985.
+- Vlassak J.J. and W.D. Nix. "Indentation modulus of elastically anisotropic half spaces." Philosophical Magazine A. 1993.
+- Vlassak J.J. and W.D. Nix. "Measuring the elastic properties of anisotropic materials by means of indentation experiments." J. Mech. Phys. Solids. 1994.
