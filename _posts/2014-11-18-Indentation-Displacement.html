@@ -6,6 +6,7 @@ author: Jordan Weaver
 latex: true
 autonumber: true
 ---
+## Background ##
 
 Hertz theory describes the elastic, frictionless contact between two isotropic materials with parabolic surfaces. In the case of spherical nanoindentation we have a diamond spherical indenter ($i$) and a flat sample ($s$). In this case Hertz Equation takes the following form:
 
@@ -28,68 +29,78 @@ $$\begin{equation}
 
 The indenter properties are $E_i = 1140 GPa$ and $\nu_i = 0.07$, and the sample radius of curvature is $R_s = \infty$ making $R_{eff} = R_i$ provided that no plastic deformation occurs.
 
-The definition of indentation stress and strain is given as:  
-
+The definition of indentation stress and strain is given as from Kalidindi and Pathak (2008): 
 \begin{equation}
 \sigma_{ind} = \frac{P}{\pi a^2}
-\end{equation}  
-
+\end{equation}
 \begin{equation}
 \varepsilon_{ind} = \frac{4}{3\pi} \frac{h}{a}
-\end{equation}
+\end{equation}\
 
-It is important to note that the pressure in the indenter and sample is the same and therefore the effective stress is also. However the indentation depth, $h$, is the total displacement or characteristic of the total deformation of the indenter and sample, and the effective strains of the indenter and sample depend on the indenter and sample displacements. To establish the sample strain, we must account for the indenter displacement.
 
-\begin{equation}
+It can be shown that dividing Equation (1) by $\pi a^2$ will give the stress-strain relationship $\sigma_{ind}=E_{eff} \varepsilon_{ind}$. However this is a constitutive equation for the indenter-sample system. We would like a constitutive equation for just the sample (i.e. $\sigma_{ind}=E_{ind} \varepsilon_{ind}$ where $E_{ind} = \frac{E_s}{1-\nu^2}$).
+
+We can get there by recalling that the pressure in the indenter and sample is the same, therefore the effective stress is also; however the indentation depth, $h$, is the total displacement or characteristic of the total deformation of the indenter and sample. The effective strains of the indenter and sample depend on the indenter and sample displacements. To establish the sample strain, we must account for the indenter displacement.
+
+$$\begin{equation}
 h = h_i + h_s
-\end{equation}
+\end{equation}$$
 
+We can use the idea of a compliance correction from compression testing to calculate the indenter displacement. Note that the load frame compliance is already accounted for in the measurement of $h$, but this does not take into account the deformation of the tip itself. We assume the deformation of the tip is elastic.  The tip displacement is determined as a function of load by assuming the tip is indented into a rigid surface. The rigid surface curvature should reflect the curvature during the experiment. This is important when the sample has been plastically deformed because $R_{eff}$ is no longer $R_i$.
 
-There are two options to account for the indenter displacement both of which use the idea of a compliance correction from compression testing. Note that the load frame compliance is already accounted for in the measurement of $h$, but this does not take into account the deformation of the tip itself. We assume the deformation of the tip is elastic.  The tip displacement can be determined as a function of load by assuming the tip is indented into a rigid flat surface when no sample is present. Alternatively, we can do the same calculation but calculate it for a surface for any radius of curvature. This comes into play after the sample has been plastically deformed because $R_{eff}$ is no longer $R_i$.
-
+Using the following to describe a rigid, flat sample surface $E_s=\infty$, $R_s=\infnty$, and $h_s=0$ 
 
 $$\begin{equation}
 h_i(P) = \left({ \frac{3(1-\nu_i^2)P}{4E_i R_i^{\frac{1}{2}}}} \right)^{\frac{2}{3}}
 \end{equation}$$  
 
+If we lift the assumption that the sample surface is always flat
+
 $$\begin{equation}
-h_i(P,\: R_{eff}) = \left({ \frac{3(1-\nu_i^2)P}{4E_i R_{eff}^{\frac{1}{2}}}} \right)^{\frac{2}{3}}
+h_i(P, R_{eff}) = \left({ \frac{3(1-\nu_i^2)P}{4E_i R_{eff}^{\frac{1}{2}}}} \right)^{\frac{2}{3}}
 \end{equation}$$
 
-So the updated procedure looks like the following...
+Additionally we will need Equation (2) and the following expression found using $S=\frac{dP}{dh}$ to calculated $R_{eff}$ at each point during the actual test
+$$h_e = \frac{3P}{2S}$$
 
+
+Finally, there is yet another way to calculate {h_i} that is algebraically the same as the case above only uses $a$ instead of $R_{eff}$, yet produces a different value.
+
+$$\begin{equation}
+h_i(P, a) =\frac{3(1-\nu_i^2)P}{4E_i a}
+\end{equation}$$
+
+Here we need the following also derived from $S=\frac{dP}{dh}$
+$$a = \frac{a}{2E_{eff}}$$
+
+Let's explore all three equations and two ways to calculate $$ E_{ind} $$ where $$ E_{ind} = \frac{E_s}{1-\nu^2} $$:  a) Calculate from Equation (4); b) Calculate from $P^{2/3}$ vs $h_s$.
+
+## Results ##
+4 plots here
+
+## Discussion ##
+
+Equation (10) provides the smallest correction and closest agreement with Equation (4). It can be seen that $E_{ind}$ from Equation (4) and $E_{ind}$ from the $P^{/frac{2}{3}}$ Vs. $h_s$ do not match (a difference of ~5 GPa). If we consider that the material indented is a single grain which is anisotropic, Equation (4) is incorrect. From Pathak and Kalidindi 2009 and Vlassak and Nix 1993 and 1994 Equation (4) is modified as such
+
+\begin{equation}
+\frac{1}{E_{eff} }= \frac{1-\nu_i^2}{E_i} + \frac{1}{\beta}\frac{1-\nu_s^2}{E_s} 
+\end{equation}$$
+
+where $\beta$ depends on the crystal orientation and $\nus$ and $E_s$ are constants based a randomly textured polycrystalline sample. For cubic crystals $\beta$ has some physical meaning as it correlates with the anisotropy ratio. Therefore from a $P^{2/3}$ vs $h_s$ plot we have found
+
+$$\begin{equation}
+E_{ind,\beta} = \frac{\beta E_s}{1-\nu^2} $$
+\end{equation}$$
+
+The indentation stress-strain procedure should be as follows
 1. Find the zero point correction using $P, h, S$
 2. Find $E_{eff}$ from the zero point corrected $P, h$
 3. Find the contact area, $a$, from $E_{eff}, S$
-4. Find $R_{eff}$ from $a, h_e$ where $h_e = \frac{3P}{2S}$
-5. Find $h_s$ using Equations (7) and (9)
-6. Find the indentation stress and strain using equations (5) and (6); however, use $h_s$ instead of $h$.
+5. Find $h_s$ using Equations (7) and (10)
+6. Find indentation stress and strain using equations (5) and (6); however, use $h_s$ instead of $h$.
+7. Plot $E_{ind,\beta}$ on the stress-strain plot calculated from the $P^{2/3}$ vs $h_s$ slope. The modulus line and elastic stress-strain data should be in agreement. This agreement should be optimized when determining the zero point correction and final stress-strain curve rather than $E_{eff}$ on the stress-strain plot using the total displacement.
 
-How do we calculate $$ E_{ind} $$ where $$ E_{ind} = \frac{E_s}{1-\nu^2} $$ ?  
-
-- a) Calculate from Equation (4)
-- b) Calculate from $P^{2/3}$ vs $h_s$ ???
-
-Note we do not calculate $E_{ind}$ from the stress-strain curve as is traditionally the case in simple tension or compression; however, we try to make sure that the stress-strain curve closely matches the calculated modulus. This is part of determining the proper zero point correction. One would think that cases (a) and (b) would be in agreement; however, they appear not to be.
-
-Below is an example analysis.
-Load vs Displacement for different sample displacement corrections
-<a href="https://www.flickr.com/photos/125994770@N04/15651448538" title="LoadvsDisplacement by Jordan Weaver, on Flickr"><img src="https://farm6.staticflickr.com/5609/15651448538_4b7be5fee1_o.jpg" width="560" height="420" alt="LoadvsDisplacement"></a>  
-
-Zoomed in on the initial portion...  
-<a href="https://www.flickr.com/photos/125994770@N04/15216903394" title="LoadvsDisplacement_zoomed by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7513/15216903394_5051650b7c_o.jpg" width="560" height="420" alt="LoadvsDisplacement_zoomed"></a>  
-
-Stress vs Strain for different strain equations  
-<a href="https://www.flickr.com/photos/125994770@N04/15651448518" title="StressvsStrain by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7490/15651448518_49b16312cd_o.jpg" width="560" height="420" alt="StressvsStrain"></a>
-
-$$ E_{eff} $$ and $$ E_{ind} $$ for different cases of $$ E_{ind} $$
-<a href="https://www.flickr.com/photos/125994770@N04/15651740327" title="StressvsStrain_ModLines by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7568/15651740327_8063e0b4f4_o.jpg" width="560" height="420" alt="StressvsStrain_ModLines"></a>  
-
-$E_{eff} = 103.7 GPa$  
-
-$E_{ind} = 114.1 GPa$ case (a)  
-
-$E_{ind} = 144.5 GPa$ case (b)  
-
-
-These plots were generated using a single analysis from this [case study](http://tonyfast.com/nsf-goali/2014/11/13/Nanoindentation-Analysis-Uncertainty/) using the following Matlab [code](https://www.dropbox.com/sh/bxoaqv3qe8ye4kp/AACNeScNO4rf3k6DKUBBLTMAa?dl=0)
+## Conclusions ##
+1. The correction while small is important in order to define the constitutive stress-strain relationship for the material system.
+2. Some explanation is still needed for why Equations (9) and (10) produce different results and better justification for using Equation (10).
+3. In order to calculate $E_{ind}$ from $E_{eff}$, $\beta$ must be known.
