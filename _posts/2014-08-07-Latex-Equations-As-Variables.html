@@ -3,10 +3,7 @@ layout: post
 title: "Referencing Latex Through Liquid Variables"
 latex: true
 eq1: |
-  $$ \mathbf{L}_0^\mathrm{p} =
-  \sum_{\alpha=1}^{\mathrm{N}}\dot{\gamma}^{(\alpha)}
-  \left(\mathbf{s}_0^{(\alpha)} \otimes \mathbf{n}_0^{(\alpha)}\right) =
-  \dot{\mathbf{F}}^{\mathrm{p}} \cdot \left({\mathbf{F}^{\mathrm{p}}}\right)^{-1} $$
+  
 
 ---
 
@@ -33,8 +30,11 @@ The following equation explains how Jello emits X-rays:
 {{"{{page.eq1"}}}}
 {% endhighlight %}
 
-### Rendered HTML
+## Rendered HTML
 
 The following equation explains how Jello emits X-rays:
 
-{{page.eq1}}
+$$ \mathbf{L}_0^\mathrm{p} =
+  \sum_{\alpha=1}^{\mathrm{N}}\dot{\gamma}^{(\alpha)}
+  \left(\mathbf{s}_0^{(\alpha)} \otimes \mathbf{n}_0^{(\alpha)}\right) =
+  \dot{\mathbf{F}}^{\mathrm{p}} \cdot \left({\mathbf{F}^{\mathrm{p}}}\right)^{-1} $$
