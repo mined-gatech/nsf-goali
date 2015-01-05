@@ -17,17 +17,28 @@ slice_100caldelta_25val_equiaxed:
 slice_200cal_Priddy_100val_Priddy:
   type: img
   src: https://farm8.staticflickr.com/7501/16206928701_3c203fce9d_o.png
+errorchart:
+  type: img
+  src: https://farm8.staticflickr.com/7520/16023030169_d096ed2cde_o.png
 ---
 
+### MKS Calibration and Validation for Dream3D Microstructures  
 
-While the entire hexagonal-triclinic fundamental zone covers  $ 0 \leq \phi_1 \leq 2\pi, 0 \leq \Phi < \frac{\pi}{2}, 0 \leq \phi_2 \leq \frac{\pi}{3} $, only orientations in the $ \phi_2 = 0 $ face were used as $ \phi_2 $ has no influence on the GSH coefficients at the L = 4 truncation level.
+The purpose of this effort was to benchmark the MKS in the prediction of LE strain fields for realistic microstructures given a range of calibration microstructure types.
 
+For these trials grain orientations are selected from the $ \phi_2 = 0 $ face of the hexagonal triclinic fundamental zone ( $ 0 \leq \phi_1 \leq 2\pi, 0 \leq \Phi < \frac{\pi}{2}, 0 \leq \phi_2 \leq \frac{\pi}{3} $ ). These orientations are shown in the following image:
 
 {% include ContentManager.html content=page.cal %}
 
-{% include ContentManager.html content=page.slice_100cal_25val_delta %}
+First, 100 delta microstructures were used to generate the MKS influence coefficients. The following image shows the predicted strain fields for a slice of a realistic microstructure.
 
 {% include ContentManager.html content=page.slice_100caldelta_25val_equiaxed %}
+
+In addition, the influence coefficients calculated from the set of 100 random microstructures were used to predict the strain fields for delta microstructures. The image below shows the predicted strain field for an example delta microstructure.
+
+{% include ContentManager.html content=page.slice_100cal_25val_delta %}
+
+{% include ContentManager.html content=page.errorchart %}
 
 {% include ContentManager.html content=page.slice_200cal_Priddy_100val_Priddy %}
 
