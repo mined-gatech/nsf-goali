@@ -1,0 +1,126 @@
+---
+layout: post
+title:  "How important is the CSM measurement to the zero point correction for determining indentation stress-strain curves?"
+author: jsweaver
+date:   2015-01-06 16:00:00
+
+latex: true
+autonumber: true
+
+---
+
+## Background ##
+Kalidindi and Pathak (2008) developed a method for **extracting nanoindentation stress-strain curves from load, displacement, and continuous stiffness data** which allows for the recovery of the initial elastic loading and elastic-plastic transition. The method relies on determining and applying a **zero point correction to the load and displacement signals**. The zero point correction is needed because the initial stage of contact is messy: the machine zero point is only an estimate and imperfections in sample and tip are magnified at such small areas of contact causing deviations from Hertz Theory for the given assumption of a flat surface and a spherical tip with a known radius. The new zero point is not the true zero point of initial contact, rather an **effective zero point based on reliable data after the initial stage of contact that is well described by Hertz Equation**.
+
+## Theory ##
+Hertz Theory for a spherical indenter on a flat sample surface:
+
+$$\begin{equation}
+P=\frac{4}{3}E_{eff}R_{eff}^\frac{1}{2}h^\frac{3}{2}
+\end{equation}$$   
+
+\begin{equation}
+a=\sqrt{R_{eff}h}
+\end{equation}  
+
+\begin{equation}
+\frac{1}{R_{eff} }= \frac{1}{R_i} + \frac{1}{R_s}
+\end{equation}  
+
+$$\begin{equation}
+\frac{1}{E_{eff} }= \frac{1-\nu_i^2}{E_i} + \frac{1-\nu_s^2}{E_s} 
+\end{equation}$$
+
+The indenter properties (diamond) are $E_i = 1140 GPa$ and $\nu_i = 0.07$, and the sample radius of curvature is $R_s = \infty$ making $R_{eff} = R_i$ provided that no plastic deformation occurs.
+
+Stiffness is defined by $S=\frac{dP}{dh}$. If we take the derivative of Equation 1 with respect to displacement we can arrive at
+
+$$\begin{equation}
+\frac{dP}{dh} = \frac{3}{2}(\frac{4}{3}E_{eff}R_{eff}^\frac{1}{2})h^\frac{1}{2}
+\end{equation}$$
+
+Substituting Equation 1 back in for the part in parenthesis and simplifying yields
+
+$$\begin{equation}
+\frac{dP}{dh} = \frac{3}{2}\frac{P}{h}
+\end{equation}$$
+
+For an indentation test using the CSM, all three signals are collected: load, displacement, and harmonic contact stiffness. The right and left hand side of the equation should agree during the initial elastic loading of the material.
+
+#### Some things to note: ####
+1. This relationship is independent of the sample material and curvature as well as the tip material and curvature as long as both surfaces can be described with radii of curvature.  
+2. After plasticity occurs this relationship no longer holds because the total displacement is no longer the elastic displacement.  
+3. Stiffness is independent of the machine zero point while load and displacement depend on the determined zero point.
+
+We address the discrepancy of the above relationship of the raw data by correcting the right hand side of the equation (load and displacement) so that it agrees with the left for the elastic loading portion of the test.
+
+The corrections are found through a linear regression where $$P^*$$ and $$h^*$$ are the load and displacement corrections. $P$ and $h$ are the load on sample and displacement into surface channels and S is the harmonic contact stiffness channel.
+
+$$\begin{equation}
+\frac{dP}{dh} = \frac{3}{2}\frac{P-P^*}{h-h^*}
+\end{equation}$$
+
+Rearranging into a convenient form for linear regression
+
+$$\begin{equation}
+P - \frac{2}{3}Sh = -\frac{2}{3}h^*S + P^*
+\end{equation}$$
+
+
+After the corrections are applied to the load and displacement channels, a linear regression of Equation 1 between $$ P^\frac{2}{3} $$ and $$ h $$ can be done to extract the effective modulus.
+
+The next step is calculating the contact radius from the effective modulus and harmonic contact stiffness.
+
+$$\begin{equation}
+a = \frac{S}{2E_{eff}}
+\end{equation}$$
+
+From here, indentation stress and strain can be plotted as defined in Kalidindi and Pathak 2008.
+
+## Results ##
+
+Here I want to emphasize the use of the harmonic contact stiffness and the relationship between all three signals in the elastic loading regime in determining the zero point correction.
+
+<a href="https://www.flickr.com/photos/125994770@N04/16044000268" title="Test008 PhS plot 4CSM by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7486/16044000268_9e1970a16a_o.jpg" width="560" height="420" alt="Test008 PhS plot 4CSM"></a>
+
+For this particular test and analysis, the load displacement, two linear regression plots, and indentation stress-strain plot are shown. The selected elastic segment is highlighted in green on each plot.
+
+<a href="https://www.flickr.com/photos/125994770@N04/15609035054" title="Test008 Example 4CSM by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7548/15609035054_5d258ce910_c.jpg" width="800" height="438" alt="Test008 Example 4CSM"></a>
+
+## Discussion ##
+**Q1:** How sure are you that the segment you selected is elastic loading?  
+**A1:** When we do full unloading at this stage of the test, we get elastic recovery i.e. the unloading follows the loading curve
+
+**Q2:** How sure are you that the tip is spherical with the prescribed radius and the surface is flat?  
+**A2:** The tip is imaged using an SEM and measured by fitting a sphere to the spherical region. The surface is also in an SEM which provides some qualitative measure of flatness. Both assumptions are indirectly validated by doing experiments on a material with a known elastic modulus (Aluminum and/or Tungsten) and obtaining the expected value.
+
+**Q3:** Why haven't you used any corrections to load, displacement, and harmonic contact stiffness as proposed by Pharr et al. 2009?  
+**A3:** Using the corrections was explored by S. Vachhani et al. (2013)  and determined to have little effect on the indentation stress-strain curve. However it is still being explored as it may effect the determination of the optimal zero point correction.
+
+**Q4:** From an instrumentation point of view, is there anything that explains the discrepancy in the relationship between the three signals: load, displacement, stiffness during elastic loading?  
+**A4:** **Unknown - please comment**
+
+**Q5:** Is the zero point correction sensitive to small errors in the harmonic contact stiffness? i.e. it is not zero in air during the approach.   
+**A5:** Unknown, working to answer this question.
+
+**Q6:** Can we zero the harmonic contact stiffness at the start of the test to account for any error in the measurement that appears in air?  
+**A6:** **Unknown - please comment**
+
+## References ##
+Kalidindi, S.R. and S. Pathak. "Determination of the effective zero-point and the extraction of spherical nanoindentation stress–strain curves." Acta Materialia. 2008.
+
+Pharr, G.M., J.H. Strader, and W.C. Oliver. "Critical issues in making small-depth mechanical property measurements by nanoindentation with continuous stiffness measurement." J. Mater. Res. 2009
+
+Vachhani, S.J., R.D. Doherty, and S.R. Kalidindi. "Effect of the continuous stiffness measurement on the mechanical properties extracted using spherical nanoindentation." Acta Materialia. 2013
+
+## Data ##
+
+Click [here](https://www.dropbox.com/sh/hf9f9yftou0b0f0/AAAdhnV6WCLJzMJgOMRp7jULa?dl=0)
+ to access the raw data and some additional files.
+
+The analysis and plotting was done in Matlab. **An explanation and all codes used is not provided** here.
+
+### Experiment Details ###
+
+A **16.5 micron conical spherical diamond tip** was used on an **Agilent G200 nanoindenter with the XP head**. The basic CSM test method was used with 2nm, 24Hz and a target strain rate of 0.05 s-1. The sample was **commercially pure titanium with an electropolished surface** mounted in epoxy.
+
