@@ -52,7 +52,7 @@ For an indentation test using the CSM, all three signals are collected: load, di
 2. After plasticity occurs this relationship no longer holds because the total displacement is no longer the elastic displacement.  
 3. Stiffness is independent of the machine zero point while load and displacement depend on the determined zero point.
 
-We address the discrepancy of the above relationship of the raw data (see example below in Results) by correcting the right hand side of the equation (load and displacement) so that it agrees with the left for the elastic loading portion of the test.
+We address the discrepancy of the raw data for Equation 6 (see example below in Results) by correcting the right hand side of the equation (load and displacement) so that it agrees with the left for the elastic loading portion of the test.
 
 The corrections are found through a linear regression where $$P^*$$ and $$h^*$$ are the load and displacement corrections. $P$ and $h$ are the load on sample and displacement into surface channels and S is the harmonic contact stiffness channel.
 
@@ -68,7 +68,7 @@ P - \frac{2}{3}Sh = -\frac{2}{3}h^*S + P^*
 
 After the corrections are applied to the load and displacement channels, a linear regression of Equation 1 between $$ P^\frac{2}{3} $$ and $$ h $$ can be done to extract the effective modulus.
 
-The next step is calculating the contact radius from the effective modulus and harmonic contact stiffness.
+The next step to get to indentation stress and strain is calculating the contact radius from the effective modulus and harmonic contact stiffness.
 
 $$\begin{equation}
 a = \frac{S}{2E_{eff}}
@@ -119,7 +119,7 @@ Click [here](https://www.dropbox.com/sh/hf9f9yftou0b0f0/AAAdhnV6WCLJzMJgOMRp7jUL
 
 The analysis and plotting was done in Matlab. **An explanation and all codes used is not provided** here.
 
-### Experiment Details ###
+#### Experiment Details ####
 
 A **16.5 micron conical spherical diamond tip** was used on an **Agilent G200 nanoindenter with the XP head**. The basic CSM test method was used with 2nm, 24Hz and a target strain rate of 0.05 s-1. The sample was **commercially pure titanium with an electropolished surface** mounted in epoxy.
 
