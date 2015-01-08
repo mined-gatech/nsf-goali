@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How important is the CSM measurement to the zero point correction for determining indentation stress-strain curves?"
+title:  title:  "How much do we rely on the CSM measurement for the Indentation Stress-Strian Analysis?"
 author: jsweaver
 date:   2015-01-06 16:00:00
 
@@ -42,7 +42,7 @@ $$\begin{equation}
 Substituting Equation 1 back in for the part in parenthesis and simplifying yields
 
 $$\begin{equation}
-\frac{dP}{dh} = \frac{3}{2}\frac{P}{h}
+S = \frac{3}{2}\frac{P}{h}
 \end{equation}$$
 
 For an indentation test using the CSM, all three signals are collected: load, displacement, and harmonic contact stiffness. The right and left hand side of the equation should agree during the initial elastic loading of the material.
@@ -52,7 +52,7 @@ For an indentation test using the CSM, all three signals are collected: load, di
 2. After plasticity occurs this relationship no longer holds because the total displacement is no longer the elastic displacement.  
 3. Stiffness is independent of the machine zero point while load and displacement depend on the determined zero point.
 
-We address the discrepancy of the above relationship of the raw data by correcting the right hand side of the equation (load and displacement) so that it agrees with the left for the elastic loading portion of the test.
+We address the discrepancy of the above relationship of the raw data (see example below in Results) by correcting the right hand side of the equation (load and displacement) so that it agrees with the left for the elastic loading portion of the test.
 
 The corrections are found through a linear regression where $$P^*$$ and $$h^*$$ are the load and displacement corrections. $P$ and $h$ are the load on sample and displacement into surface channels and S is the harmonic contact stiffness channel.
 
@@ -66,7 +66,6 @@ $$\begin{equation}
 P - \frac{2}{3}Sh = -\frac{2}{3}h^*S + P^*
 \end{equation}$$
 
-
 After the corrections are applied to the load and displacement channels, a linear regression of Equation 1 between $$ P^\frac{2}{3} $$ and $$ h $$ can be done to extract the effective modulus.
 
 The next step is calculating the contact radius from the effective modulus and harmonic contact stiffness.
@@ -75,15 +74,15 @@ $$\begin{equation}
 a = \frac{S}{2E_{eff}}
 \end{equation}$$
 
-From here, indentation stress and strain can be plotted as defined in Kalidindi and Pathak 2008.
+From here, indentation stress and strain can be calculated as defined in Kalidindi and Pathak 2008.
 
 ## Results ##
 
-Here I want to emphasize the use of the harmonic contact stiffness and the relationship between all three signals in the elastic loading regime in determining the zero point correction.
+The plot below illustrates the use of the harmonic contact stiffness and the relationship between all three signals in the elastic loading regime in determining the zero point correction.
 
 <a href="https://www.flickr.com/photos/125994770@N04/16044000268" title="Test008 PhS plot 4CSM by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7486/16044000268_9e1970a16a_o.jpg" width="560" height="420" alt="Test008 PhS plot 4CSM"></a>
 
-For this particular test and analysis, the load displacement, two linear regression plots, and indentation stress-strain plot are shown. The selected elastic segment is highlighted in green on each plot.
+For this particular test and analysis, the load on sample and displacement into surface curve, the two linear regression plots, and indentation stress-strain plot are shown. The selected elastic segment is highlighted in green on each plot.
 
 <a href="https://www.flickr.com/photos/125994770@N04/15609035054" title="Test008 Example 4CSM by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7548/15609035054_5d258ce910_c.jpg" width="800" height="438" alt="Test008 Example 4CSM"></a>
 
