@@ -5,11 +5,26 @@ author: Noah Paulson
 
 latex: true
 
-composite_plastic_error_chart:
+1D_interpolation_example:
   type: img
-  src: https://farm8.staticflickr.com/7534/16271592215_29ea06464f_o.png
+  src: https://farm8.staticflickr.com/7558/16100695699_4ebf1002b8_o.png
+1D_original_fft:
+  type: img
+  src: https://farm9.staticflickr.com/8592/16286828035_101e963939_o.png
+1D_padded_fft:
+  type: img
+  src: https://farm8.staticflickr.com/7505/16285998312_4688499451_o.png
+2D_interpolation_example:
+  type: img
+  src: https://farm8.staticflickr.com/7476/15664407334_d17ca0b7cd_o.png
+
 
 ---
 
-{% include ContentManager.html content=page.slice_50cal_10val %}
+{% include ContentManager.html content=page.1D_interpolation_example %}
 
+{% include ContentManager.html content=page.1D_original_fft %}
+
+{% include ContentManager.html content=page.1D_padded_fft %}
+
+{% include ContentManager.html content=page.2D_interpolation_example %}
