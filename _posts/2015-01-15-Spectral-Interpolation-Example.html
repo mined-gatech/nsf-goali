@@ -37,9 +37,13 @@ f(x) = -0.75sin(x) + 0.25cos(3x)
 \end{equation}
 $$
 
-The $$ f(x) $$ is periodic over the domain $$ 0 \leq x \leq 2\pi $$ for convenience. If this function were non-periodic the DFT method would be less effective, as the DFT assumes periodicity. In this case the function should be mirrored over the y-axis so that it would become periodic over the domain $$ -2\pi \leq x \leq 2\pi $$. In the following image the blue line is $$ f(x) $$ while the green cirles represent the sampled values of the function.
+The function $$ f(x) $$ is periodic over the domain $$ 0 \leq x \leq 2\pi $$. If $$ f(x) $$ were not periodic the DFT method would be less effective, as the DFT assumes periodicity. In this case the function is generally mirrored over the y-axis (so the function is periodic over the domain $$ -2\pi \leq x \leq 2\pi $$).
+
+The first step is to sample the function over a regular interval. These samples are the input to the DFT. In the following image the blue line is $$ f(x) $$ while the green cirles represent the sampled values of the function.
 
 {% include ContentManager.html content=page.1D_interpolation_example %}
+
+The following image shows the real and imaginary components of the frequencies of the DFT. Notice the symmetry in both real and imaginary components.
 
 {% include ContentManager.html content=page.1D_original_fft %}
 
