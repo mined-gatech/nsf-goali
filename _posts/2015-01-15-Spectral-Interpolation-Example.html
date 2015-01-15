@@ -22,9 +22,9 @@ latex: true
 
 ## Introduction
 
-The Discrete Fourier Transform (DFT) is critical to countless applications in technology and science. One such application is in the representation of sophisticated functional relationships in multiple dimensions. Sometimes phenomena are too complex to be described by simple formulae. In these cases we might explore a relationship by building a database of inputs and associated outputs. Unfortunately, in many cases the domain of possible inputs is extremely large. This means that many databases are extremely large, yet too sparse to effectively interpolate between values. The advantage of DFTs in these situations is two-fold. 
+The Discrete Fourier Transform (DFT) is critical to countless applications in technology and science. One such application is in the representation of sophisticated functional relationships in multiple dimensions. Sometimes phenomena are too complex to be described by simple formulae. In these cases we might explore a relationship by building a database of inputs and associated outputs. Unfortunately, in many cases the domain of possible inputs is extremely large. This means that many databases are extremely large, yet too sparse to effectively interpolate between values. The advantage of DFTs in these situations is two-fold:
 
-A. The number of significant frequencies in the DFT is often a small fraction of the total number of frequencies. Therefore, by only storing these critical frequencies the memory footprint of the database can be significantly reduced.
+A. The number of significant frequencies in the DFT is often a small fraction of the total number of frequencies. Therefore, by only storing these critical frequencies the memory footprint of the representation can be significantly reduced.
 
 B. We can interpolate between values in the original database with computational ease through a zero-padding in frequency space. This technique is called **spectral interpolation**.
 
@@ -42,21 +42,37 @@ $$
 
 The function $$ f(x) $$ is periodic over the domain $$ 0 \leq x \leq 2\pi $$. If $$ f(x) $$ were not periodic the DFT method would be less effective, as the DFT assumes periodicity. In this case we would mirror the function over the y-axis (to make it periodic over the domain $$ -2\pi \leq x \leq 2\pi $$ and of at least $$ C^0 $$ continuity).
 
-First we sample the function over a regular interval. These samples are the input to the DFT. In the following image the blue line is $$ f(x) $$ while the green cirles represent the 16 sampled values of the function.
+First we sample the function at regular intervals. These samples are the input to the DFT. In the following image the blue line is $$ f(x) $$ while the green cirles represent the 16 sampled values of the function.
 
 {% include ContentManager.html content=page.1D_interpolation_example %}
+
+_Figure 1_
 
 By taking the DFT of the samples using the FFT algorithm, we represent the function in frequency space. The following image shows the real and imaginary components of the frequencies of the DFT. Notice the symmetry in both real and imaginary components.
 
 {% include ContentManager.html content=page.1D_original_fft %}
 
-Now imagine that we don't know the original function and only have the 16 sampled values. What can we do if we want to know the value of the function at locations between the sampled values? One option would be to use linear interpolation between 2 sampled data points. This is fine, but as the function isn't linear this will introduce error. Higher order polynomial fits are an option, but these become computationally expensive to compute. Spectral interpolation is advantageous because it allows us to "fill in" between the original sampled values and do so for the entire domain of the function through a single computation. 
+_Figure 2_
 
-This interpolation is performed through "zero-padding." By inserting zeros into the DFT at a specific location the number of frequencies increases. Since the number of samples in real space matches the number of frequencies in the DFT, zero padding in frequency space increases the number of values in real space as well. So long as the function was sufficiently sampled in real space spectral interpolation finds the intermediate values 
+Now imagine that we lost the original function and only have the 16 sampled values. What can we do if we want to know the value of $$ f(x) $$ at locations between the sampled values? One option would be to use linear interpolation between 2 sampled data points. This is fine, but since $$ f(x) $$ isn't linear this will introduce error. Higher order polynomial fits are an option, but these become computationally expensive to compute. Spectral interpolation is advantageous because it allows us to "fill in" between the original sampled values and do so for the entire domain of the function through a single computation. 
+
+This interpolation is performed through "zero-padding." By inserting zeros into the DFT at a specific location the number of frequencies increases. Since the number of samples in real space matches the number of frequencies in the DFT, zero padding in frequency space increases the number of values in real space as well. So long as the function was sufficiently sampled in real space spectral interpolation approximates the intermediate values to arbirary precision.
+
+Due to the symmetry inherent in the DFT representation, zeros are inserted centered around the middle location of the DFT (these are  higher frequencies with no contribution). Essentially this is the introduction of higher frequencies with no influence. The following image shows the real and imaginary components of the DFT after zero padding.
 
 {% include ContentManager.html content=page.1D_padded_fft %}
 
+_Figure 3_
+
+Finaly, the inverse FFT is taken and the result is scaled by the ratio of the number of frequencies in the zero-padded DFT to the original DFT. Through this method we have interpolated between our sampled values (see the red crosses in Figure 1) in a way that closely matches the original function. 
+
+### Side Notes:
+
+* If we wanted to calculate the interpolated value of $$ f(x) $$ at a single location we would manually perform a DFT instead of using the FFT algorithm.
+
 ## 2D Interpolation
+
+In this case we start with a function with 2 inputs. Spectral interpolation works much in the same way as for the 1D case.
 
 The original function is as follows:
 
@@ -66,7 +82,11 @@ f(x_1,x_2) = -0.85sin(x_1) + 0.15cos(2x_1) + 0.5sin(x_2)
 \end{equation}
 $$
 
+As before we sample the function at regular intervals and perform the DFT using the FFT algorithm. As the input data is now 2-D the FFT is performed on one axis first and then on the other (the order doesn't matter).
+
 {% include ContentManager.html content=page.2D_interpolation_example %}
+
+_Figure 4_
 
 ## References
 
