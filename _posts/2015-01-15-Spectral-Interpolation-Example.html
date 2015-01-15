@@ -25,13 +25,13 @@ latex: true
 
 ## Introduction
 
-The Discrete Fourier Transform (DFT) is critical to countless applications in technology and science. One such application is in the representation of sophisticated functional relationships in multiple dimensions. Sometimes phenomena are too complex to be described by simple formulae. In these cases we might explore a relationship by building a database of inputs and associated outputs. Unfortunately, in many cases the domain of possible inputs is extremely large. This means that many databases are extremely large, yet too sparse to effectively interpolate between values. The advantage of DFTs in these situations is two-fold:
+The Discrete Fourier Transform (DFT) is critical to numerous applications in technology and science. One example is the representation of sophisticated functional relationships in multiple dimensions. Sometimes phenomena are too complex to be described by simple formulae. In these cases one option is to build a database of inputs and associated outputs. Unfortunately, in many cases the domain of possible inputs is extremely large. Many databases end up using substantial memory, yet are too sparse to allow for effective interpolation between values. The advantages of DFTs in such a situation are two-fold:
 
-A. The number of significant frequencies in the DFT is often a small fraction of the total number of frequencies. Therefore, by only storing these critical frequencies the memory footprint of the representation can be significantly reduced.
+A. The number of significant frequencies in the DFT is often a small fraction of the total number of frequencies. Therefore, the memory footprint of the representation can be greatly reduced by storing only these critical frequencies.
 
-B. We can interpolate between values in the original database with computational ease through a zero-padding in frequency space. This technique is called **spectral interpolation**.
+B. We can interpolate between values in the original database with computational ease by zero-padding in frequency space. This technique is called **spectral interpolation**.
 
-This post describes **spectral interpolation** and gives examples of its use in 1 and 2 dimensions.
+This post describes **spectral interpolation** and gives examples of its use in 1 and 2 dimensions. Interpolation in real space generally relies upon linear or higher-order polynomial fits, while spectral interpolation occurs in frequency space with sines and cosines.
 
 ## 1-D Interpolation
 
