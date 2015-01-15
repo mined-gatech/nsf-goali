@@ -14,6 +14,9 @@ latex: true
 1D_padded_fft:
   type: img
   src: https://farm8.staticflickr.com/7505/16285998312_4688499451_o.png
+2d_zero_pad:
+  type: img
+  src: https://farm8.staticflickr.com/7580/16287649562_885dd5dbe6_o.png
 2D_interpolation_example:
   type: img
   src: https://farm8.staticflickr.com/7476/15664407334_d17ca0b7cd_o.png
@@ -30,7 +33,7 @@ B. We can interpolate between values in the original database with computational
 
 This post describes **spectral interpolation** and gives examples of its use in 1 and 2 dimensions.
 
-## 1D Interpolation
+## 1-D Interpolation
 
 First we show the original function:
 
@@ -70,7 +73,7 @@ Finaly, the inverse FFT is taken and the result is scaled by the ratio of the nu
 
 * If we wanted to calculate the interpolated value of $$ f(x) $$ at a single location we would manually perform a DFT instead of using the FFT algorithm.
 
-## 2D Interpolation
+## 2-D Interpolation
 
 In this case we start with a function with 2 inputs. Spectral interpolation works much in the same way as for the 1D case.
 
@@ -84,9 +87,17 @@ $$
 
 As before we sample the function at regular intervals and perform the DFT using the FFT algorithm. As the input data is now 2-D the FFT is performed on one axis first and then on the other (the order doesn't matter).
 
-{% include ContentManager.html content=page.2D_interpolation_example %}
+The remaining difference is in the insertion of zeros into the DFT. The zero padding scheme is visually demonstrated below in Figure 4.
+
+{% include ContentManager.html content=page.2d_zero_pad %}
 
 _Figure 4_
+
+{% include ContentManager.html content=page.2D_interpolation_example %}
+
+_Figure 5_
+
+As shown in Figure 5, spectral interpolation is effective for complicated functions in multiple dimensions.
 
 ## References
 
