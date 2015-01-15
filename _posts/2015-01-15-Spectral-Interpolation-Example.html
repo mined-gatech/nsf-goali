@@ -22,7 +22,7 @@ latex: true
 
 ## Introduction
 
-The Discrete Fourier Transform (DFT) is critical to countless applications in technology and science. One such application is in the discrete representation of data in multiple dimensions.
+The Discrete Fourier Transform (DFT) is critical to countless applications in technology and science. One such application is in the discrete representation of sophisticated functions in multiple dimensions.
 
 
 Instead of interpolating between sampled values of the function in real space, this approximation can be done in DFT space using a technique called **spectral interpolation**. This post describes the technique and gives examples of its use in 1D and 2D.
@@ -37,6 +37,8 @@ f(x) = -0.75sin(x) + 0.25cos(3x)
 \end{equation}
 $$
 
+The $$ f(x) $$ is periodic over the domain $$ 0 \leq x \leq 2\pi $$ for convenience. If this function were non-periodic the DFT method would be less effective, as the DFT assumes periodicity. In this case the function should be mirrored over the y-axis so that it would become periodic over the domain $$ -2\pi \leq x \leq 2\pi $$. In the following image the blue line is $$ f(x) $$ while the green cirles represent the sampled values of the function.
+
 {% include ContentManager.html content=page.1D_interpolation_example %}
 
 {% include ContentManager.html content=page.1D_original_fft %}
@@ -49,7 +51,7 @@ The original function is as follows:
 
 $$
 \begin{equation}
-f(x_1,x_2) = -0.85sin(x_1) + 0.15*cos(2x_1) + 0.5sin(x_2)
+f(x_1,x_2) = -0.85sin(x_1) + 0.15cos(2x_1) + 0.5sin(x_2)
 \end{equation}
 $$
 
