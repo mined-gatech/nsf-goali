@@ -55,7 +55,7 @@ The first step in spectral interpolation is to take the DFT of the samples using
 
 _Figure 2_
 
-The key to spectral interpolation is "zero-padding." By inserting zeros into the DFT at a specific location the number of frequencies increases. Since the number of samples in real space matches the number of frequencies in the DFT, zero padding in frequency space increases the number of values in real space as well. So long as the function was sufficiently sampled in real space spectral interpolation approximates the intermediate values to arbirary precision.
+The key to spectral interpolation is "zero-padding." By inserting zeros into the DFT at a specific location the number of frequencies increases. Since the number of samples in real space matches the number of frequencies in the DFT, zero padding in frequency space increases the number of values in real space as well. So long as the function was sufficiently sampled in real space spectral interpolation approximates the intermediate values to arbitrary precision.
 
 Due to the symmetry inherent in the DFT representation, we split the spectrum in half and insert zeros at the center (these represent higher frequencies with no contribution to the representation). The following image shows the real and imaginary components of the DFT after zero padding.
 
@@ -63,7 +63,7 @@ Due to the symmetry inherent in the DFT representation, we split the spectrum in
 
 _Figure 3_
 
-Finaly, the inverse FFT is taken and the result is scaled by the ratio of the number of frequencies in the zero-padded DFT to the original DFT. Through this method we have interpolate between our sampled values (see the red crosses in Figure 1) in a way that closely matches the original function. 
+Finally, the inverse FFT is taken and the result is scaled by the ratio of the number of frequencies in the zero-padded DFT to the original DFT. Through this method we have interpolate between our sampled values (see the red crosses in Figure 1) in a way that closely matches the original function. 
 
 ### Side Notes:
 
