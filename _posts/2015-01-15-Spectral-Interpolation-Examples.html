@@ -31,7 +31,7 @@ A. The number of significant frequencies in the DFT is often a small fraction of
 
 B. We can interpolate between values in the original database with computational ease by zero-padding in frequency space. This technique is called **spectral interpolation**.
 
-This post describes **spectral interpolation** and gives examples of its use in 1 and 2 dimensions. Interpolation in real space generally relies upon linear or higher-order polynomial fits, while spectral interpolation occurs in frequency space with sines and cosines.
+This post describes **spectral interpolation** and gives examples of its use in 1 and 2 dimensions. Interpolation in real space generally relies upon linear or higher-order polynomial fits, while spectral interpolation is performed in frequency space with sines and cosines.
 
 ## 1-D Interpolation
 
@@ -55,7 +55,7 @@ The first step in spectral interpolation is to take the DFT of the samples using
 
 _Figure 2_
 
-The key to spectral interpolation is "zero-padding." By inserting zeros into the DFT at a specific location the number of frequencies increases. Since the number of samples in real space matches the number of frequencies in the DFT, zero padding in frequency space increases the number of values in real space as well. So long as the function was sufficiently sampled in real space spectral interpolation approximates the intermediate values to arbitrary precision.
+The key to spectral interpolation is "zero-padding." By inserting zeros into the DFT at a specific location the number of frequencies is increased. Since the number of samples in real space matches the number of frequencies in the DFT, zero padding in frequency space increases the number of values in real space as well. So long as the function was sufficiently sampled in real space, spectral interpolation approximates the intermediate values with arbitrary precision.
 
 Due to the symmetry inherent in the DFT representation, we split the spectrum in half and insert zeros at the center (these represent higher frequencies with no contribution to the representation). The following image shows the real and imaginary components of the DFT after zero padding.
 
@@ -63,13 +63,13 @@ Due to the symmetry inherent in the DFT representation, we split the spectrum in
 
 _Figure 3_
 
-Finally, the inverse FFT is taken and the result is scaled by the ratio of the number of frequencies in the zero-padded DFT to the original DFT. Through this method we have interpolate between our sampled values (see the red crosses in Figure 1) in a way that closely matches the original function. 
+Finally, the inverse FFT is taken and the result is scaled by the ratio of the number of frequencies in the zero-padded DFT to the original DFT. Through this method we interpolated between our sampled values (see the red crosses in Figure 1) in a way that closely matches the original function. 
 
 ### Side Notes:
 
-* The function $$ f(x) $$ is periodic over the domain $$ 0 \leq x \leq 2\pi $$. If $$ f(x) $$ were not periodic the DFT method would be less effective, as the DFT assumes periodicity. In this case we would mirror the function over the y-axis (to make it periodic over the domain $$ -2\pi \leq x \leq 2\pi $$ and of at least $$ C^0 $$ continuity).
+* The function $$ f(x) $$ is periodic over the domain $$ 0 \leq x < 2\pi $$. If $$ f(x) $$ were not periodic the DFT method would be less effective, as the DFT assumes periodicity. In this case we would mirror the function over the vertical axis (to make it periodic over the domain $$ -2\pi \leq x \leq 2\pi $$ and of at least $$ C^0 $$ continuity).
 
-* If we wanted to calculate the interpolated value of $$ f(x) $$ at a single location we would manually perform the inverse DFT instead of using the FFT algorithm.
+* To calculate the interpolated value of $$ f(x) $$ at a single location simply perform the inverse DFT for a single location in real space. This is important when the original database is large or precise interpolation is desired.
 
 ## 2-D Interpolation
 
@@ -85,13 +85,13 @@ $$
 
 As before we sample the function at regular intervals and perform the DFT using the FFT algorithm. As the input data is now 2-D the FFT is performed on one axis first and then on the other (the order doesn't matter).
 
-The remaining difference is in the insertion of zeros into the DFT. The zero padding scheme is visually demonstrated below in Figure 4.
+The major difference with the 1-D case is in the insertion of zeros into the DFT. The zero padding scheme is visually demonstrated below in Figure 4.
 
 {% include ContentManager.html content=page.2d_zero_pad %}
 
 _Figure 4_
 
-Again, the inverse FFT is performed and the result is scaled by the ratio of the number of frequencies in the zero-padded DFT to the original DFT. As shown in Figure 5, spectral interpolation is effective for estimating values of complicated functions in multiple dimensions.
+Again, the inverse FFT is performed and the result is scaled by the ratio of the number of frequencies in the zero-padded DFT to the original DFT. As shown in Figure 5, was effective in interpolating between the sampled values in 2 dimensions.
 
 {% include ContentManager.html content=page.2D_interpolation_example %}
 
