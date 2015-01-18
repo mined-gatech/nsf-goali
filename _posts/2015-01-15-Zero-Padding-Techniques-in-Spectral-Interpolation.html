@@ -1,0 +1,56 @@
+---
+layout: post
+title: Zero-Padding Techniques in Spectral Interpolation
+author: Noah Paulson
+
+latex: true
+
+dft_orig:
+  type: img
+  src: https://farm8.staticflickr.com/7522/16310684482_e559b3d5ff_o.png
+dft_interspersed:
+  type: img
+  src: https://farm8.staticflickr.com/7515/15691671363_15df7348dd_o.png
+plot_interspersed:
+  type: img
+  src: https://farm8.staticflickr.com/7531/16309760311_4614d60c30_o.png
+dft_centered:
+  type: img
+  src: https://farm8.staticflickr.com/7522/16124167580_6f5a301328_o.png
+plot_centered:
+  type: img
+  src: https://farm8.staticflickr.com/7537/16124167590_7ed9634605_o.png  
+---
+
+## Introduction
+
+The original equation is included below.
+
+$$
+\begin{equation}
+f(x) = sin(x) + 0.5cos(2x) + 0.25cos(3x)
+\end{equation}
+$$
+
+The following formulation of the DFT equation was then used on the 16 sampled values:
+
+$$
+\begin{equation}
+dft(k) = \sum_{n=0}^{N-1} f_{n}e^{\frac{-2\piikn}{N}}
+\end{equation}
+$$
+
+{% include ContentManager.html content=page.dft_orig %}
+{% include ContentManager.html content=page.dft_interspersed %}
+{% include ContentManager.html content=page.plot_interspersed %}
+{% include ContentManager.html content=page.dft_centered %}
+{% include ContentManager.html content=page.plot_centered %}
+
+
+
+## References
+
+* R.G. Lyons _Understanding Digital Signal Processing_ 3rd edl. 2010 Prentice Hall
+
+* B.L. Adams, S.R. Kalidindi, D.L. Fullwood _Microstructure Sensitive Design for Performance Optimization_ 2012 Butterworth-Heinemann
+
