@@ -46,7 +46,7 @@ The following image shows the original DFT spectra (real and imaginary):
 
 ### Case 1: Zeros Interspersed
 
-In **Case 1** the zeros are interspersed in-between the original frequencies. The total number of frequencies are doubled to 32 ($$ N' $$) in the new spectra, $$ F_k' $$. The following image shows the resulting spectra:
+In **Case 1** the zeros are interspersed in-between the original frequencies. The total number of frequencies are doubled to 32 ($$ N' $$) in the new spectra, $$ F_{k'} $$. The following image shows the resulting spectra:
 
 {% include ContentManager.html content=page.dft_interspersed %}
 
@@ -54,11 +54,11 @@ After zero padding the inverse DFT is taken using the following formula:
 
 $$
 \begin{equation}
-f_n' = \frac{1}{N'} \sum_{k'=0}^{N'-1} F_{k'}e^{2\pi ik'n'/N'}
+f_{n'} = \frac{1}{N'} \sum_{k'=0}^{N'-1} F_{k'}e^{2\pi ik'n'/N'}
 \end{equation}
 $$
 
-Finally, $$ f_n' $$ is scaled by a factor of two to account for the zero padding. The following image shows the original function and sampling as well as the interpolated values.
+Finally, $$ f_{n'} $$ is scaled by a factor of two to account for the zero padding. The following image shows the original function and sampling as well as the interpolated values.
 
 {% include ContentManager.html content=page.plot_interspersed %}
 
