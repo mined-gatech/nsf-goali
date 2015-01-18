@@ -58,7 +58,7 @@ f_{n'} = \frac{1}{N'} \sum_{k'=0}^{N'-1} F_{k'}e^{2\pi ik'n'/N'}
 \end{equation}
 $$
 
-Finally, $$ f_{n'} $$ is scaled by a factor of two to account for the zero padding. The last value of $$ f_{n'} $$ is discarded as it is an extrapolation, not an interpolation between the sampled values. The following image shows the original function and sampling as well as the interpolated values.
+Finally, $$ f_{n'} $$ is scaled by a factor of two to account for the zero padding. Note that $$ f_{n' = 32} $$ is discarded as it is an extrapolation, not an interpolation between the sampled values. The following image shows the original function and sampling as well as the interpolated values.
 
 {% include ContentManager.html content=page.plot_interspersed %}
 
