@@ -36,7 +36,7 @@ The following formulation of the DFT equation was then used on the 16 sampled va
 
 $$
 \begin{equation}
-F_k = \sum_{n=0}^{N-1} f_{n}e^{\frac{-2\pi ikn}{N}}
+F_k = \sum_{n=0}^{N-1} f_{n}e^{-2\pi ikn/N}
 \end{equation}
 $$
 
@@ -54,7 +54,7 @@ After zero padding the inverse DFT is taken using the following formula:
 
 $$
 \begin{equation}
-f_n = \sum_{k=0}^{N-1} F_{k}e^{\frac{-2\pi ikn}{N}}
+f_n = \frac{1}{N} \sum_{k=0}^{N-1} F_{k}e^{\frac{2\pi ikn}{N}}
 \end{equation}
 $$
 
