@@ -34,12 +34,42 @@ $$
 
 The following formulation of the DFT equation was then used on the 16 sampled values:
 
+$$
+\begin{equation}
+dft(k) = \sum_{n=0}^{N-1} f_{n}e^{\frac{-2\pi ikn}{N}}
+\end{equation}
+$$
 
+The following image shows the original DFT spectra (real and imaginary):
 
 {% include ContentManager.html content=page.dft_orig %}
+
+### Case 1: Zeros Interspersed
+
+In case 1 the zeros are interspersed in between the original frequencies. The following image shows the resulting spectra:
+
 {% include ContentManager.html content=page.dft_interspersed %}
+
+After zero padding the inverse DFT is taken using the following formula:
+
+$$
+\begin{equation}
+f(n) = \sum_{k=0}^{N-1} dft_{k}e^{\frac{-2\pi ikn}{N}}
+\end{equation}
+$$
+
+Finally, the result of the inverse DFT is scaled by a factor of two to account for the zero padding. The following image shows the original function and sampling as well as the interpolated values.
+
 {% include ContentManager.html content=page.plot_interspersed %}
+
+### Case 2: Zeros Centered
+
+In the second case all 8 zeros are placed in the center of the spectrum. The following plots show the spectra with the zeros added in the center.
+
 {% include ContentManager.html content=page.dft_centered %}
+
+As before the inverse DFT is taken and the result is scaled. The following image shows the original function and sampling as well as the interpolated values.
+
 {% include ContentManager.html content=page.plot_centered %}
 
 
