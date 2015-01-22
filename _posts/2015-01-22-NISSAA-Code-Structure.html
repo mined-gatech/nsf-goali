@@ -6,7 +6,7 @@ date:   2015-01-22
 ---
 - **This post is an outline of the structure of the NanoIndentation Stress-Strain Analysis Automation  (NISSAA) code written in *Matlab*.** It is meant to help users run, debug, and augment the code.
 
-- **This code is an experiment**: can the zero point correction and indentation stress-strain curve be objectively determined and automated by using a limited number of metrics to sort through all possible solutions.
+- **This code is an experiment**: can the zero point correction and indentation stress-strain curve be objectively determined and automated by using a limited number of metrics to sort through all possible solutions?
 
 - The original details of the analysis can be found in ***Kalidindi, S.R. and S. Pathak. "Determination of the effective zero-point and the extraction of spherical nanoindentation stress–strain curves." Acta Materialia. 2008.***
 
@@ -16,7 +16,7 @@ date:   2015-01-22
 ---
 
 # RunMe.m #
-**RunMe.m** contains most relevant variables which the user will need to change and calls three main fucntions: **Driver.m**, **SearchExplorer.m**, and **MyHistResults.m** which call a. It first calls the function **Driver.m** and outputs structures **TestData** and **FitResults**
+**RunMe.m** contains most relevant variables which the user will need to change and calls three main fucntions: **Driver.m**, **SearchExplorer.m**, and **MyHistResults.m**. It first calls the function **Driver.m** and outputs structures **TestData** and **FitResults**
 
 ##### Variables #####
 - **file** and **sheet** are used to specify the location of the raw data in excel 
@@ -62,7 +62,9 @@ Each **Fit#** (1,2,3,4) has three metrics to determine the goodness of fit
 - **MAR#** maximum absolute residual  
 
 ---
-## 2. SearchExplorer.m ##
+
+## 2. SearchExplorer.m ##  
+
 Once FitResults is generated **RunMe.m** next calls **SearchExplorer.m**. Here we will filter the results to ones of interest and plot them in a 3D scatter plot with a colormap which allows for a selection of four parameters. The outputs of SearchExplorer.m are **SearchResults** which contains all the FitResults that survived the filter operations, **npoints** which catalogs how many analyses remain after each filter operation, and **HistSearchResults** which are histogram values for select variables for the FitResults that survive the filter operations. A multi histogram plot of these results is also performed.
 
 ##### Helpful Note: Generating FitResult from Driver.m is a one time event (that takes the most time to run) unless you decide to change some of the variables that went into **Driver.m**. You can iterate through filtering and plotting by just rerunning **SearchExplorer.m** ! #####
