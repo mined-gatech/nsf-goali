@@ -1,0 +1,125 @@
+---
+layout: post
+title:  "CSM corrections to load, displacement, and contact stiffness revisited"
+author: jsweaver
+date:   2015-01-20 16:00:00
+
+latex: true
+autonumber: true
+
+---
+
+## Background ##
+Pharr et al. (2009) investigated and proposed corrections to the load, displacement, and contact stiffness for nanoindentation tests using the continuous stiffness measurement/module (CSM). The effect of these corrections on the indentation stress-strain analysis developed by Kalidindi and Pathak (2008) was explored by Vachhani et al. (2013). While the conclusions drawn by Vachhani et al. (2013) are correct, we will revisit the CSM corrections in light of developing a path to automate the indentation stress-strain analysis.
+
+The new question is: **How do the CSM corrections effect the automation or optimization of the zero point correction and indentation stress-strain curve?**
+
+See previous posts:  
+[Nanoindentaiton Stress-Strain Analysis Automation](http://tonyfast.com/nsf-goali/2014/11/13/Nanoindentation-Analysis-Uncertainty/)  
+[Importance of CSM to ISS Analysis](http://tonyfast.com/nsf-goali/2015/01/06/How-Important-Is-CSM/)
+
+## Theory ##
+**The corrections to load and displacement are:**
+
+$$\begin{equation}
+P_{act}=P_{app}+\frac{\Delta P}{2}
+\end{equation}$$
+$$\begin{equation}
+h_{act}=h_{app}+\frac{\Delta h}{2}
+\end{equation}$$
+
+Where the subscripts $$act$$ and $$app$$ represent the actual and apparent or machine recorded values respectively. $$\Delta P$$ and $$\Delta h$$ are the peak-to-peak load and displacement amplitudes of the superimposed oscillatory (AC) signal used with CSM. Note that recent methods in Nanosuite for Agilent G200 XP head indenters have applied these correction to load on sample and displacement into surface. 
+
+More useful expressions are
+P_{act}=P_{app}+\sqrt{2}\Delta P_{rms}
+\end{equation}$$
+$$\begin{equation}
+h_{act}=h_{app}+\sqrt{2}\Delta h_{rms}
+\end{equation}$$
+
+Where $$P_{rms}$$ and $$h_{rms}$$ are the root mean squared values of the load and displacement oscillations and the channels harmonic load and harmonic displacement
+
+**The correction to harmonic contact stiffness is:**
+
+$$\begin{equation}
+S_{act}=\frac{1}{\sqrt{2\pi}}\frac{P_{max}}{\Delta h_{rms}}\frac{1}{K}^\frac{1}{m}\left(1-\left(1-\frac{2\sqrt{2}\Delta h_{rms}S_{app}}{P_{max}}\right)^\frac{1}{m}\right)
+\end{equation}$$
+
+Where $$K=0.6524$$, $$m=\frac{3}{2}$$, and $$P_{max}$$ is $$P_{act}$$.
+
+**Taping is a fourth error**
+Tapping occurs during the initial stage of contact where the tip engages the sample but lifts back off the sample. Tapping is implicitly accounted for in the harmonic contact stiffness correction.
+
+$$\begin{equation}
+\frac{2\sqrt{2}\Delta h_{rms}S_{app}}{P_{max}}=\frac{\Delta P}{P_{max}}
+\end{equation}$$
+
+Which causes $$S_{act}$$ to be undefined when the ratio is greater than one. That is
+
+$$\begin{equation}
+P_{max}>=\Delta P
+\end{equation}$$
+
+so that tapping does not occur.
+
+## Results ##
+The concept of a zero point correction is most easily viewed by plotting $$\frac{3P}{2h}$$ and $$S$$ against displacement or time.
+
+**Without harmonic corrections applied**, the terms look like this
+
+<a href="https://www.flickr.com/photos/125994770@N04/15722893083" title="Test008 PhS plot 4CSM v2 by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7538/15722893083_c90b18d483_o.jpg" width="560" height="420" alt="Test008 PhS plot 4CSM v2"></a>
+
+The zero point correction $$P^*, h*$$ brings $$S_{app}, P_{app}, and h_{app}$$ in agreement with Hertz Theory.
+
+**If we then apply the CSM corrections**, it looks like this
+
+<a href="https://www.flickr.com/photos/125994770@N04/16342872035" title="Test008 PhS plot 4CSM v2 by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7492/16342872035_cc22f788b1_o.jpg" width="680" height="563" alt="Test008 PhS plot 4CSM v2"></a>
+
+Note that the CSM correction to load and displacement, $$P_{act}, h_{act}$$ does not bring it in agreement with the apparent stiffness . Furthermore when comparing it to the actual stiffness ($$S_{act}$$, the gap is even further. Hence, the zero point correction is still needed. In fact the same zero point determined from $$S_{app}, P_{app}, and h_{app}$$ appears to bring $$S_{act}, P_{act}, and h_{act}$$ in agreement. This supports that the indentation stress-strain curve is not sensitive to the CSM corrections as seen by Vachhani et al. (2013). Note her conclusion is based on more proof than this so please see the paper for full details.
+
+**If we are interested in tapping**, we can plot $$P_{act}$$ and $$2\sqrt{2}\Delta h_{rms}$$
+
+<a href="https://www.flickr.com/photos/125994770@N04/16341948442" title="Test008 PappPactPdelta plot 4CSM v2 by Jordan Weaver, on Flickr"><img src="https://farm9.staticflickr.com/8610/16341948442_98a4575af5_o.jpg" width="560" height="420" alt="Test008 PappPactPdelta plot 4CSM v2"></a>
+
+We see that most if not all of the data selected for determining the zero point correction also satisfies Equation # (i.e. tapping is certainly not occurring).
+
+**Indentation Stress-Strain Curve**
+
+<a href="https://www.flickr.com/photos/125994770@N04/15609035054" title="Test008 Example 4CSM by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7548/15609035054_5d258ce910_c.jpg" width="800" height="438" alt="Test008 Example 4CSM"></a>
+
+The data highlighted in green was selected for determining the zero point correction and effective modulus. This is the indentation stress-strain curve without CSM corrections.
+
+## Discussion and Conclusion ##
+
+1. **The CSM corrections have an effect on the zero point fit evaluation** (r-squared, maximum absolute residual, etc). If we are using these values to select the best analysis or analyses, the CSM corrections will have some effect on the selection.
+
+2. **Errors in the apparent load, displacement, and contact stiffness are well documented and understood. There is no reason not to correct for them even if they cause little change to the indentation stress-strain curve.**
+
+3. **The data discarded when correcting the harmonic stiffness represents unreliable data** because the indenter may be tapping (engaging and lifting off) the surface. In fact, we can use this to inform our zero point correction determination and limit the possible segment selections.
+
+4. Should $$S_{act}$$ be recalculated after the zero point correction for the load is determined (i.e based on $$P_{max}-P^*$$)?  
+
+	First, the machine zero point only effects the load and displacement. It has no influence on the harmonic load, harmonic displacement, and contact stiffness. Secondly, this zero point produces a consitent starting point at which the load, harmonic load, and contact stiffness are all approximately zero and start to increase upon contact. Another way of saying this is the load used to correct $$S_{app}$$ should have the same zero point ast $$S_app$$.  Lastly, the zero point correction used to calculate indentation stress-strain curves is an effective zero point and not necessarily the actual point of contact. **Therefore, it makes sense to use the load determined from the machine zero point for correcitng the contact stiffness, and this is a one time calculation.**
+
+5. Some cases may arise where the data discarded during the CSM correction to contact stiffness is critical for the zero point correction and indentation stress-strain curve. This could be avoided by adjusting the machine zero point so that more data satisfies Equation X. However, this adjustment should be justified (i.e. the machine zero point was clearly wrong and/or the data provides reliable and quality indentation stress-strain curves).
+
+**In conclusion, I propose CSM corrections to the apparent load, displacement, and contact stiffness signals before the zero point correction and stress-strain curve is calculated.**
+## References ##
+
+Pharr, G.M., J.H. Strader, and W.C. Oliver. "Critical issues in making small-depth mechanical property measurements by nanoindentation with continuous stiffness measurement." J. Mater. Res. 2009
+
+Kalidindi, S.R. and S. Pathak. "Determination of the effective zero-point and the extraction of spherical nanoindentation stress–strain curves." Acta Materialia. 2008.
+
+Vachhani, S.J., R.D. Doherty, and S.R. Kalidindi. "Effect of the continuous stiffness measurement on the mechanical properties extracted using spherical nanoindentation." Acta Materialia. 2013
+
+## Data ##
+
+Click [here](https://www.dropbox.com/sh/hf9f9yftou0b0f0/AAAdhnV6WCLJzMJgOMRp7jULa?dl=0)
+ to access the raw data and some additional files.
+
+The analysis and plotting was done in Matlab. 
+
+### Experiment Details ###
+
+A **16.5 micron conical spherical diamond tip** was used on an **Agilent G200 nanoindenter with the XP head**. The basic CSM test method was used with 2nm, 24Hz and a target strain rate of 0.05 s-1. The sample was **commercially pure titanium with an electropolished surface** mounted in epoxy.
+
