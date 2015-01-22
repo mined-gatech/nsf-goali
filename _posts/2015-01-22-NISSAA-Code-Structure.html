@@ -127,6 +127,7 @@ In here is where **filterResults.m** is called and the 3D scatter plot is made. 
 
 #### 2.2 CalcStressStrainWithYield.m ####
 This function calculates and records stress, strain, yield strength, and hardening into a structure.
+
 #### 2.2.1 FindYieldStart.m ####
 This determines if a pop-in occurred and finds the starting and end points for the hardening or back extrapolation fit. The starting point is found by two different methods: strain offset or the minimum stress of the data after a pop-in is identified (with a fudge factors, see **Cdstrain**).
 
