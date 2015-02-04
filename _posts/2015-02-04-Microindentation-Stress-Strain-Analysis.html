@@ -11,15 +11,15 @@ autonumber: true
 Purpose: This post is an outline of the microindentation stress-strain analysis.
 
 ## Introduction ##
-The microindenter is required in order to obtain indentation stress-strain curves with larger tip radii due to the load limit of the nanoinenter (500mN XP Head, 10 N high load option). The microindenter is a screw driven machine with a a load cell and transducer foot assembly attached for measuring the load and displacement during an indentation test. There is no continouous stiffness measurement (CSM) like in nanoindentation. Therefore, sequential unloading is required to determine the contact stiffness at various points along the load displacement curve.
+The microindenter is required in order to obtain indentation stress-strain curves with larger tip radii due to the load limit of the nanoindenter (500 mN XP Head, 10 N high load option). The microindenter is a screw driven machine with a load cell and transducer foot assembly attached for measuring the load and displacement during an indentation test. There is no continouous stiffness measurement (CSM) like in nanoindentation. Therefore, sequential unloading is required to determine the contact stiffness at various points along the load-displacement curve.
 
-## Overview of Analysis of Raw Data  
+## Overview of Analysis  
   
 1. The time, displacement, and load signals are required along with some test parameters  
 2. The peaks and valleys of the load versus time signal are determined  
 3. The displacement correction and effective modulus are determined for a selected portion of the load-displacement data  
-4. The stiffness and residual height for each unload is determined allowing for the contact area to be calculated.  
-5. The indentation stress-strain curve is plotted using the selected elastic portion and each unload.
+4. The stiffness and residual height for each unload are determined allowing for the contact area to be calculated.  
+5. The indentation stress-strain curve is plotted using the selected elastic portion and each unloading data point.
 
 ## Peak and Valley Finding ##
 
@@ -29,7 +29,7 @@ Here we implement a [peak finding](http://tonyfast.com/nsf-goali/2014/08/29/Peak
     load_step = 2; % A test parameter
     load_start = 5; % A test parameter, load to for first unload
     radius = 9; % filter radius for peak/valley finding
-    hold_time = 10; %min. data points between two peaks/valleys
+    hold_time = 10; % min. data points between two peaks/valleys
     
 Adjust the radius and hold_time values until you get the right number of peaks. You will get this message if the peaks and valleys do not match the expected number.
 
@@ -43,7 +43,7 @@ The expected number of peaks and valleys (pvs) is determined by
 
 ## Determining The Effective Modulus ##
 
-The start and stop points for determining the effective modulus must be chosen in addition to the indenter properties (tungsten carbide) and portion of the unloading curves to use.
+The start and stop points for determining the effective modulus must be chosen in addition to the indenter properties and percentage of the unloading curve to use.
 
     % list of required inputs/variables for zero point and stress-strain
     start = 1099; % start of elastic segment selection, try to use a peak/valley
@@ -53,27 +53,27 @@ The start and stop points for determining the effective modulus must be chosen i
     vs = 0.3;   % Sample Poisson Ratio
     R = 6350; % Indenter Radius, um, 
 
-    unload_percent = [.95 0]; % portion of unloading curve for stiffness calc.
+    unload_percent = [.95 .5; % portion of unloading curve for stiffness calc. i.e. 95 to 50 percent of the max load
  
-Notice that the indices for the first 15 peaks and valleys are printed. So far I have found it best to select two peaks for the start and stop values. This means you are analyzing a full unload-reload cycle.
+Notice that the indices for the first 15 peaks and valleys are printed. So far I have found it best to select two consecutive peaks for the start and stop values. This means you are analyzing a full unload-reload cycle.
 
 #### Effective Modulus and Height Correction Linear Regression #####
 A linear regression of Hertz Equation between $$ P^\frac{2}{3} $$ and $$ h $$ can be done to extract the effective modulus and height correction.
 
 $$
 \begin{equation}
-P^\frac{2}{3} = \left( \frac{4/3}R_{i}E{eff} \right)^\frac{2}{3}h+h^*
+h = \left( \frac{4}{3}R_{i}E{eff} \right)^\frac{-2}{3}P^\frac{2}{3}+h^*
 \end{equation}
 $$
 
 Where $$ h^* $$ is the height correction to the displacement signal.
 
 ## Determining the Unloading Stiffness ##
-The same linear regression is used only this time $$E_{eff}$$ is known and $$R_{eff}$$ is unknown.
+The same linear regression is used only this time $$E_{eff}$$ is known and $$R_{eff}$$ is unknown because the sample has plastically deformed.
 
 $$
 \begin{equation}
-P^\frac{2}{3} = \left( \frac{4/3}R_{eff}E{eff} \right)^\frac{2}{3}h+h_r
+h = \left( \frac{4}{3}R_{eff}E{eff} \right)^\frac{-2}{3}P^\frac{2}{3}+h_r
 \end{equation}
 $$
 
@@ -85,11 +85,11 @@ a = \sqrt{R_{eff}*(h_{max}-h_r)}
 \end{equation}
 $$
 
-Note that this is equivalent to calculating the unloading stiffness and then calculating the contact radius.
+Note that the above is equivalent to calculating the unloading stiffness and then calculating the contact radius shown below.
 
 $$
 \begin{equation}
-S = \frac{3}{2} k^\frac{3}{2}*(h{max}-h_r)^\frac{1}{2}
+S = \frac{3}{2} k^\frac{-3}{2} \sqrt{h_{max}-h_r}
 \end{equation}
 $$
 
@@ -103,13 +103,14 @@ Where $$k$$ is the slope of the linear regression.
 
 ## Indentation Stress-Strain ##
 
-The definitions of indentation stress and strain come from Kalidindi, S.R. and S. Pathak. "Determination of the effective zero-point and the extraction of spherical nanoindentation stress–strain curves." Acta Materialia. 2008.
+The definitions of indentation stress and strain come from *Kalidindi, S.R. and S. Pathak. "Determination of the effective zero-point and the extraction of spherical nanoindentation stress–strain curves." Acta Materialia. 2008.*
 
 $$
 \begin{equation}
 \sigma_{ind} = \frac{P}{\pi a^2}
 \end{equation}
 $$
+
 $$
 \begin{equation}
 \varepsilon_{ind} = \frac{4}{3\pi} \frac{h}{a}
