@@ -5,7 +5,7 @@ description: |
   A mini research site to report the ongoing efforts at the Georgia Institute
   of Technology supported by the NSF-GOALI program.
 baseurl: "/nsf-goali"
-url: "tonyfast.com/nsf-goali"
+url: "mined-gatech.github.io"
 
 # Build settings
 markdown: kramdown
@@ -16,5 +16,5 @@ kramdown:
 paginate: 5
 
 # Project/User information
-gh: tonyfast/nsf-goali
+gh: mined-gatech/nsf-goali
 disqus: tonyfast
