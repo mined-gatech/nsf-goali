@@ -197,7 +197,9 @@ The following image compares the plastic strain distributions for both the FEM r
 
 The two curves match fairly well throughout the strain range. This indicates that the MKS is capable of capturing the extreme plastic strain values in elastic-perfectly plastic simulations. For a two-phase composite material with isotropic phases and elastic perfectly plastic behavior, the plastic strain in any spatial location is analogous to the Fatemi-Socie fatigue indicator parameter (FS-FIP):
 
-Fatemi-Socie FIP: $$ FIPS_{FS} = \Delta \gamma^{p}_{max} ( 1 + K \frac{\sigma^{n}_{max}}{\sigma_{y}} ) $$
+Fatemi-Socie FIP: $$ FIP_{FS} = \Delta \gamma^{p}_{max} ( 1 + K \frac{\sigma^{n}_{max}}{\sigma_{y}} ) $$
+
+Composite FIP: $$ FIP_{FS} = \epsilon^{p} (1 + K \frac{\sigma}{\sigma_{y}}) = \epsilon^{p} (1 + K \frac{E*\epsilon}{\sigma_{y}}) $$
 
 ### References
 
