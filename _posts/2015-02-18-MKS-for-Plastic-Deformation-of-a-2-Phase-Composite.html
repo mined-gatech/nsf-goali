@@ -24,6 +24,18 @@ error_vary_SA:
 field_order2_200calRpc_50valRpc_v1:
   type: img
   src: https://farm8.staticflickr.com/7336/16188614710_cc63ec3dea_o.png
+  
+total_strain_results:
+  type: img
+  src: https://farm9.staticflickr.com/8584/16570168292_966af583d8_o.png
+
+plastic_strain_comparison:
+  type: img
+  src: https://farm9.staticflickr.com/8578/16383714440_523dc8876e_o.png
+  
+plastic_strain_frequency_plot:
+  type: img
+  src: https://farm8.staticflickr.com/7364/16385240127_dd662f92fc_o.png
 
 ---
 
@@ -36,7 +48,7 @@ The purpose of this study was to investigate the prediction of total strain usin
 ### Parameters
 * 2 phase microstructures with isotropic phases
 * Both phases exhibit elastic, perfectly plastic behavior
-* 0.15% applied strain amplitude
+* 0.1125% applied strain amplitude
 * Periodic boundary conditions
   * uniaxial tension
   * contraction not allowed on transverse sides of MVE (BCs for elasticity)
@@ -44,12 +56,12 @@ The purpose of this study was to investigate the prediction of total strain usin
 #### Phase 1 Parameters:
 * Young's Modulus: 100 GPa
 * Poisson's Ratio: 0.3
-* Yield Strength: 100 MPa
+* Yield Strength: 125 MPa
 
 #### Phase 2 Parameters:
 * Young's Modulus: 100 GPa
 * Poisson's Ratio: 0.3
-* Yield Strength: 125 MPa
+* Yield Strength: 100 MPa
 
 _The following image shows the stress-strain curves for both phases superimposed_
 
@@ -93,12 +105,12 @@ In this study a number of parameters were changed. Notably, the periodic boundar
 #### Phase 1 Parameters:
 * Young's Modulus: 100 GPa
 * Poisson's Ratio: 0.3
-* Yield Strength: 100 MPa
+* Yield Strength: 125 MPa
 
 #### Phase 2 Parameters:
 * Young's Modulus: 100 GPa
 * Poisson's Ratio: 0.3
-* Yield Strength: 125 MPa
+* Yield Strength: 100 MPa
 
 #### Calibration Set:
 * 200 random microstructures
@@ -124,5 +136,46 @@ _The following image compares a slice of the strain fields for a validation micr
 {% include ContentManager.html content=page.field_order2_200calRpc_50valRpc_v1 %}
 
 Notice the odd shapes of the distributions for the two phases. While the strain distributions for composites with fully elastic constituents tend to be "normal" in shape, these distributions are more skewed. The distribution for the soft phase shows a distinct skew towards high strain, as would be expected when many voxels undergo plastic strain.
+
+## Study 3
+
+In this study realistic microstructures were used in both the calibration of the MKS influence coeffiecients and in the validation of the MKS predictive capability. These microstructures were generated using a Voronoi tesselation technique for a range of grain sizes and phase volume-fractions. The MKS procedure was performed with both 1st order terms and 7th order terms, though the results were not substantially improved with the inclusion of higher order terms. In any case, 7th order terms (where ) were used to produce the final results. Finally, plastic strains were calculated and compared between the FEM and the MKS predictions, giving good results.
+
+### Parameters
+* 2 phase microstructures with isotropic phases
+* Both phases exhibit elastic, perfectly plastic behavior
+* 0.1125% applied strain amplitude
+* Periodic boundary conditions
+  * uniaxial tension
+  * contraction allowed on transverse sides of MVE (BCs for plasticity)
+  
+#### Phase 1 Parameters:
+* Young's Modulus: 100 GPa
+* Poisson's Ratio: 0.3
+* Yield Strength: 100 MPa
+
+#### Phase 2 Parameters:
+* Young's Modulus: 100 GPa
+* Poisson's Ratio: 0.3
+* Yield Strength: 125 MPa
+
+#### Calibration Set:
+* 400 Voronoi microstructures with equiaxed grain structure
+* Volume fraction between 5% and 95%
+* Large range of grain size
+
+#### Validation Sets:
+* 190 Voronoi microstructures with equiaxed grain structure
+* Volume fraction between 5% and 95%
+* Large range of grain size
+
+### Results
+
+{% include ContentManager.html content=page.total_strain_results %}
+
+{% include ContentManager.html content=page.plastic_strain_comparison %}
+
+{% include ContentManager.html content=page.plastic_strain_frequency_plot %}
+
 
 * S.R. Kalidindi, S.R. Niezgoda, G. Landi, S. Vachhani, T. Fast _A Novel Framework for Building Materials Knowledge Systems_ CMC 17 (2010) 103-125
