@@ -139,7 +139,7 @@ Notice the odd shapes of the distributions for the two phases. While the strain 
 
 ## Study 3
 
-In this study realistic microstructures were used in both the calibration of the MKS influence coeffiecients and in the validation of the MKS predictive capability. These microstructures were generated using a Voronoi tesselation technique for a range of grain sizes and phase volume-fractions. The MKS procedure was performed with both 1st order terms and 7th order terms, though the results were not substantially improved with the inclusion of higher order terms. In any case, 7th order terms (where ) were used to produce the final results. Finally, plastic strains were calculated and compared between the FEM and the MKS predictions, giving good results.
+In this study realistic microstructures were used in both the calibration of the MKS influence coefficients and in the validation of the MKS predictive capability. These microstructures were generated using a Voronoi tessellation technique for a range of grain sizes and phase volume-fractions. The MKS procedure was performed with 1st order terms and 2nd order terms (where the local state of each nearest neighbor cell is incorporated into the higher-order local state descriptions), though the results were not substantially improved with the inclusion of higher order terms. In any case, 2nd order terms were used to produce the final results. Finally, plastic strains were calculated and compared between the FEM and the MKS predictions, giving good results.
 
 ### Parameters
 * 2 phase microstructures with isotropic phases
@@ -171,11 +171,35 @@ In this study realistic microstructures were used in both the calibration of the
 
 ### Results
 
+#### 1st Order Terms
+* Mean Error: 0.589
+* Average Maximum Error: 4.507
+* Absolute Maximum Error: 7.539
+
+#### 2nd Order Terms
+* Mean Error: 0.486%
+* Average Maximum % Error: 4.008%
+* Absolute Maximum % Error: 7.073%
+
+The following image shows a slice of the microstructure, the FE strain field and the MKS prediction of the strain field given the original microstructure.
+
 {% include ContentManager.html content=page.total_strain_results %}
+
+The following image shows a slice of the original microstructure, the FE total strain field, the plastic strain field from FEM and the plastic strain field as predicted by the MKS.
 
 {% include ContentManager.html content=page.plastic_strain_comparison %}
 
+Notice that only the red phase displays plastic strain as is expected. Also, the plastic strain fields match fairly closely.
+
+The following image compares the plastic strain distributions for both the FEM results and the MKS predictions for the compliant phase (each curve is a histogram of the plastic strain values seen in all spatial locations in all validation samples).
+
 {% include ContentManager.html content=page.plastic_strain_frequency_plot %}
 
+The two curves match fairly well throughout the strain range. This indicates that the MKS is capable of capturing the extreme plastic strain values in elastic-perfectly plastic simulations. For a two-phase composite material with isotropic phases and elastic perfectly plastic behavior, the plastic strain in any spatial location is analogous to the Fatemi-Socie fatigue indicator parameter (FS-FIP):
+
+
+
+### References
 
 * S.R. Kalidindi, S.R. Niezgoda, G. Landi, S. Vachhani, T. Fast _A Novel Framework for Building Materials Knowledge Systems_ CMC 17 (2010) 103-125
+* T. Fast, S.R. Kalidindi _Formulation and calibration of higher-order elastic localization relationships using the MKS approach_ Acta Mat. 59 (2011) 4595-4605
