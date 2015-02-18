@@ -88,32 +88,21 @@ b) Calculate from $P^{2/3}$ vs $h_s$
 
 ## Discussion ##
 
-Equation (10) provides the smallest correction and closest agreement with Equation (4) for determining $$ E_{ind}$$. It can be seen that $E_{ind}$ from Equation (4) and $$ E_{ind}$$ from the $$ P^{2/3}$$ Vs. $$ h_s$$ do not match (a difference of ~5 GPa). If we consider that the material indented is a single grain which is anisotropic, Equation (4) is incorrect. From Pathak et al. 2009 and Vlassak and Nix 1993 and 1994 Equation (4) is modified as such
+Equation (10) provides the smallest correction and closest agreement with Equation (4) for determining $$ E_{ind}$$. It can be seen that $E_{ind}$ from Equation (4) and $$ E_{ind}$$ from the $$ P^{2/3}$$ Vs. $$ h_s$$ do not match (a difference of ~5 GPa). 
 
-$$\begin{equation}
-\frac{1}{E_{eff} }= \frac{1-\nu_i^2}{E_i} + \frac{1}{\beta}\frac{1-\nu_s^2}{E_s} 
-\end{equation}$$
-
-where $$ \beta$$ depends on the crystal orientation and $$ \nu_s$$ and $$ E_s$$ are constants based on a randomly textured polycrystalline sample. For cubic crystals $\beta$ has some physical meaning as it correlates with the anisotropy ratio.
-
-Therefore from a $$ P^{2/3}$$ vs $$ h_s$$ plot we have found
-
-$$\begin{equation}
-E_{ind,\beta} = \frac{\beta E_s}{1-\nu^2}
-\end{equation}$$
-
-The indentation stress-strain procedure should be as follows  
+The indentation stress-strain procedure should be as follows
+0. Apply CSM corrections (see a later [post](http://mined-gatech.github.io/nsf-goali/2015/01/20/Nanoindentation-CSM_Corrections-Revisited/))
 1. Find the zero point correction using $P, h, S$.  
 2. Find $E_{eff}$ from the zero point corrected $P, h$.  
-3. Find the contact area, $a$, from $$ E_{eff}, S$$.  
+3. Find the contact radius, $a$, from $$ E_{eff}, S$$.  
 5. Find $$ h_s$$ using Equations (7) and (10).  
 6. Find indentation stress and strain using equations (5) and (6); however, use $h_s$ instead of $h$.    
-7. Plot $$ E_{ind,\beta}$$ on the stress-strain plot calculated from the $$ P^{2/3}$$ vs $$ h_s$$ slope. The modulus line and elastic stress-strain data should be in good agreement. However, we will stick with the stress-strain plot using the total displacement and $$ E_{eff}$$ for optimization when determining the zero point correction.
+7. Plot $$ E_{ind}$$ on the stress-strain plot calculated from the $$ P^{2/3}$$ vs $$ h_s$$ slope. The modulus line and elastic stress-strain data should be in good agreement. However, for now we will stick with the stress-strain plot using the total displacement and $$ E_{eff}$$ for optimization when determining the zero point correction.
 
 ## Conclusions ##
 1. The correction while small is important in order to define the constitutive stress-strain relationship for the material system.
-2. Some explanation is still needed for why Equations (9) and (10) produce different results and to provide a better justification for using Equation (10).
-3. In order to calculate $$ E_{ind}$$ from $$ E_{eff}$$, $$ \beta$$ must be known.
+2. Some explanation is still needed for why Equations (9) and (10) produce different results than Equation (10) and more justification needs to be provided for using Equation (10).
+3. Any indentation material properties (modulus, yield strength, and hardening) should be determined from the indentation stress Vs. sample indentation strain plot.
 
 ## References ##
 - Kalidindi, S.R. and S. Pathak. "Determination of the effective zero-point and the extraction of spherical nanoindentation stress–strain curves". Acta Materialia. 2008
