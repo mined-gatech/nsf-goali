@@ -88,16 +88,16 @@ b) Calculate from $P^{2/3}$ vs $h_s$
 
 ## Discussion ##
 
-Equation (10) provides the smallest correction and closest agreement with Equation (4) for determining $$ E_{ind}$$. It can be seen that $E_{ind}$ from Equation (4) and $$ E_{ind}$$ from the $$ P^{2/3}$$ Vs. $$ h_s$$ do not match (a difference of ~5 GPa). 
+Equation (10) provides the smallest correction and closest agreement with Equation (4) for determining $$ E_{ind}$$. It can be seen that $E_{ind}$ from Equation (4) and $$ E_{ind}$$ from the $$ P^{2/3}$$ Vs. $$ h_s$$ do not match (a difference of ~5 GPa). Using Equation (4) keeps the relationship between $$ E_{eff}, E_{s}, and E_{ind} $$ consistent.
 
 The indentation stress-strain procedure should be as follows
 0. Apply CSM corrections (see a later [post](http://mined-gatech.github.io/nsf-goali/2015/01/20/Nanoindentation-CSM_Corrections-Revisited/))
 1. Find the zero point correction using $P, h, S$.  
 2. Find $E_{eff}$ from the zero point corrected $P, h$.  
 3. Find the contact radius, $a$, from $$ E_{eff}, S$$.  
-5. Find $$ h_s$$ using Equations (7) and (10).  
-6. Find indentation stress and strain using equations (5) and (6); however, use $h_s$ instead of $h$.    
-7. Plot $$ E_{ind}$$ on the stress-strain plot calculated from the $$ P^{2/3}$$ vs $$ h_s$$ slope. The modulus line and elastic stress-strain data should be in good agreement. However, for now we will stick with the stress-strain plot using the total displacement and $$ E_{eff}$$ for optimization when determining the zero point correction.
+5. Find $$ h_s$$ using Equations (7) and (10). Note that $P$ should be the zero point corrected load.  
+6. Find indentation stress and indentation strain using equations (5) and (6) using $h_s$ instead of $h$.    
+7. Plot $$ E_{ind}$$ on the indentation stress-strain plot calculated Equation (4). Note that the stress-total strain plot and $$ E_{eff}$$ will be used for optimization when determining the zero point correction.
 
 ## Conclusions ##
 1. The correction while small is important in order to define the constitutive stress-strain relationship for the material system.
