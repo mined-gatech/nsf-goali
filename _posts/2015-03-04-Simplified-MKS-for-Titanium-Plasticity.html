@@ -9,6 +9,9 @@ total_strain_field:
   type: img
   src: https://farm9.staticflickr.com/8565/16508028507_1f53fa8bb3_o.png
 
+stress_strain_curves_25356_image001:
+  type: img
+  src: https://farm9.staticflickr.com/8576/16093173114_f1ede20cec_o.png
 ---
 
 ## Introduction
@@ -32,6 +35,10 @@ In this study the MKS was used to predict total strain fields in a 2-phase compo
 * Poisson's Ratio: 0.3
 * Yield Strength: 1200 MPa
 
+The following image shows the stress strain plots for each phase (with their associated material parameters)
+
+{% include ContentManager.html content=page.stress_strain_curves_25356_image001 %}
+
 #### Calibration Set:
 * 399 realistic $\alpha$-Ti microstructures generated in DREAM.3D by Matthew Priddy
 * Phases randomly assigned to grains in DREAM.3D microstructure
@@ -44,11 +51,13 @@ In this study the MKS was used to predict total strain fields in a 2-phase compo
 
 ### Results
 When only first order terms were used in the MKS procedure the following errors resulted:
+
 * Mean Error: 2.49%
 * Average Maximum Error: 21.65% 
 * Absolute Maximum Error: 44.28%
 
 where:
+
 * Mean % Error: mean error per voxel in all microstructures  
 * Average Maximum % Error: max error per microstructure 
 * Absolute Maximum % Error: max error in any microstructure 
