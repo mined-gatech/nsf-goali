@@ -1,0 +1,59 @@
+---
+layout: post
+title: MKS for total strain in a 2-phase composite with properties from alpha-Ti
+author: Noah Paulson, Matthew Priddy
+
+latex: true
+  
+total_strain_field:
+  type: img
+  src: https://farm9.staticflickr.com/8565/16508028507_1f53fa8bb3_o.png
+
+---
+
+## Introduction
+In this study the MKS was used to predict total strain fields in a 2-phase composite where each phase was assigned properties from distinct orientation of $\alpha$-Ti single crystals. The properties from especially "soft" and "hard" orientations were used in order to simulate the worst case scenario in a fully polycrystalline simulation. 
+
+### Parameters
+* 2 phase microstructures with isotropic phases
+* Both phases exhibit elastic, perfectly plastic behavior
+* 0.814% applied strain amplitude
+* Periodic boundary conditions
+  * uniaxial tension
+  * contraction allowed on transverse sides of MVE (BCs for plasticity)
+  
+#### Phase 1 Parameters:
+* Young's Modulus: 115 GPa
+* Poisson's Ratio: 0.3
+* Yield Strength: 800 MPa
+
+#### Phase 2 Parameters:
+* Young's Modulus: 145 GPa
+* Poisson's Ratio: 0.3
+* Yield Strength: 1200 MPa
+
+#### Calibration Set:
+* 399 realistic $\alpha$-Ti microstructures generated in DREAM.3D by Matthew Priddy
+* Phases randomly assigned to grains in DREAM.3D microstructure
+* Volume fraction varied between 5% and 95%
+
+#### Validation Sets:
+* 400 realistic $\alpha$-Ti microstructures generated in DREAM.3D by Matthew Priddy
+* Phases randomly assigned to grains in DREAM.3D microstructure
+* Volume fraction varied between 5% and 95%
+
+### Results
+When only first order terms were used in the MKS procedure the following errors resulted:
+
+* Mean Error: 2.49%
+* Average Maximum Error: 21.65% 
+* Absolute Maximum Error: 44.28%
+
+The following image shows a slice of the microstructure, the FE strain field and the MKS prediction of the strain field given the original microstructure:
+
+{% include ContentManager.html content=page.total_strain_field %}
+
+### References
+
+* S.R. Kalidindi, S.R. Niezgoda, G. Landi, S. Vachhani, T. Fast _A Novel Framework for Building Materials Knowledge Systems_ CMC 17 (2010) 103-125
+* T. Fast, S.R. Kalidindi _Formulation and calibration of higher-order elastic localization relationships using the MKS approach_ Acta Mat. 59 (2011) 4595-4605
