@@ -27,12 +27,12 @@ $$\begin{equation}
 h=h_{raw} - h_{raw}(surface) - drift*(time on sample) - \frac{(Load on Sample)}{K_f}  
 \end{equation}$$
 
-Variables
-$$K$$ - harmonic stiffness straight from CSM
-$$K_f$$ - frame stiffness
-$$h_raw$$ - raw displacement
-$$h_raw(0)$$ - raw displacement at the test zero point
-$$drift$$ - thermal drift correction
+Variables  
+$$K$$ - harmonic stiffness straight from CSM  
+$$K_f$$ - frame stiffness  
+$$h_raw$$ - raw displacement  
+$$h_raw(0)$$ - raw displacement at the test zero point  
+$$drift$$ - thermal drift correction  
 
 Three other specifications that are important
 
@@ -61,11 +61,18 @@ The sample was mounted in epoxy and a sample tray was made for going from the in
 - Data in the stress-strain curve is cut at the harmonic load limit (5mN). Data past this limit further deviates from the modulus line on the left. It is not clear why this occurs but data near the limit may not be reliable.
 
 ### Load-Displacement and Stress-Strain Analysis with CSM ###
-<a href="https://www.flickr.com/photos/125994770@N04/16390770953" title="All plots Kf no CSM by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7632/16390770953_a45453d12f.jpg" width="500" height="337" alt="All plots Kf no CSM"></a>
+<a href="https://www.flickr.com/photos/125994770@N04/16390770953" title="All plots Kf no CSM by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7632/16390770953_a45453d12f.jpg" width="500" height="337" alt="All plots Kf no CSM"></a>  
+
 - Again the indent is mostly elastic. There is some visible plasticity in the final unload. There are many unloads at increasing loads prior that fall on top of each other.
 - A plot of $$h$$ Vs. $$P^{/frac{2}{3}}$$ shows the expected linear relationship and the effective modulus can be determined from a linear regression.
 - Again the effect of the frame stiffness is apparent in the differences between to the two curves, and the correct sample modulus (117 GPa) can be obtained using a lower frame stiffness.
 - Note only a displacement correction was used (the y-intercept of the linear regress) and only the data used in the linear regress was converted to stress and strain.
+
+## Conclusions ##  
+- The **frame stiffness is likely lower than the currently calibrated value**.
+- We have reached a contact radius of 30-40 microns under elastic loading which is large enough to get effective properties for single colonies in the Ti64 $$\beta$$ annealed microstructure.
+- Plasticity occurs too close to the harmonic load and monotonic load limits such that indentation strength is unobtainable for these experiments.
+- A smaller tip and/or using the microindenter will address this problem.
 
 ### References ###
 
