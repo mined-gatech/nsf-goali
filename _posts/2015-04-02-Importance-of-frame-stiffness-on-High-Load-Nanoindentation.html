@@ -12,7 +12,7 @@ autonumber: true
 Larger radii tips and higher loads than previously used are needed in order to get effective properties (probing multiple microscale features) and explore indentation size effects on the indentation stress-strain response. In the process of doing these experiments, it became apparent that the harmonic contact stiffness, displacement into surface, and subsequently indentation stress-strain curve are sensitive to the frame stiffness.
 
 ## Background ##
-For an Agilent G200 nanoindenter with an XP head the system is well described by a system of springs, dampers, and a mass (simple harmonic oscillator) [1]. One of the springs in the system is the frame stiffness which is typical for any mechanical tester. The frame stiffness is typically determined from indenting fused silica  with a Berkovich tip and doing a regression analysis to determine the area function and frame stiffness simultaneously to minimize the error between the known modulus and the measured modulus. The specification for frame stiffness is $$>=5e6 N/m$$. Typical values range from $$5e6 to 9e6 N/m$$.
+For an Agilent G200 nanoindenter with an XP head the system is well described by a system of springs, dampers, and a mass (simple harmonic oscillator) [1]. One of the springs in the system is the frame stiffness which is typical for any mechanical tester. The frame stiffness is typically determined from indenting fused silica  with a Berkovich tip and doing a regression analysis to determine the area function and frame stiffness simultaneously to minimize the error between the known modulus and the measured modulus. The specification for frame stiffness is $$>=5e6 N/m$$. Typical values range from $$5e6$$ to $$9e6$$ N/m.
 
 The frame stiffness can vary based on the tip, sample tray and location, and mounting procedure. For example based on tray location it can range from 6.5 to 9.9 N/m [1]. Additionally it is recommended to determine the frame stiffness for a specific experiment when the harmonic stiffness is 10% or greater than the frame stiffness [1].
 
@@ -24,15 +24,18 @@ S=(\frac{1}{K}-\frac{1}{K_f})^{-1}
 \end{equation}$$
 
 $$\begin{equation}  
-h=h_{raw} - h_{raw}(surface) - drift*(time on sample) - \frac{(Load on Sample)}{K_f}  
+h=h_{raw} - h_{raw}(surface) - drift*time - \frac{Load}{K_f}  
 \end{equation}$$
 
 Variables  
 $$K$$ - harmonic stiffness straight from CSM  
 $$K_f$$ - frame stiffness  
-$$h_raw$$ - raw displacement  
-$$h_raw(0)$$ - raw displacement at the test zero point  
+$$h_{raw}$$ - raw displacement  
+$$h_{raw(surface)}$$ - raw displacement at the test zero point  
 $$drift$$ - thermal drift correction  
+$$time$$ - time on sample  
+$$Load$$ - Load on sample
+  
 
 Three other specifications that are important
 
@@ -49,7 +52,7 @@ The tip geometry was verified with SEM images
 
 <a href="https://www.flickr.com/photos/125994770@N04/16797687207" title="1.5mm_0deg tilt _close_measured by Jordan Weaver, on Flickr"><img src="https://farm9.staticflickr.com/8708/16797687207_cefd770c26.jpg" width="448" height="500" alt="1.5mm_0deg tilt _close_measured"></a>
 
-The sample was mounted in epoxy and a sample tray was made for going from the indenter to the SEM. The frame stiffness determined from indents on fused silica with a Berkovich tip was $$7.3e6 N/m$$. A guess at the correct frame stiffness was made ast $$5e6 N/m$$.
+The sample was mounted in epoxy and a sample tray was made for going from the indenter to the SEM. The frame stiffness determined from indents on fused silica with a Berkovich tip was $$7.3e6$$ N/m. A guess at the correct frame stiffness was made as $$5e6$$ N/m.
 
 ### Load-Displacement and Stress-Strain Analysis with CSM ###
 <a href="https://www.flickr.com/photos/125994770@N04/16817515598" title="Kf all plots by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7628/16817515598_c207ebbb39.jpg" width="500" height="362" alt="Kf all plots"></a>
@@ -57,20 +60,20 @@ The sample was mounted in epoxy and a sample tray was made for going from the in
 - First, the indent is mostly elastic which can be seen by the recovery during unloading. 
 - The difference in frame stiffness has a large effect on the load-displacement curve as well as harmonic contact stiffness.
 - The harmonic load limit (5mN) is reached well before the load limit (10N) load.
-- The lower frame stiffness gives the correct sample modulus ~110 GPa for the indentation stress-strain analysis[3].
+- The lower frame stiffness gives the correct sample modulus ~110 GPa for the indentation stress-strain analysis [3].
 - Data in the stress-strain curve is cut at the harmonic load limit (5mN). Data past this limit further deviates from the modulus line on the left. It is not clear why this occurs but data near the limit may not be reliable.
 
 ### Load-Displacement and Stress-Strain Analysis with CSM ###
 <a href="https://www.flickr.com/photos/125994770@N04/16390770953" title="All plots Kf no CSM by Jordan Weaver, on Flickr"><img src="https://farm8.staticflickr.com/7632/16390770953_a45453d12f.jpg" width="500" height="337" alt="All plots Kf no CSM"></a>  
 
 - Again the indent is mostly elastic. There is some visible plasticity in the final unload. There are many unloads at increasing loads prior that fall on top of each other.
-- A plot of $$h$$ Vs. $$P^{/frac{2}{3}}$$ shows the expected linear relationship and the effective modulus can be determined from a linear regression.
+- A plot of $$h$$ Vs. $$P^{\frac{2}{3}}$$ shows the expected linear relationship for elastic contact described by Hertz Theory and the effective modulus can be determined from a linear regression.
 - Again the effect of the frame stiffness is apparent in the differences between to the two curves, and the correct sample modulus (117 GPa) can be obtained using a lower frame stiffness.
 - Note only a displacement correction was used (the y-intercept of the linear regress) and only the data used in the linear regress was converted to stress and strain.
 
 ## Conclusions 
 - The **frame stiffness is likely lower than the currently calibrated value**.
-- We have reached a contact radius of 30-40 microns under elastic loading which is large enough to get effective properties for single colonies in the Ti64 $$\beta$$ annealed microstructure.
+- We have reached a **contact radius of 30-40 microns under elastic loading** which is large enough to get effective properties for single colonies in the Ti64 $$\beta$$ annealed microstructure.
 - Plasticity occurs too close to the harmonic load and monotonic load limits such that indentation strength is unobtainable for these experiments.
 - A smaller tip and/or using the microindenter will address this problem.
 
