@@ -5,7 +5,7 @@ A Repository for the GT-MINED and IMAT NSF funded GOALI Project
 
 ## Flickr
 
-Every image has a 11 digit photo-id, for example:
+Every image has an 11 digit photo-id, for example:
 
 https://www.flickr.com/photos/123578762@N06/14523859440/
 
